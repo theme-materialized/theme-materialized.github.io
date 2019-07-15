@@ -522,7 +522,7 @@
             
                 <span class="post-meta-item-text">评论数：</span>
                 <a href="/2019/06/29/development-resumed/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/29/development-resumed/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/06/29/development-resumed/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -681,6 +681,9 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -1152,37 +1155,41 @@
   
 
   
+
+
   
+    <!-- LOCAL: You can save these files to your site and update links -->
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
 
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
 
 <script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'zQoiLR4UK68fHPDrzXTDntbB-gzGzoHsz',
-    appKey: 'FPVMUqDVCHANGXO1ol87sgmn',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: '' || 'zh-cn'
-  });
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'code004Accepted',
+      repo: 'blog-comment',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: 'e9b15ea0903656b29d62bbd140bbbe5da76b2508',
+      
+        client_id: '2bd2602c65657bc02e45'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
 </script>
-
-
-
 
   
 
