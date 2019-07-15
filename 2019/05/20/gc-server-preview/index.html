@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="说明说一下，之所以最近GC Server子站没更新，是因为网站的设置出了点问题。这个Bug会很快修复的，放心~">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">

@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="本文简介本文是对多篇文章和案例的总结，大部分是原创，也会从别人的文章里抄一些过来。如果有侵权或逻辑错误，请于评论区回复，谢谢。">
 <meta name="keywords" content="学校,娱乐">
 <meta property="og:type" content="article">

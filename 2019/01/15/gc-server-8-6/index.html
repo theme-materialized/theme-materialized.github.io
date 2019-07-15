@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="自己搞的一个小项目 GC-Server去年（2018）9月出了8.6版本 然后前几天又回来更新了。">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">

@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="说明：本文仅对8.7后部分版本及8.8和以后有效 GC Server 用户说明GC Server 的用户包括以下六种：  单次用户  （直接注册） 本机用户  （暂未开通） 测试用户  （直接注册） 普通会员  （联系申请） 个人VIP   （提交申请） 管理人员  （提交申请）">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">

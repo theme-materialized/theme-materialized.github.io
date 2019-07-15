@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="简介最近很多人找我要GC Server的源代码。我跟他们讲环境要求的时候，很多人都不以为然，结果最后仅仅测试程序就报了几千个Error。所以，我决定今天讲一下如何搭建你自己的GC Server。（目前还没有一个人成功，请量力而行，如果成功了记得在评论区告诉我~）">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">

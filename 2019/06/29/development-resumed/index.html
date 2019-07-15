@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="说明即日起，GC Server的开发工作将继续进行。今日已推出新版：Alpha 9.0 Release 20190629 (Spiderman: Far From Home) Notice:Since the final exam is over, all GC Server development progress has returned to normal. PS: The release">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">

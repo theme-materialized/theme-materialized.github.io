@@ -96,6 +96,21 @@
 
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="说明：由于我和我们的开发副主席余博文同学会在2019年6月27-28日参加八年级下学期期末考试，且这次考试对我们很重要，所以从今日（2019年6月11日）开始，暂停GC Server的开发，直到6月28日后恢复。 Notice:Because of the Final Exam of Me and Bowen Yu which will take place on 27th/28th June 2">
 <meta name="keywords" content="GC Server">
 <meta property="og:type" content="article">
