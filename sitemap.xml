@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://code004.ml/about/index.html</loc>
+    
+    <lastmod>2019-07-17T12:37:26.259Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://code004.ml/2019/07/13/in-memory-of-wesley-ding/</loc>
     
     <lastmod>2019-07-16T12:58:59.397Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://code004.ml/2019/06/11/development-paused/</loc>
     
     <lastmod>2019-06-21T04:53:15.992Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/about/index.html</loc>
-    
-    <lastmod>2019-06-15T15:41:45.949Z</lastmod>
     
   </url>
   
