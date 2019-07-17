@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://code004.ml/posts/gc-server-user/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts/gc-server-8-6/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts/gc-server-8-7/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts/gc-server-8-8/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts/gc-server-9-0/</loc>
+    <lastmod>2019-07-17</lastmod>
+  </url>  <url>
     <loc>https://code004.ml/posts/the-argument-about-an-english-problem/</loc>
     <lastmod>2019-07-17</lastmod>
   </url>  <url>
@@ -15,9 +30,6 @@
   </url>  <url>
     <loc>https://code004.ml/posts/development-paused/</loc>
     <lastmod>2019-06-21</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts/gc-server-9-0/</loc>
-    <lastmod>2019-06-11</lastmod>
   </url>  <url>
     <loc>https://code004.ml/posts/create-your-own-gc-server/</loc>
     <lastmod>2019-06-11</lastmod>
@@ -37,22 +49,10 @@
     <loc>https://code004.ml/posts/acrostic/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>https://code004.ml/posts/gc-server-user/</loc>
-    <lastmod>2019-04-09</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts/gc-server-8-8/</loc>
-    <lastmod>2019-04-08</lastmod>
-  </url>  <url>
     <loc>https://code004.ml/posts/students-and-shoes/</loc>
     <lastmod>2019-03-31</lastmod>
   </url>  <url>
     <loc>https://code004.ml/posts/cs-academy/</loc>
     <lastmod>2019-03-20</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts/gc-server-8-6/</loc>
-    <lastmod>2019-03-10</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts/gc-server-8-7/</loc>
-    <lastmod>2019-03-10</lastmod>
   </url>
 </urlset>

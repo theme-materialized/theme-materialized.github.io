@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://code004.ml/posts/gc-server-user/</loc>
+    
+    <lastmod>2019-07-17T15:26:10.598Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/posts/gc-server-8-6/</loc>
+    
+    <lastmod>2019-07-17T15:25:56.020Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/posts/gc-server-8-7/</loc>
+    
+    <lastmod>2019-07-17T15:25:43.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/posts/gc-server-8-8/</loc>
+    
+    <lastmod>2019-07-17T15:25:26.336Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/posts/gc-server-9-0/</loc>
+    
+    <lastmod>2019-07-17T15:24:59.808Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://code004.ml/posts/the-argument-about-an-english-problem/</loc>
     
     <lastmod>2019-07-17T13:05:32.991Z</lastmod>
@@ -40,13 +75,6 @@
     <loc>https://code004.ml/posts/development-paused/</loc>
     
     <lastmod>2019-06-21T04:53:15.992Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/posts/gc-server-9-0/</loc>
-    
-    <lastmod>2019-06-11T12:23:29.255Z</lastmod>
     
   </url>
   
@@ -107,20 +135,6 @@
   </url>
   
   <url>
-    <loc>https://code004.ml/posts/gc-server-user/</loc>
-    
-    <lastmod>2019-04-09T15:42:33.624Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/posts/gc-server-8-8/</loc>
-    
-    <lastmod>2019-04-08T15:17:58.666Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://code004.ml/posts/students-and-shoes/</loc>
     
     <lastmod>2019-03-31T12:50:38.835Z</lastmod>
@@ -152,20 +166,6 @@
     <loc>https://code004.ml/tags/index.html</loc>
     
     <lastmod>2019-03-10T01:45:04.146Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/posts/gc-server-8-6/</loc>
-    
-    <lastmod>2019-03-10T01:15:59.624Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/posts/gc-server-8-7/</loc>
-    
-    <lastmod>2019-03-10T01:01:13.203Z</lastmod>
     
   </url>
   
