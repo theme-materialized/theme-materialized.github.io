@@ -1892,7 +1892,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1cffec;
+  background: #ff81ff;
 }
 .feed-link,
 .chat {
@@ -2159,6 +2159,10 @@ pre .javascript .function {
 }
 #gitment-container a {
   border-bottom: none;
+}
+a.gitment-editor-footer-tip,
+.gitment-container.gitment-footer-container {
+  display: none;
 }
 .local-search-pop-overlay {
   position: fixed;
