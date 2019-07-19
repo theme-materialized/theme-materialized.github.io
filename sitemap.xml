@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://code004.ml/tags/index.html</loc>
+    
+    <lastmod>2019-07-19T15:12:17.657Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/categories/index.html</loc>
+    
+    <lastmod>2019-07-19T15:12:06.188Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://code004.ml/posts-2019/gc-server-user/</loc>
     
     <lastmod>2019-07-17T15:26:10.598Z</lastmod>
@@ -159,20 +173,6 @@
     <loc>https://code004.ml/message/index.html</loc>
     
     <lastmod>2019-03-10T01:53:05.509Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/tags/index.html</loc>
-    
-    <lastmod>2019-03-10T01:45:04.146Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/categories/index.html</loc>
-    
-    <lastmod>2019-02-19T09:39:36.680Z</lastmod>
     
   </url>
   
