@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://code004.ml/posts-2019/development-paused/</loc>
+    
+    <lastmod>2019-07-20T16:25:07.758Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://code004.ml/tags/index.html</loc>
     
     <lastmod>2019-07-19T15:12:17.657Z</lastmod>
@@ -51,6 +58,20 @@
   </url>
   
   <url>
+    <loc>https://code004.ml/posts-2019/the-argument-about-an-english-problem/</loc>
+    
+    <lastmod>2019-07-17T13:05:32.991Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/posts-2019/in-memory-of-wesley-ding/</loc>
+    
+    <lastmod>2019-07-17T13:05:18.209Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://code004.ml/about/index.html</loc>
     
     <lastmod>2019-07-17T12:37:26.259Z</lastmod>
@@ -65,9 +86,9 @@
   </url>
   
   <url>
-    <loc>https://code004.ml/posts-2019/development-paused/</loc>
+    <loc>https://code004.ml/posts-2019/development-resumed/</loc>
     
-    <lastmod>2019-06-21T04:53:15.992Z</lastmod>
+    <lastmod>2019-06-29T15:11:43.075Z</lastmod>
     
   </url>
   
