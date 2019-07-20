@@ -1,4 +1,3 @@
-https://code004.ml/posts-2019/in-memory-of-wesley-ding/
 https://code004.ml/posts-2019/the-argument-about-an-english-problem/
 https://code004.ml/posts-2019/development-resumed/
 https://code004.ml/posts-2019/development-paused/
