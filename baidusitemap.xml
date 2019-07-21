@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://code004.ml/posts-2019/the-argument-about-an-english-problem/</loc>
+    <lastmod>2019-07-21</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts-2019/in-memory-of-wesley-ding/</loc>
+    <lastmod>2019-07-21</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts-2019/development-resumed/</loc>
+    <lastmod>2019-07-21</lastmod>
+  </url>  <url>
     <loc>https://code004.ml/posts-2019/development-paused/</loc>
     <lastmod>2019-07-20</lastmod>
   </url>  <url>
@@ -19,17 +28,8 @@
     <loc>https://code004.ml/posts-2019/gc-server-9-0/</loc>
     <lastmod>2019-07-17</lastmod>
   </url>  <url>
-    <loc>https://code004.ml/posts-2019/the-argument-about-an-english-problem/</loc>
-    <lastmod>2019-07-17</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts-2019/in-memory-of-wesley-ding/</loc>
-    <lastmod>2019-07-17</lastmod>
-  </url>  <url>
     <loc>https://code004.ml/posts-2019/master-music-class/</loc>
     <lastmod>2019-07-13</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts-2019/development-resumed/</loc>
-    <lastmod>2019-06-29</lastmod>
   </url>  <url>
     <loc>https://code004.ml/posts-2019/create-your-own-gc-server/</loc>
     <lastmod>2019-06-11</lastmod>
