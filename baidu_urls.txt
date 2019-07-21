@@ -6,7 +6,7 @@ https://code004.ml/posts-2019/gc-server-9-0/
 https://code004.ml/posts-2019/gc-server-preview/
 https://code004.ml/posts-2019/create-your-own-gc-server/
 https://code004.ml/posts-2019/visual-studio-2019-installation/
-https://code004.ml/posts-2019/marvel-universe/
+https://code004.ml/posts-2019/marvel-article-collection/
 https://code004.ml/posts-2019/avengers-endgame/
 https://code004.ml/posts-2019/acrostic/
 https://code004.ml/posts-2019/gc-server-8-8/

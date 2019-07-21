@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://code004.ml/posts-2019/development-paused/</loc>
+    <lastmod>2019-07-21</lastmod>
+  </url>  <url>
+    <loc>https://code004.ml/posts-2019/marvel-article-collection/</loc>
+    <lastmod>2019-07-21</lastmod>
+  </url>  <url>
     <loc>https://code004.ml/posts-2019/the-argument-about-an-english-problem/</loc>
     <lastmod>2019-07-21</lastmod>
   </url>  <url>
@@ -9,9 +15,6 @@
   </url>  <url>
     <loc>https://code004.ml/posts-2019/development-resumed/</loc>
     <lastmod>2019-07-21</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts-2019/development-paused/</loc>
-    <lastmod>2019-07-20</lastmod>
   </url>  <url>
     <loc>https://code004.ml/posts-2019/gc-server-user/</loc>
     <lastmod>2019-07-17</lastmod>
@@ -39,9 +42,6 @@
   </url>  <url>
     <loc>https://code004.ml/posts-2019/visual-studio-2019-installation/</loc>
     <lastmod>2019-06-11</lastmod>
-  </url>  <url>
-    <loc>https://code004.ml/posts-2019/marvel-universe/</loc>
-    <lastmod>2019-05-03</lastmod>
   </url>  <url>
     <loc>https://code004.ml/posts-2019/avengers-endgame/</loc>
     <lastmod>2019-04-27</lastmod>
