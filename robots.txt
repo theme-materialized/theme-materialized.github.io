@@ -1,0 +1,10 @@
+User-agent: * Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+
+Sitemap: http://code004.coding.me/sitemap.xml
+Sitemap: http://code004.coding.me/baidusitemap.xml
