@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://code004.ml/duliu/index.html</loc>
+    <loc>https://code004.ml/following/index.html</loc>
     
-    <lastmod>2019-07-22T12:27:06.172Z</lastmod>
+    <lastmod>2019-07-22T12:31:12.227Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://code004.ml/links/index.html</loc>
+    <loc>https://code004.ml/following/others.html</loc>
     
-    <lastmod>2019-07-22T12:22:51.623Z</lastmod>
+    <lastmod>2019-07-22T12:29:24.642Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://code004.ml/duliu/index.html</loc>
+    
+    <lastmod>2019-07-22T12:27:06.172Z</lastmod>
     
   </url>
   
@@ -159,13 +166,6 @@
     <loc>https://code004.ml/posts-2019/visual-studio-2019-installation/</loc>
     
     <lastmod>2019-06-11T12:17:00.184Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://code004.ml/following/index.html</loc>
-    
-    <lastmod>2019-05-03T10:10:49.384Z</lastmod>
     
   </url>
   
