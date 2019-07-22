@@ -124,18 +124,18 @@
 })();
 </script>
 
-  <meta name="description" content="简介最近很多人找我要GC Server的源代码。我跟他们讲环境要求的时候，很多人都不以为然，结果最后仅仅测试程序就报了几千个Error。所以，我决定今天讲一下如何搭建你自己的GC Server。（目前还没有一个人成功，请量力而行，如果成功了记得在评论区告诉我~）">
-<meta name="keywords" content="GC Server">
+  <meta name="description" content="此文章与学习关系不大，自动加密">
+<meta name="keywords" content="娱乐">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用C++制作你自己的GC Server">
-<meta property="og:url" content="https://code004.ml/create-your-own-gc-server.html">
+<meta property="og:title" content="漫威系列收藏文章">
+<meta property="og:url" content="https://code004.ml/marvel-article-collection/index.html">
 <meta property="og:site_name" content="code004&#39;s Blog">
-<meta property="og:description" content="简介最近很多人找我要GC Server的源代码。我跟他们讲环境要求的时候，很多人都不以为然，结果最后仅仅测试程序就报了几千个Error。所以，我决定今天讲一下如何搭建你自己的GC Server。（目前还没有一个人成功，请量力而行，如果成功了记得在评论区告诉我~）">
+<meta property="og:description" content="此文章与学习关系不大，自动加密">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-11T12:19:34.238Z">
+<meta property="og:updated_time" content="2019-07-21T12:29:44.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用C++制作你自己的GC Server">
-<meta name="twitter:description" content="简介最近很多人找我要GC Server的源代码。我跟他们讲环境要求的时候，很多人都不以为然，结果最后仅仅测试程序就报了几千个Error。所以，我决定今天讲一下如何搭建你自己的GC Server。（目前还没有一个人成功，请量力而行，如果成功了记得在评论区告诉我~）">
+<meta name="twitter:title" content="漫威系列收藏文章">
+<meta name="twitter:description" content="此文章与学习关系不大，自动加密">
 
 
 
@@ -145,7 +145,7 @@
 
   
   
-  <link rel="canonical" href="https://code004.ml/create-your-own-gc-server">
+  <link rel="canonical" href="https://code004.ml/marvel-article-collection/">
 
 
 
@@ -155,7 +155,7 @@
   };
 </script>
 
-  <title>利用C++制作你自己的GC Server | code004's Blog</title>
+  <title>漫威系列收藏文章 | code004's Blog</title>
   
 
 
@@ -464,7 +464,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://code004.ml/create-your-own-gc-server.html">
+    <link itemprop="mainEntityOfPage" href="https://code004.ml/marvel-article-collection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="code004">
@@ -481,7 +481,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">利用C++制作你自己的GC Server
+          <h2 class="post-title" itemprop="name headline">漫威系列收藏文章
 
               
             
@@ -510,7 +510,7 @@
                 
               
 
-              <time title="创建时间：2019-05-19 00:43:10" itemprop="dateCreated datePublished" datetime="2019-05-19T00:43:10+08:00">2019-05-19</time>
+              <time title="创建时间：2019-04-27 12:08:23" itemprop="dateCreated datePublished" datetime="2019-04-27T12:08:23+08:00">2019-04-27</time>
             
 
             
@@ -527,7 +527,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-11 20:19:34" itemprop="dateModified" datetime="2019-06-11T20:19:34+08:00">2019-06-11</time>
+                <time title="修改时间：2019-07-21 20:29:44" itemprop="dateModified" datetime="2019-07-21T20:29:44+08:00">2019-07-21</time>
               
             
           </span>
@@ -544,7 +544,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随记/" itemprop="url" rel="index"><span itemprop="name">随记</span></a></span>
 
                 
                 
@@ -586,39 +586,20 @@
       
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>最近很多人找我要GC Server的源代码。我跟他们讲环境要求的时候，很多人都不以为然，结果最后仅仅测试程序就报了几千个Error。所以，我决定今天讲一下如何搭建你自己的GC Server。（<strong>目前还没有一个人成功，请量力而行，如果成功了记得在评论区告诉我~</strong>）</p>
-<a id="more"></a>
-
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-系统配置"><a href="#1-系统配置" class="headerlink" title="1. 系统配置"></a>1. 系统配置</h2><p>本文仅适用于Windows系统，支持Win7及以后的大部分版本，Win10最佳。</p>
-<h2 id="2-环境配置"><a href="#2-环境配置" class="headerlink" title="2. 环境配置"></a>2. 环境配置</h2><p>首先，你需要一个支持C/C++的IDE（强烈推荐Visual Studio，后面的操作会更方便），然后你需要下载一个图形库，比如WinAPI。最后你需要将图形库安装到你的IDE的配置里面，将include和lib都装到要求的文件夹里，这就不必多说了，如果有问题请在评论区说明。</p>
-<h2 id="3-编译测试"><a href="#3-编译测试" class="headerlink" title="3. 编译测试"></a>3. 编译测试</h2><p><strong>注意！在此步骤下如果出现任何系统错误，请立即停止操作！推荐在开始前将系统进行备份！</strong></p>
-<h3 id="Step-1-创建项目"><a href="#Step-1-创建项目" class="headerlink" title="Step 1 - 创建项目"></a>Step 1 - 创建项目</h3><p>在这一步里，需要你在你的IDE里创建一个C/C++的项目，确保创建正常且Hello world可以运行。（我精心帮你准备好了测试用的Hello World代码^_^）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C++</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Hello,world!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello,world!\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Step-2-图形库测试"><a href="#Step-2-图形库测试" class="headerlink" title="Step 2 - 图形库测试"></a>Step 2 - 图形库测试</h3><p>你需要include你之前引入的图形库的头文件，然后再设置一下比如这样：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;graphics.h&gt;               // 引用图形库头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    initgraph(<span class="number">640</span>, <span class="number">480</span>);            <span class="comment">// 创建绘图窗口，大小为 640x480 像素</span></span><br><span class="line">    setlinecolor(RGB(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>));   <span class="comment">// 设置当前线条颜色</span></span><br><span class="line">    setfillcolor(RGB(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>));   <span class="comment">// 设置当前填充颜色</span></span><br><span class="line">    fillcircle(<span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>);      <span class="comment">// 画圆，圆心(200, 200)，半径 100</span></span><br><span class="line">    system(<span class="string">"pause"</span>);                <span class="comment">// 按任意键继续，getch();亦可</span></span><br><span class="line">    closegraph();                   <span class="comment">// 关闭图形环境</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果上面的代码你可以运行成功，那么恭喜你，你可以进入下面的步骤了~</p>
-<h3 id="Step-3-按钮制作"><a href="#Step-3-按钮制作" class="headerlink" title="Step 3 - 按钮制作"></a>Step 3 - 按钮制作</h3><p>很多人看到图形库的功能后都很吃惊，但是也有人问我，GC Server里面的那些不同颜色的按钮时怎么画出来的。因为，图形库好像没有自带画按钮的功能啊~</p>
-<p>很简单，如下：</p>
-<p>（下方代码为GC Server 8.7最后更新的源代码片段，为防止数据泄露，我们没有采用最新版本的代码，且在原版本的基础上做了部分处理，不影响代码的理解）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">settextstyle(<span class="number">90</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">setbkcolor(RED);</span><br><span class="line">outtextxy(<span class="number">20</span>, <span class="number">160</span>, _T(<span class="string">"欢迎您使用 GC Server!"</span>));</span><br><span class="line">setbkcolor(BLUE);</span><br><span class="line">settextstyle(<span class="number">38</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">outtextxy(<span class="number">124</span>, <span class="number">301</span>, _T(<span class="string">"快速注册"</span>));</span><br><span class="line">rectangle(<span class="number">120</span>, <span class="number">300</span>, <span class="number">280</span>, <span class="number">340</span>);</span><br><span class="line">outtextxy(<span class="number">404</span>, <span class="number">301</span>, _T(<span class="string">"程序信息"</span>));</span><br><span class="line">rectangle(<span class="number">400</span>, <span class="number">300</span>, <span class="number">560</span>, <span class="number">340</span>);</span><br><span class="line">outtextxy(<span class="number">684</span>, <span class="number">301</span>, _T(<span class="string">"立即登录"</span>));</span><br><span class="line">rectangle(<span class="number">680</span>, <span class="number">300</span>, <span class="number">840</span>, <span class="number">340</span>);</span><br><span class="line">MOUSEMSG m;</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">&#123;</span><br><span class="line">    m = GetMouseMsg();</span><br><span class="line">    <span class="keyword">if</span> (m.x &gt;= <span class="number">120</span> &amp;&amp; m.x &lt;= <span class="number">280</span> &amp;&amp; m.y &gt;= <span class="number">300</span> &amp;&amp; m.y &lt;= <span class="number">340</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (m.uMsg == WM_LBUTTONDOWN)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//此处为注册代码，安全起见被删除</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            settextstyle(<span class="number">35</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">            outtextxy(<span class="number">130</span>, <span class="number">302</span>, _T(<span class="string">"快速注册"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (m.x &gt;= <span class="number">400</span> &amp;&amp; m.x &lt;= <span class="number">560</span> &amp;&amp; m.y &gt;= <span class="number">300</span> &amp;&amp; m.y &lt;= <span class="number">340</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (m.uMsg == WM_LBUTTONDOWN)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//此处为程序信息代码，安全起见被删除</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            settextstyle(<span class="number">35</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">            outtextxy(<span class="number">410</span>, <span class="number">302</span>, _T(<span class="string">"程序信息"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (m.x &gt;= <span class="number">680</span> &amp;&amp; m.x &lt;= <span class="number">840</span> &amp;&amp; m.y &gt;= <span class="number">300</span> &amp;&amp; m.y &lt;= <span class="number">340</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (m.uMsg == WM_LBUTTONDOWN)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//此处为登录代码，安全起见被删除</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            settextstyle(<span class="number">35</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">            outtextxy(<span class="number">690</span>, <span class="number">302</span>, _T(<span class="string">"立即登录"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        settextstyle(<span class="number">38</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">        outtextxy(<span class="number">124</span>, <span class="number">301</span>, _T(<span class="string">"快速注册"</span>));</span><br><span class="line">        outtextxy(<span class="number">404</span>, <span class="number">301</span>, _T(<span class="string">"程序信息"</span>));</span><br><span class="line">        outtextxy(<span class="number">684</span>, <span class="number">301</span>, _T(<span class="string">"立即登录"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>代码的思路：先把按钮画出来，然后再判定鼠标动作。如果鼠标再指定区域内且左键单击，就说明用户点击了按钮。</p>
-<p>当然了，你还可以搞些小花样，比如说我之前做的lock项目（电脑安全锁）就用到了鼠标手势代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">MOUSEMSG m2;</span><br><span class="line"><span class="keyword">int</span> flag1 = <span class="number">0</span>, flag2 = <span class="number">0</span>;</span><br><span class="line">settextstyle(<span class="number">20</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">rectangle(<span class="number">600</span>, <span class="number">500</span>, <span class="number">650</span>, <span class="number">530</span>);</span><br><span class="line">outtextxy(<span class="number">605</span>, <span class="number">505</span>, _T(<span class="string">"确定"</span>));</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">&#123;</span><br><span class="line">    m2 = GetMouseMsg();</span><br><span class="line">    <span class="keyword">if</span> (m2.x &gt;= <span class="number">600</span> &amp;&amp; m2.x &lt;= <span class="number">650</span> &amp;&amp; m2.y &gt;= <span class="number">500</span> &amp;&amp; m2.y &lt;= <span class="number">530</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        settextstyle(<span class="number">25</span>, <span class="number">0</span>, _T(<span class="string">"Consolas"</span>));</span><br><span class="line">        <span class="keyword">if</span> (m2.uMsg == WM_MBUTTONDBLCLK)</span><br><span class="line">        &#123;</span><br><span class="line">            flag1 = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (m2.uMsg == WM_LBUTTONDOWN &amp;&amp; flag1 == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            flag2 = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (m2.uMsg == WM_RBUTTONDOWN &amp;&amp; flag2 == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            settextstyle(<span class="number">22</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">            outtextxy(<span class="number">603</span>, <span class="number">503</span>, _T(<span class="string">"确定"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        settextstyle(<span class="number">20</span>, <span class="number">0</span>, _T(<span class="string">"楷体"</span>));</span><br><span class="line">        outtextxy(<span class="number">605</span>, <span class="number">505</span>, _T(<span class="string">"确定"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码就是要先双击鼠标中键的滚轮（向下按），然后再左键一次右键一次即可。</p>
-<h3 id="Step-4-添加游戏"><a href="#Step-4-添加游戏" class="headerlink" title="Step 4 - 添加游戏"></a>Step 4 - 添加游戏</h3><p>游戏可以直接在GC Coding发帖，我会回复的。目前来说，大部分在GC Server目前版本已经开放的游戏代码都可以直接找我要。</p>
-<p><a href="http://gcbbs.ga" rel="external nofollow noopener noreferrer" target="_blank"><em>Just @code004 on the GC Coding Forum</em></a></p>
-<h3 id="Step-5-设计插件更改模块"><a href="#Step-5-设计插件更改模块" class="headerlink" title="Step 5 - 设计插件更改模块"></a>Step 5 - 设计插件更改模块</h3><p>你需要在Github上开一个repo，然后把你想用的插件打包传上去，用户想下载的时候，只需要用system调用打开浏览器访问指定网址，然后提示用户将下载的包放到安装目录中，再点击某个神奇的按钮后程序就自动开始解析用户下载的包，然后把文件加到下载目录里去。程序再修改一个安装目录下的文件，比如把0改成1，然后开始加载这个插件。</p>
-<p>一般来说用户比较喜欢有卸载功能的插件，这个也很简单，只需要加上一个卸载按钮，一旦用户点击确定后就删除包，然后把上面说的文件再改回去即可。</p>
-<p>还可以再repo里加一个README，在程序里加一个说明，一点就打开README的网址，这也不难。</p>
-<h3 id="Step-6-加入一部分彩蛋"><a href="#Step-6-加入一部分彩蛋" class="headerlink" title="Step 6 - 加入一部分彩蛋"></a>Step 6 - 加入一部分彩蛋</h3><p>好吧，其实这一步是选做的<del>不过我认为一个程序要更有意思就应该加入一些彩蛋。比如GC Server最近促使我添加“姓名登录”的一个较为重要的原因就是想藏彩蛋。</del>比如你输入某些神奇的名字~~ 够了不泄密了…</p>
-<h3 id="Step-7-完工"><a href="#Step-7-完工" class="headerlink" title="Step 7 - 完工"></a>Step 7 - 完工</h3><p>好的，如果你已经按照前面的步骤顺利完成了，生成exe文件的时候就到了。不出意外的话（这几乎是不可能的），你会看到exe文件已经在项目文件夹里等着你了。当然，如果出现了不能解决的错误，也欢迎你来留言哦~</p>
-<h1 id="感谢阅读"><a href="#感谢阅读" class="headerlink" title="感谢阅读"></a>感谢阅读</h1>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="此文章与学习关系不大，请输入密码查看">
+    <label for="pass">此文章与学习关系不大，请输入密码查看</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -631,38 +612,6 @@
 <div>
     
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-
-  <p><span>本文标题:</span>利用C++制作你自己的GC Server</p>
-  <p><span>文章作者:</span>code004</p>
-  <p><span>发布时间:</span>2019年05月19日 - 00:43:10</p>
-  <p><span>最后更新:</span>2019年06月11日 - 20:19:34</p>
-  <p><span>原始链接:</span><a href="/create-your-own-gc-server.html" title="利用C++制作你自己的GC Server">https://code004.ml/create-your-own-gc-server.html</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://code004.ml/create-your-own-gc-server.html" aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    clipboard.on('success', $(function(){
-      $(".fa-clipboard").click(function(){
-        swal({   
-          title: "",   
-          text: '复制成功',   
-          html: false,
-          timer: 500,   
-          showConfirmButton: false
-        });
-      });
-    }));  
-</script>
-
     
 </div>
 
@@ -679,7 +628,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GC-Server/" <i class="fa fa-tag"> GC Server</a>
+            <a href="/tags/娱乐/" <i class="fa fa-tag"> 娱乐</a>
           
         </div>
       
@@ -692,8 +641,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/visual-studio-2019-installation.html" rel="next" title="Visual Studio安装被坑记">
-                <i class="fa fa-chevron-left"></i> Visual Studio安装被坑记
+              <a href="/avengers-endgame/" rel="next" title="关于《复仇者联盟4》">
+                <i class="fa fa-chevron-left"></i> 关于《复仇者联盟4》
               </a>
             
           </div>
@@ -702,8 +651,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/gc-server-preview.html" rel="prev" title="GC Server 预览版本">
-                GC Server 预览版本 <i class="fa fa-chevron-right"></i>
+              <a href="/spiderman-homecoming/" rel="prev" title="《蜘蛛侠：英雄归来》剧情介绍">
+                《蜘蛛侠：英雄归来》剧情介绍 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -752,17 +701,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1001,23 +941,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-系统配置"><span class="nav-number">2.1.</span> <span class="nav-text">1. 系统配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-环境配置"><span class="nav-number">2.2.</span> <span class="nav-text">2. 环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编译测试"><span class="nav-number">2.3.</span> <span class="nav-text">3. 编译测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-创建项目"><span class="nav-number">2.3.1.</span> <span class="nav-text">Step 1 - 创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2-图形库测试"><span class="nav-number">2.3.2.</span> <span class="nav-text">Step 2 - 图形库测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-3-按钮制作"><span class="nav-number">2.3.3.</span> <span class="nav-text">Step 3 - 按钮制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-4-添加游戏"><span class="nav-number">2.3.4.</span> <span class="nav-text">Step 4 - 添加游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-5-设计插件更改模块"><span class="nav-number">2.3.5.</span> <span class="nav-text">Step 5 - 设计插件更改模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-6-加入一部分彩蛋"><span class="nav-number">2.3.6.</span> <span class="nav-text">Step 6 - 加入一部分彩蛋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-7-完工"><span class="nav-number">2.3.7.</span> <span class="nav-text">Step 7 - 完工</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感谢阅读"><span class="nav-number">3.</span> <span class="nav-text">感谢阅读</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
