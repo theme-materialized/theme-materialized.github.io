@@ -1883,7 +1883,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff5766;
+  background: #3b7ac6;
 }
 .feed-link,
 .chat {
@@ -3074,7 +3074,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://source.unsplash.com/random/1600x900?wallpapers");
+  background: url("https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
