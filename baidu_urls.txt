@@ -9,9 +9,9 @@ http://code004.ml/gc-server-ver-9-0/
 http://code004.ml/gc-server-preview-version/
 http://code004.ml/make-your-own-gc-server-with-cpp/
 http://code004.ml/the-installtion-of-visual-studio/
-http://code004.ml/a-collection-about-marvel-movies/
+http://code004.ml/a-collection-of-marvel-movies/
 http://code004.ml/about-avengers-endgame/
-http://code004.ml/an-acrostic-about-school/
+http://code004.ml/an-acrostic-about-exams/
 http://code004.ml/gc-server-ver-8-8/
 http://code004.ml/gc-server-user-intro/
 http://code004.ml/about-master-music-class/
