@@ -1,5 +1,7529 @@
-// build time:Sun Aug 11 2019 23:36:34 GMT+0800 (GMT+08:00)
-(function(e,t){typeof exports==="object"&&typeof module!=="undefined"?module.exports=t():typeof define==="function"&&define.amd?define(t):e.mdui=t()})(this,function(){"use strict";var e={};(function(){var e=0;if(!window.requestAnimationFrame){window.requestAnimationFrame=window.webkitRequestAnimationFrame;window.cancelAnimationFrame=window.webkitCancelAnimationFrame}if(!window.requestAnimationFrame){window.requestAnimationFrame=function(t,n){var i=(new Date).getTime();var o=Math.max(0,16.7-(i-e));var a=window.setTimeout(function(){t(i+o)},o);e=i+o;return a}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame=function(e){clearTimeout(e)}}})();var t=function(){"use strict";var e=function S(e){var t=this;for(var n=0;n<e.length;n+=1){t[n]=e[n]}t.length=e.length;return this};function t(n){var i=[];if(!n){return new e(i)}if(n instanceof e){return n}if(typeof n==="string"){var o=n.trim();if(o[0]==="<"&&o[o.length-1]===">"){var a="div";if(o.indexOf("<li")===0){a="ul"}if(o.indexOf("<tr")===0){a="tbody"}if(o.indexOf("<td")===0||o.indexOf("<th")===0){a="tr"}if(o.indexOf("<tbody")===0){a="table"}if(o.indexOf("<option")===0){a="select"}var r=document.createElement(a);r.innerHTML=o;for(var s=0;s<r.childNodes.length;s+=1){i.push(r.childNodes[s])}}else{var u=n[0]==="#"&&!n.match(/[ .<>:~]/)?[document.getElementById(n.slice(1))]:document.querySelectorAll(n);for(var l=0;l<u.length;l+=1){if(u[l]){i.push(u[l])}}}}else if(typeof n==="function"){return t(document).ready(n)}else if(n.nodeType||n===window||n===document){i.push(n)}else if(n.length>0&&n[0].nodeType){for(var d=0;d<n.length;d+=1){i.push(n[d])}}return new e(i)}t.fn=e.prototype;function n(){var e=this;var t=[],n=arguments.length;while(n--)t[n]=arguments[n];if(!t.length){return this}if(t.length===1){Object.keys(t[0]).forEach(function(n){e[n]=t[0][n]});return this}var i=t.shift();var o=function(e){Object.keys(t[e]).forEach(function(n){i[n]=t[e][n]})};for(var a=0;a<t.length;a+=1)o(a);return i}t.fn.extend=n;t.extend=n;function i(e,t){return e.nodeName&&e.nodeName.toLowerCase()===t.toLowerCase()}function o(e){return typeof e==="object"&&e!==null}function a(e){return typeof e==="function"}function r(e){return typeof e==="string"}function s(e){return e&&e===e.window}function u(e){return e&&e.nodeType===e.DOCUMENT_NODE}function l(e){return typeof e.length==="number"}function d(e,t){if(l(e)){for(var n=0;n<e.length;n+=1){if(t.call(e[n],n,e[n])===false){return e}}}else{var i=Object.keys(e);for(var o=0;o<i.length;o+=1){if(t.call(e[i[o]],i[o],e[i[o]])===false){return e}}}return e}function c(e,t){var n;var i;var o=[];d(e,function(e,n){i=t(n,e);if(i!==null&&i!==undefined){o.push(i)}});return(n=[]).concat.apply(n,o)}function f(e,t){d(t,function(t,n){e.push(n)});return e}function p(e){var t=[];for(var n=0;n<e.length;n+=1){if(t.indexOf(e[n])===-1){t.push(e[n])}}return t}var h={};function m(e){var t;var n;if(!h[e]){t=document.createElement(e);document.body.appendChild(t);n=getComputedStyle(t,"").getPropertyValue("display");t.parentNode.removeChild(t);if(n==="none"){n="block"}h[e]=n}return h[e]}t.extend({each:d,merge:f,unique:p,map:c,contains:function q(e,t){if(e&&!t){return document.documentElement.contains(e)}return e!==t&&e.contains(t)},param:function j(e){if(!o(e)){return""}var t=[];function n(e,i){var a;if(o(i)){d(i,function(t,r){if(Array.isArray(i)&&!o(r)){a=""}else{a=t}n(e+"["+a+"]",r)})}else{if(i!==null&&i!==""){a="="+encodeURIComponent(i)}else{a=""}t.push(encodeURIComponent(e)+a)}}d(e,function(e,t){n(e,t)});return t.join("&")}});t.fn.extend({each:function A(e){return d(this,e)},map:function R(t){return new e(c(this,function(e,n){return t.call(e,n,e)}))},get:function D(e){return e===undefined?[].slice.call(this):this[e>=0?e:e+this.length]},slice:function N(){var t=[],n=arguments.length;while(n--)t[n]=arguments[n];return new e([].slice.apply(this,t))},filter:function M(e){if(a(e)){return this.map(function(t,n){return e.call(n,t,n)?n:undefined})}var n=t(e);return this.map(function(e,t){return n.index(t)>-1?t:undefined})},not:function F(e){var t=this.filter(e);return this.map(function(e,n){return t.index(n)>-1?undefined:n})},offset:function B(){if(this[0]){var B=this[0].getBoundingClientRect();return{left:B.left+window.pageXOffset,top:B.top+window.pageYOffset,width:B.width,height:B.height}}return null},offsetParent:function H(){return this.map(function(){var e=this.offsetParent;while(e&&t(e).css("position")==="static"){e=e.offsetParent}return e||document.documentElement})},position:function z(){var e=this;if(!e[0]){return null}var t;var n;var o={top:0,left:0};if(e.css("position")==="fixed"){n=e[0].getBoundingClientRect()}else{t=e.offsetParent();n=e.offset();if(!i(t[0],"html")){o=t.offset()}o={top:o.top+t.css("borderTopWidth"),left:o.left+t.css("borderLeftWidth")}}return{top:n.top-o.top-e.css("marginTop"),left:n.left-o.left-e.css("marginLeft"),width:n.width,height:n.height}},show:function L(){return this.each(function(){if(this.style.display==="none"){this.style.display=""}if(window.getComputedStyle(this,"").getPropertyValue("display")==="none"){this.style.display=m(this.nodeName)}})},hide:function P(){return this.each(function(){this.style.display="none"})},toggle:function U(){return this.each(function(){this.style.display=this.style.display==="none"?"":"none"})},hasClass:function Y(e){if(!this[0]||!e){return false}return this[0].classList.contains(e)},removeAttr:function W(e){return this.each(function(){this.removeAttribute(e)})},removeProp:function X(e){return this.each(function(){try{delete this[e]}catch(t){}})},eq:function V(t){var n=t===-1?this.slice(t):this.slice(t,+t+1);return new e(n)},first:function J(){return this.eq(0)},last:function Q(){return this.eq(-1)},index:function G(e){if(!e){return this.eq(0).parent().children().get().indexOf(this[0])}if(r(e)){return t(e).eq(0).parent().children().get().indexOf(this[0])}return this.get().indexOf(e)},is:function K(e){var t=this[0];if(!t||e===undefined||e===null){return false}if(r(e)){if(t===document||t===window){return false}var n=t.matches||t.matchesSelector||t.webkitMatchesSelector||t.mozMatchesSelector||t.oMatchesSelector||t.msMatchesSelector;return n.call(t,e)}if(e===document||e===window){return t===e}if(e.nodeType||l(e)){var i=e.nodeType?[e]:e;for(var o=0;o<i.length;o+=1){if(i[o]===t){return true}}return false}return false},find:function Z(t){var n=[];this.each(function(e,i){var o=i.nodeType;if(o!==1&&o!==9){return}f(n,i.querySelectorAll(t))});return new e(n)},children:function ee(n){var ee=[];this.each(function(e,i){d(i.childNodes,function(e,i){if(i.nodeType!==1){return}if(!n||n&&t(i).is(n)){ee.push(i)}})});return new e(p(ee))},has:function te(e){var n=r(e)?this.find(e):t(e);var i=n.length;return this.filter(function(){var e=this;for(var o=0;o<i;o+=1){if(t.contains(e,n[o])){return true}}return false})},siblings:function ne(e){return this.prevAll(e).add(this.nextAll(e))},closest:function ie(e){var t=this;if(!t.is(e)){t=t.parents(e).eq(0)}return t},remove:function oe(){return this.each(function(e,t){if(t.parentNode){t.parentNode.removeChild(t)}})},add:function ae(n){return new e(p(f(this.get(),t(n))))},empty:function re(){return this.each(function(){this.innerHTML=""})},clone:function se(){return this.map(function(){return this.cloneNode(true)})},replaceWith:function ue(e){return this.before(e).remove()},serializeArray:function le(){var e=[];var n=this[0];if(!n||!n.elements){return e}t([].slice.call(n.elements)).each(function(){var n=t(this);var i=n.attr("type");if(this.nodeName.toLowerCase()!=="fieldset"&&!this.disabled&&["submit","reset","button"].indexOf(i)===-1&&(["radio","checkbox"].indexOf(i)===-1||this.checked)){e.push({name:n.attr("name"),value:n.val()})}});return e},serialize:function de(){var e=[];d(this.serializeArray(),function(t,n){e.push(encodeURIComponent(n.name)+"="+encodeURIComponent(n.value))});return e.join("&")}});d(["val","html","text"],function(e,n){var i={0:"value",1:"innerHTML",2:"textContent"};var o={0:undefined,1:undefined,2:null};t.fn[n]=function(t){if(t===undefined){return this[0]?this[0][i[e]]:o[e]}return this.each(function(n,o){o[i[e]]=t})}});d(["attr","prop","css"],function(e,n){function i(t,n,i){if(e===0){t.setAttribute(n,i)}else if(e===1){t[n]=i}else{t.style[n]=i}}function o(t,n){if(!t){return undefined}if(e===0){return t.getAttribute(n)}if(e===1){return t[n]}return window.getComputedStyle(t,null).getPropertyValue(n)}t.fn[n]=function(e,t){var n=arguments.length;if(n===1&&r(e)){return o(this[0],e)}return this.each(function(o,a){if(n===2){i(a,e,t)}else{d(e,function(e,t){i(a,e,t)})}})}});d(["add","remove","toggle"],function(e,n){t.fn[n+"Class"]=function(e){if(!e){return this}var t=e.split(" ");return this.each(function(e,i){d(t,function(e,t){i.classList[n](t)})})}});d({Width:"width",Height:"height"},function(e,n){t.fn[n]=function(i){if(i===undefined){var o=this[0];if(s(o)){return o["inner"+e]}if(u(o)){return o.documentElement["scroll"+e]}var a=t(o);var r=0;var l=n==="width";if("ActiveXObject"in window){if(a.css("box-sizing")==="border-box"){r=parseFloat(a.css("padding-"+(l?"left":"top")))+parseFloat(a.css("padding-"+(l?"right":"bottom")))+parseFloat(a.css("border-"+(l?"left":"top")+"-width"))+parseFloat(a.css("border-"+(l?"right":"bottom")+"-width"))}}return parseFloat(t(o).css(n))+r}if(!isNaN(Number(i))&&i!==""){i+="px"}return this.css(n,i)}});d({Width:"width",Height:"height"},function(e,n){t.fn["inner"+e]=function(){var e=this[n]();var i=t(this[0]);if(i.css("box-sizing")!=="border-box"){e+=parseFloat(i.css("padding-"+(n==="width"?"left":"top")));e+=parseFloat(i.css("padding-"+(n==="width"?"right":"bottom")))}return e}});function v(n,i,o,a){var r=[];var s;n.each(function(e,n){s=n[a];while(s){if(o===2){if(!i||i&&t(s).is(i)){break}r.push(s)}else if(o===0){if(!i||i&&t(s).is(i)){r.push(s)}break}else if(!i||i&&t(s).is(i)){r.push(s)}s=s[a]}});return new e(p(r))}d(["","All","Until"],function(e,n){t.fn["prev"+n]=function(n){var i=e===0?this:t(this.get().reverse());return v(i,n,e,"previousElementSibling")}});d(["","All","Until"],function(e,n){t.fn["next"+n]=function(t){return v(this,t,e,"nextElementSibling")}});d(["","s","sUntil"],function(e,n){t.fn["parent"+n]=function(n){var i=e===0?this:t(this.get().reverse());return v(i,n,e,"parentNode")}});d(["append","prepend"],function(e,n){t.fn[n]=function(n){var i;var o=this.length>1;if(r(n)){var a=document.createElement("div");a.innerHTML=n;i=[].slice.call(a.childNodes)}else{i=t(n).get()}if(e===1){i.reverse()}return this.each(function(t,n){d(i,function(i,a){if(o&&t>0){a=a.cloneNode(true)}if(e===0){n.appendChild(a)}else{n.insertBefore(a,n.childNodes[0])}})})}});d(["insertBefore","insertAfter"],function(e,n){t.fn[n]=function(n){var i=t(n);return this.each(function(t,n){i.each(function(t,o){o.parentNode.insertBefore(i.length===1?n:n.cloneNode(true),e===0?o:o.nextSibling)})})}});d({appendTo:"append",prependTo:"prepend",before:"insertBefore",after:"insertAfter",replaceAll:"replaceWith"},function(e,n){t.fn[e]=function(e){t(e)[n](this);return this}});var g="mduiElementDataStorage";t.extend({data:function ce(e,t,n){var ce={};if(n!==undefined){ce[t]=n}else if(o(t)){ce=t}else if(t===undefined){var i={};d(e.attributes,function(e,t){var n=t.name;if(n.indexOf("data-")===0){var o=n.slice(5).replace(/-./g,function(e){return e.charAt(1).toUpperCase()});i[o]=t.value}});if(e[g]){d(e[g],function(e,t){i[e]=t})}return i}else if(e[g]&&t in e[g]){return e[g][t]}else{var a=e.getAttribute("data-"+t);if(a){return a}return undefined}if(!e[g]){e[g]={}}d(ce,function(t,n){e[g][t]=n});return undefined},removeData:function fe(e,t){if(e[g]&&e[g][t]){e[g][t]=null;delete e[g][t]}}});t.fn.extend({data:function pe(e,n){if(n===undefined){if(o(e)){return this.each(function(n,i){t.data(i,e)})}if(this[0]){return t.data(this[0],e)}return undefined}return this.each(function(i,o){t.data(o,e,n)})},removeData:function he(e){return this.each(function(n,i){t.removeData(i,e)})}});!function(){!function(){try{return new e("test"),!1}catch(e){}var e=function(e,t){t=t||{bubbles:!1,cancelable:!1};var n=document.createEvent("MouseEvent");return n.initMouseEvent(e,t.bubbles,t.cancelable,window,0,0,0,0,0,!1,!1,!1,!1,0,null),n};e.prototype=Event.prototype,window.MouseEvent=e}()}();!function(){!function(){if("function"==typeof window.CustomEvent){return!1}function e(e,t){t=t||{bubbles:!1,cancelable:!1,detail:void 0};var n=document.createEvent("CustomEvent");return n.initCustomEvent(e,t.bubbles,t.cancelable,t.detail),n}e.prototype=window.Event.prototype,window.CustomEvent=e}()}();var b={};var x=1;function y(){return false}function w(e){if(!e.mduiElementId){x+=1;e.mduiElementId=x}return e.mduiElementId}function $(e,t,n,i){return(b[w(e)]||[]).filter(function(e){return e&&(!t||e.e===t)&&(!n||e.fn.toString()===n.toString())&&(!i||e.sel===i)})}function C(e,n,i,a,r){var s=w(e);if(!b[s]){b[s]=[]}var u=false;if(o(a)&&a.useCapture){u=true}n.split(" ").forEach(function(n){var o={e:n,fn:i,sel:r,i:b[s].length};function l(e,t){var n=i.apply(t,e._detail===undefined?[e]:[e].concat(e._detail));if(n===false){e.preventDefault();e.stopPropagation()}}function d(n){n._data=a;if(r){t(e).find(r).get().reverse().forEach(function(e){if(e===n.target||t.contains(e,n.target)){l(n,e)}})}else{l(n,e)}}o.proxy=d;b[s].push(o);e.addEventListener(o.e,d,u)})}function k(e,t,n,i){(t||"").split(" ").forEach(function(t){$(e,t,n,i).forEach(function(t){delete b[w(e)][t.i];e.removeEventListener(t.e,t.proxy,false)})})}t.fn.extend({ready:function me(e){if(/complete|loaded|interactive/.test(document.readyState)&&document.body){e(t)}else{document.addEventListener("DOMContentLoaded",function(){e(t)},false)}return this},on:function ve(e,t,n,i,o){var s=this;if(e&&!r(e)){d(e,function(e,i){s.on(e,t,n,i)});return s}if(!r(t)&&!a(i)&&i!==false){i=n;n=t;t=undefined}if(a(n)||n===false){i=n;n=undefined}if(i===false){i=y}if(o===1){var u=i;i=function(){s.off(e,t,i);return u.apply(this,arguments)}}return this.each(function(){C(this,e,i,n,t)})},one:function ge(e,t,n,i){var o=this;if(!r(e)){d(e,function(e,i){e.split(" ").forEach(function(e){o.on(e,t,n,i,1)})})}else{e.split(" ").forEach(function(e){o.on(e,t,n,i,1)})}return this},off:function be(e,t,n){var i=this;if(e&&!r(e)){d(e,function(e,n){i.off(e,t,n)});return i}if(!r(t)&&!a(n)&&n!==false){n=t;t=undefined}if(n===false){n=y}return i.each(function(){k(this,e,n,t)})},trigger:function xe(e,t){var n=["click","mousedown","mouseup","mousemove"].indexOf(e)>-1;var i;if(n){i=new MouseEvent(e,{bubbles:true,cancelable:true})}else{i=new CustomEvent(e,{detail:t,bubbles:true,cancelable:true})}i._detail=t;return this.each(function(){this.dispatchEvent(i)})}});var O={};var T=0;var E={ajaxStart:"start.mdui.ajax",ajaxSuccess:"success.mdui.ajax",ajaxError:"error.mdui.ajax",ajaxComplete:"complete.mdui.ajax"};function _(e){return["GET","HEAD"].indexOf(e)>=0}function I(e,t){return(e+"&"+t).replace(/[&?]{1,2}/,"?")}t.extend({ajaxSetup:function ye(e){t.extend(O,e||{})},ajax:function we(e){var n={method:"GET",data:false,processData:true,async:true,cache:true,username:"",password:"",headers:{},xhrFields:{},statusCode:{},dataType:"text",jsonp:"callback",jsonpCallback:function(){T+=1;return"mduijsonp_"+Date.now()+"_"+T},contentType:"application/x-www-form-urlencoded",timeout:0,global:true};var i=["beforeSend","success","error","statusCode","complete"];var o=false;var s=O;var u={};d(s,function(e,t){if(i.indexOf(e)<0){n[e]=t}});e=t.extend({},n,e);function l(n,i){if(e.global){t(document).trigger(n,i)}}function c(t){var n=[],i=arguments.length-1;while(i-- >0)n[i]=arguments[i+1];var a;var r;if(t){if(t in s){a=s[t].apply(s,n)}if(e[t]){r=e[t].apply(e,n)}if(t==="beforeSend"&&(a===false||r===false)){o=true}}}var f=e.method.toUpperCase();if(!e.url){e.url=window.location.toString()}var p;if((_(f)||e.processData)&&e.data&&[ArrayBuffer,Blob,Document,FormData].indexOf(e.data.constructor)<0){p=r(e.data)?e.data:t.param(e.data)}else{p=e.data}if(_(f)&&p){e.url=I(e.url,p);p=null}if(e.dataType==="jsonp"){var h=a(e.jsonpCallback)?e.jsonpCallback():e.jsonpCallback;var m=I(e.url,e.jsonp+"="+h);u.options=e;l(E.ajaxStart,u);c("beforeSend",null);if(o){return undefined}var v;var g=document.createElement("script");g.type="text/javascript";g.onerror=function(){if(v){clearTimeout(v)}l(E.ajaxError,u);c("error",null,"scripterror");l(E.ajaxComplete,u);c("complete",null,"scripterror")};g.src=m;window[h]=function(e){if(v){clearTimeout(v)}u.data=e;l(E.ajaxSuccess,u);c("success",e,"success",null);t(g).remove();g=null;delete window[h]};t("head").append(g);if(e.timeout>0){v=setTimeout(function(){t(g).remove();g=null;l(E.ajaxError,u);c("error",null,"timeout")},e.timeout)}return undefined}if(_(f)&&!e.cache){e.url=I(e.url,"_="+Date.now())}var b=new XMLHttpRequest;b.open(f,e.url,e.async,e.username,e.password);if(e.contentType||p&&!_(f)&&e.contentType!==false){b.setRequestHeader("Content-Type",e.contentType)}if(e.dataType==="json"){b.setRequestHeader("Accept","application/json, text/javascript")}if(e.headers){d(e.headers,function(e,t){b.setRequestHeader(e,t)})}if(e.crossDomain===undefined){e.crossDomain=/^([\w-]+:)?\/\/([^\/]+)/.test(e.url)&&RegExp.$2!==window.location.host}if(!e.crossDomain){b.setRequestHeader("X-Requested-With","XMLHttpRequest")}if(e.xhrFields){d(e.xhrFields,function(e,t){b[e]=t})}u.xhr=b;u.options=e;var x;b.onload=function(){if(x){clearTimeout(x)}var t;var n=b.status>=200&&b.status<300||b.status===0;var i;if(n){if(b.status===204||f==="HEAD"){t="nocontent"}else if(b.status===304){t="notmodified"}else{t="success"}if(e.dataType==="json"){try{i=JSON.parse(b.responseText);u.data=i}catch(o){t="parsererror";l(E.ajaxError,u);c("error",b,t)}if(t!=="parsererror"){l(E.ajaxSuccess,u);c("success",i,t,b)}}else{i=b.responseType==="text"||b.responseType===""?b.responseText:b.response;u.data=i;l(E.ajaxSuccess,u);c("success",i,t,b)}}else{t="error";l(E.ajaxError,u);c("error",b,t)}d([s.statusCode,e.statusCode],function(e,o){if(o&&o[b.status]){if(n){o[b.status](i,t,b)}else{o[b.status](b,t)}}});l(E.ajaxComplete,u);c("complete",b,t)};b.onerror=function(){if(x){clearTimeout(x)}l(E.ajaxError,u);c("error",b,b.statusText);l(E.ajaxComplete,u);c("complete",b,"error")};b.onabort=function(){var e="abort";if(x){e="timeout";clearTimeout(x)}l(E.ajaxError,u);c("error",b,e);l(E.ajaxComplete,u);c("complete",b,e)};l(E.ajaxStart,u);c("beforeSend",b);if(o){return b}if(e.timeout>0){x=setTimeout(function(){b.abort()},e.timeout)}b.send(p);return b}});d(E,function(e,n){t.fn[e]=function(e){return this.on(n,function(t,n){e(t,n.xhr,n.options,n.data)})}});return t}();var n=t(document);var i=t(window);var o={};(function(){var e=[];o.queue=function(t,n){if(e[t]===undefined){e[t]=[]}if(n===undefined){return e[t]}e[t].push(n)};o.dequeue=function(t){if(e[t]!==undefined&&e[t].length){e[t].shift()()}}})();var a={touches:0,isAllow:function(e){var t=true;if(a.touches&&["mousedown","mouseup","mousemove","click","mouseover","mouseout","mouseenter","mouseleave"].indexOf(e.type)>-1){t=false}return t},register:function(e){if(e.type==="touchstart"){a.touches+=1}else if(["touchmove","touchend","touchcancel"].indexOf(e.type)>-1){setTimeout(function(){if(a.touches){a.touches-=1}},500)}},start:"touchstart mousedown",move:"touchmove mousemove",end:"touchend mouseup",cancel:"touchcancel mouseleave",unlock:"touchend touchmove touchcancel"};t(function(){setTimeout(function(){t("body").addClass("mdui-loaded")},0)});var r=function(e){var t={};if(e===null||!e){return t}if(typeof e==="object"){return e}var n=e.indexOf("{");try{t=new Function("","var json = "+e.substr(n)+"; return JSON.parse(JSON.stringify(json));")()}catch(i){}return t};var s=function(e,n,i,o,a){if(!a){a={}}a.inst=i;var r=e+".mdui."+n;if(typeof jQuery!=="undefined"){jQuery(o).trigger(r,a)}t(o).trigger(r,a)};t.fn.extend({reflow:function(){return this.each(function(){return this.clientLeft})},transition:function(e){if(typeof e!=="string"){e=e+"ms"}return this.each(function(){this.style.webkitTransitionDuration=e;this.style.transitionDuration=e})},transitionEnd:function(e){var t=["webkitTransitionEnd","transitionend"];var n;var i=this;function o(a){if(a.target!==this){return}e.call(this,a);for(n=0;n<t.length;n++){i.off(t[n],o)}}if(e){for(n=0;n<t.length;n++){i.on(t[n],o)}}return this},transformOrigin:function(e){return this.each(function(){this.style.webkitTransformOrigin=e;this.style.transformOrigin=e})},transform:function(e){return this.each(function(){this.style.webkitTransform=e;this.style.transform=e})}});t.extend({showOverlay:function(e){var n=t(".mdui-overlay");if(n.length){n.data("isDeleted",0);if(e!==undefined){n.css("z-index",e)}}else{if(e===undefined){e=2e3}n=t('<div class="mdui-overlay">').appendTo(document.body).reflow().css("z-index",e)}var i=n.data("overlay-level")||0;return n.data("overlay-level",++i).addClass("mdui-overlay-show")},hideOverlay:function(e){var n=t(".mdui-overlay");if(!n.length){return}var i=e?1:n.data("overlay-level");if(i>1){n.data("overlay-level",--i);return}n.data("overlay-level",0).removeClass("mdui-overlay-show").data("isDeleted",1).transitionEnd(function(){if(n.data("isDeleted")){n.remove()}})},lockScreen:function(){var e=t("body");var n=e.width();e.addClass("mdui-locked").width(n);var i=e.data("lockscreen-level")||0;e.data("lockscreen-level",++i)},unlockScreen:function(e){var n=t("body");var i=e?1:n.data("lockscreen-level");if(i>1){n.data("lockscreen-level",--i);return}n.data("lockscreen-level",0).removeClass("mdui-locked").width("")},throttle:function(e,t){var n=null;if(!t||t<16){t=16}return function(){var i=this;var o=arguments;if(n===null){n=setTimeout(function(){e.apply(i,o);n=null},t)}}}});(function(){var e={};t.extend({guid:function(t){if(typeof t!=="undefined"&&typeof e[t]!=="undefined"){return e[t]}function n(){return Math.floor((1+Math.random())*65536).toString(16).substring(1)}var i=n()+n()+"-"+n()+"-"+n()+"-"+n()+"-"+n()+n()+n();if(typeof t!=="undefined"){e[t]=i}return i}})})();(function(){var n={};function i(e,n,i,o,a){var r=t(i);var s=r.data("mdui.mutation");if(!s){s=[];r.data("mdui.mutation",s)}if(s.indexOf(e)===-1){s.push(e);n.call(i,o,a)}}t.fn.extend({mutation:function(){return this.each(function(e,o){var a=t(this);t.each(n,function(t,n){if(a.is(t)){i(t,n,a[0],e,o)}a.find(t).each(function(e,o){i(t,n,this,e,o)})})})}});e.mutation=function(e,o){if(typeof e!=="string"||typeof o!=="function"){t(document).mutation();return}n[e]=o;t(e).each(function(t,n){i(e,o,this,t,n)})}})();e.Headroom=function(){var e={tolerance:5,offset:0,initialClass:"mdui-headroom",pinnedClass:"mdui-headroom-pinned-top",unpinnedClass:"mdui-headroom-unpinned-top"};function n(n,i){var o=this;o.$headroom=t(n).eq(0);if(!o.$headroom.length){return}var a=o.$headroom.data("mdui.headroom");if(a){return a}o.options=t.extend({},e,i||{});var r=o.options.tolerance;if(r!==Object(r)){o.options.tolerance={down:r,up:r}}o._init()}n.prototype._init=function(){var e=this;e.state="pinned";e.$headroom.addClass(e.options.initialClass).removeClass(e.options.pinnedClass+" "+e.options.unpinnedClass);e.inited=false;e.lastScrollY=0;e._attachEvent()};n.prototype._attachEvent=function(){var e=this;if(!e.inited){e.lastScrollY=window.pageYOffset;e.inited=true;i.on("scroll",function(){e._scroll()})}};n.prototype._scroll=function(){var e=this;e.rafId=window.requestAnimationFrame(function(){var t=window.pageYOffset;var n=t>e.lastScrollY?"down":"up";var i=Math.abs(t-e.lastScrollY)>=e.options.tolerance[n];if(t>e.lastScrollY&&t>=e.options.offset&&i){e.unpin()}else if(t<e.lastScrollY&&i||t<=e.options.offset){e.pin()}e.lastScrollY=t})};var o=function(e){if(e.state==="pinning"){e.state="pinned";s("pinned","headroom",e,e.$headroom)}if(e.state==="unpinning"){e.state="unpinned";s("unpinned","headroom",e,e.$headroom)}};n.prototype.pin=function(){var e=this;if(e.state==="pinning"||e.state==="pinned"||!e.$headroom.hasClass(e.options.initialClass)){return}s("pin","headroom",e,e.$headroom);e.state="pinning";e.$headroom.removeClass(e.options.unpinnedClass).addClass(e.options.pinnedClass).transitionEnd(function(){o(e)})};n.prototype.unpin=function(){var e=this;if(e.state==="unpinning"||e.state==="unpinned"||!e.$headroom.hasClass(e.options.initialClass)){return}s("unpin","headroom",e,e.$headroom);e.state="unpinning";e.$headroom.removeClass(e.options.pinnedClass).addClass(e.options.unpinnedClass).transitionEnd(function(){o(e)})};n.prototype.enable=function(){var e=this;if(!e.inited){e._init()}};n.prototype.disable=function(){var e=this;if(e.inited){e.inited=false;e.$headroom.removeClass([e.options.initialClass,e.options.pinnedClass,e.options.unpinnedClass].join(" "));i.off("scroll",function(){e._scroll()});window.cancelAnimationFrame(e.rafId)}};n.prototype.getState=function(){return this.state};return n}();t(function(){e.mutation("[mdui-headroom]",function(){var n=t(this);var i=r(n.attr("mdui-headroom"));var o=n.data("mdui.headroom");if(!o){o=new e.Headroom(n,i);n.data("mdui.headroom",o)}})});var u=function(){var e={accordion:false};function n(n,i,o){var a=this;a.ns=o;var r="mdui-"+a.ns+"-item";a.class_item=r;a.class_item_open=r+"-open";a.class_header=r+"-header";a.class_body=r+"-body";a.$collapse=t(n).eq(0);if(!a.$collapse.length){return}var s=a.$collapse.data("mdui."+a.ns);if(s){return s}a.options=t.extend({},e,i||{});a.$collapse.on("click","."+a.class_header,function(){var e=t(this).parent("."+a.class_item);if(a.$collapse.children(e).length){a.toggle(e)}});a.$collapse.on("click","[mdui-"+a.ns+"-item-close]",function(){var e=t(this).parents("."+a.class_item).eq(0);if(a._isOpen(e)){a.close(e)}})}n.prototype._isOpen=function(e){return e.hasClass(this.class_item_open)};n.prototype._getItem=function(e){var n=this;if(parseInt(e)===e){return n.$collapse.children("."+n.class_item).eq(e)}return t(e).eq(0)};var i=function(e,t,n){if(e._isOpen(n)){t.transition(0).height("auto").reflow().transition("");s("opened",e.ns,e,n[0])}else{t.height("");s("closed",e.ns,e,n[0])}};n.prototype.open=function(e){var n=this;var o=n._getItem(e);if(n._isOpen(o)){return}if(n.options.accordion){n.$collapse.children("."+n.class_item_open).each(function(){var e=t(this);if(e!==o){n.close(e)}})}var a=o.children("."+n.class_body);a.height(a[0].scrollHeight).transitionEnd(function(){i(n,a,o)});s("open",n.ns,n,o[0]);o.addClass(n.class_item_open)};n.prototype.close=function(e){var t=this;var n=t._getItem(e);if(!t._isOpen(n)){return}var o=n.children("."+t.class_body);s("close",t.ns,t,n[0]);n.removeClass(t.class_item_open);o.transition(0).height(o[0].scrollHeight).reflow().transition("").height("").transitionEnd(function(){i(t,o,n)})};n.prototype.toggle=function(e){var t=this;var n=t._getItem(e);if(t._isOpen(n)){t.close(n)}else{t.open(n)}};n.prototype.openAll=function(){var e=this;e.$collapse.children("."+e.class_item).each(function(){var n=t(this);if(!e._isOpen(n)){e.open(n)}})};n.prototype.closeAll=function(){var e=this;e.$collapse.children("."+e.class_item).each(function(){var n=t(this);if(e._isOpen(n)){e.close(n)}})};return n}();e.Collapse=function(){function e(e,t){return new u(e,t,"collapse")}return e}();t(function(){e.mutation("[mdui-collapse]",function(){var n=t(this);var i=n.data("mdui.collapse");if(!i){var o=r(n.attr("mdui-collapse"));i=new e.Collapse(n,o);n.data("mdui.collapse",i)}})});(function(){var n=function(e){return"<"+e+' class="mdui-table-cell-checkbox">'+'<label class="mdui-checkbox">'+'<input type="checkbox"/>'+'<i class="mdui-checkbox-icon"></i>'+"</label>"+"</"+e+">"};function i(e){var n=this;n.$table=t(e).eq(0);if(!n.$table.length){return}n.init()}i.prototype.init=function(){var e=this;e.$thRow=e.$table.find("thead tr");e.$tdRows=e.$table.find("tbody tr");e.$tdCheckboxs=t();e.selectable=e.$table.hasClass("mdui-table-selectable");e.selectedRow=0;e._updateThCheckbox();e._updateTdCheckbox();e._updateNumericCol()};i.prototype._updateTdCheckbox=function(){var e=this;e.$tdRows.each(function(){var i=t(this);i.find(".mdui-table-cell-checkbox").remove();if(!e.selectable){return}var o=t(n("td")).prependTo(i).find('input[type="checkbox"]');if(i.hasClass("mdui-table-row-selected")){o[0].checked=true;e.selectedRow++}e.$thCheckbox[0].checked=e.selectedRow===e.$tdRows.length;o.on("change",function(){if(o[0].checked){i.addClass("mdui-table-row-selected");e.selectedRow++}else{i.removeClass("mdui-table-row-selected");e.selectedRow--}e.$thCheckbox[0].checked=e.selectedRow===e.$tdRows.length});e.$tdCheckboxs=e.$tdCheckboxs.add(o)})};i.prototype._updateThCheckbox=function(){var e=this;e.$thRow.find(".mdui-table-cell-checkbox").remove();if(!e.selectable){return}e.$thCheckbox=t(n("th")).prependTo(e.$thRow).find('input[type="checkbox"]').on("change",function(){var n=e.$thCheckbox[0].checked;e.selectedRow=n?e.$tdRows.length:0;e.$tdCheckboxs.each(function(e,t){t.checked=n});e.$tdRows.each(function(e,i){t(i)[n?"addClass":"removeClass"]("mdui-table-row-selected")})})};i.prototype._updateNumericCol=function(){var e=this;var n;var i;e.$thRow.find("th").each(function(o,a){n=t(a);e.$tdRows.each(function(){i=t(this);var e=n.hasClass("mdui-table-col-numeric")?"addClass":"removeClass";i.find("td").eq(o)[e]("mdui-table-col-numeric")})})};e.mutation(".mdui-table",function(){var e=t(this);if(!e.data("mdui.table")){e.data("mdui.table",new i(e))}});e.updateTables=function(){t(arguments.length?arguments[0]:".mdui-table").each(function(){var e=t(this);var n=e.data("mdui.table");if(n){n.init()}else{e.data("mdui.table",new i(e))}})}})();(function(){var e={delay:200,show:function(e,n){if(e.button===2){return}var i;if("touches"in e&&e.touches.length){i=e.touches[0]}else{i=e}var o=i.pageX;var a=i.pageY;var r=n.offset();var s={x:o-r.left,y:a-r.top};var u=n.innerHeight();var l=n.innerWidth();var d=Math.max(Math.pow(Math.pow(u,2)+Math.pow(l,2),.5),48);var c="translate3d("+(-s.x+l/2)+"px, "+(-s.y+u/2)+"px, 0) "+"scale(1)";t('<div class="mdui-ripple-wave" style="'+"width: "+d+"px; "+"height: "+d+"px; "+"margin-top:-"+d/2+"px; "+"margin-left:-"+d/2+"px; "+"left:"+s.x+"px; "+"top:"+s.y+'px;">'+"</div>").data("translate",c).prependTo(n).reflow().transform(c)},hide:function(n,o){var a=t(o||this);a.children(".mdui-ripple-wave").each(function(){i(t(this))});a.off("touchmove touchend touchcancel mousemove mouseup mouseleave",e.hide)}};function i(e){if(!e.length||e.data("isRemoved")){return}e.data("isRemoved",true);var t=setTimeout(function(){e.remove()},400);var n=e.data("translate");e.addClass("mdui-ripple-wave-fill").transform(n.replace("scale(1)","scale(1.01)")).transitionEnd(function(){clearTimeout(t);e.addClass("mdui-ripple-wave-out").transform(n.replace("scale(1)","scale(1.01)"));t=setTimeout(function(){e.remove()},700);setTimeout(function(){e.transitionEnd(function(){clearTimeout(t);e.remove()})},0)})}function o(n){if(!a.isAllow(n)){return}a.register(n);if(n.target===document){return}var i;var o=t(n.target);if(o.hasClass("mdui-ripple")){i=o}else{i=o.parents(".mdui-ripple").eq(0)}if(i.length){if(i[0].disabled||i.attr("disabled")!==null){return}if(n.type==="touchstart"){var r=false;var s=setTimeout(function(){s=null;e.show(n,i)},e.delay);var u=function(t){if(s){clearTimeout(s);s=null;e.show(n,i)}if(!r){r=true;e.hide(t,i)}};var l=function(e){if(s){clearTimeout(s);s=null}u(e)};i.on("touchmove",l).on("touchend touchcancel",u)}else{e.show(n,i);i.on("touchmove touchend touchcancel mousemove mouseup mouseleave",e.hide)}}}n.on(a.start,o).on(a.unlock,a.register)})();(function(){var i=function(e,t){return typeof e==="object"&&e!==null&&e[t]!==undefined&&e[t]?e[t]:false};var o=function(e){var n=e.target;var o=t(n);var a=e.type;var r=o.val();var s=i(e.detail,"reInit");var u=i(e.detail,"domLoadedEvent");var l=o.attr("type")||"";if(["checkbox","button","submit","range","radio","image"].indexOf(l)>=0){return}var d=o.parent(".mdui-textfield");if(a==="focus"){d.addClass("mdui-textfield-focus")}if(a==="blur"){d.removeClass("mdui-textfield-focus")}if(a==="blur"||a==="input"){d[r&&r!==""?"addClass":"removeClass"]("mdui-textfield-not-empty")}d[n.disabled?"addClass":"removeClass"]("mdui-textfield-disabled");if((a==="input"||a==="blur")&&!u){if(n.validity){var c=n.validity.valid?"removeClass":"addClass";
-d[c]("mdui-textfield-invalid-html5")}}if(e.target.nodeName.toLowerCase()==="textarea"){var f=o.val();var p=false;if(f.replace(/[\r\n]/g,"")===""){o.val(" "+f);p=true}o.height("");var h=o.height();var m=n.scrollHeight;if(m>h){o.height(m)}if(p){o.val(f)}}if(s){d.find(".mdui-textfield-counter").remove()}var v=o.attr("maxlength");if(v){if(s||u){t('<div class="mdui-textfield-counter">'+'<span class="mdui-textfield-counter-inputed"></span> / '+v+"</div>").appendTo(d)}d.find(".mdui-textfield-counter-inputed").text(r.length.toString())}if(d.find(".mdui-textfield-helper").length||d.find(".mdui-textfield-error").length||v){d.addClass("mdui-textfield-has-bottom")}};n.on("input focus blur",".mdui-textfield-input",{useCapture:true},o);n.on("click",".mdui-textfield-expandable .mdui-textfield-icon",function(){t(this).parents(".mdui-textfield").addClass("mdui-textfield-expanded").find(".mdui-textfield-input")[0].focus()});n.on("click",".mdui-textfield-expanded .mdui-textfield-close",function(){t(this).parents(".mdui-textfield").removeClass("mdui-textfield-expanded").find(".mdui-textfield-input").val("")});e.updateTextFields=function(){t(arguments.length?arguments[0]:".mdui-textfield").each(function(){t(this).find(".mdui-textfield-input").trigger("input",{reInit:true})})}})();t(function(){e.mutation(".mdui-textfield",function(){t(this).find(".mdui-textfield-input").trigger("input",{domLoadedEvent:true})})});(function(){var i=function(e){var t=e.data();var n=t.$track;var i=t.$fill;var o=t.$thumb;var a=t.$input;var r=t.min;var s=t.max;var u=t.disabled;var l=t.discrete;var d=t.$thumbText;var c=a.val();var f=(c-r)/(s-r)*100;i.width(f+"%");n.width(100-f+"%");if(u){i.css("padding-right","6px");n.css("padding-left","6px")}o.css("left",f+"%");if(l){d.text(c)}e[parseFloat(f)===0?"addClass":"removeClass"]("mdui-slider-zero")};var o=function(e){var n=t('<div class="mdui-slider-track"></div>');var o=t('<div class="mdui-slider-fill"></div>');var a=t('<div class="mdui-slider-thumb"></div>');var r=e.find('input[type="range"]');var s=r[0].disabled;e[s?"addClass":"removeClass"]("mdui-slider-disabled");e.find(".mdui-slider-track").remove();e.find(".mdui-slider-fill").remove();e.find(".mdui-slider-thumb").remove();e.append(n).append(o).append(a);var u=e.hasClass("mdui-slider-discrete");var l;if(u){l=t("<span></span>");a.empty().append(l)}e.data({$track:n,$fill:o,$thumb:a,$input:r,min:r.attr("min"),max:r.attr("max"),disabled:s,discrete:u,$thumbText:l});i(e)};var r='.mdui-slider input[type="range"]';n.on("input change",r,function(){var e=t(this).parent();i(e)}).on(a.start,r,function(e){if(!a.isAllow(e)){return}a.register(e);if(!this.disabled){var n=t(this).parent();n.addClass("mdui-slider-focus")}}).on(a.end,r,function(e){if(!a.isAllow(e)){return}if(!this.disabled){var n=t(this).parent();n.removeClass("mdui-slider-focus")}}).on(a.unlock,r,a.register);e.updateSliders=function(){t(arguments.length?arguments[0]:".mdui-slider").each(function(){o(t(this))})};t(function(){e.mutation(".mdui-slider",function(){o(t(this))})})})();e.Fab=function(){var e={trigger:"hover"};function i(i,o){var r=this;r.$fab=t(i).eq(0);if(!r.$fab.length){return}var s=r.$fab.data("mdui.fab");if(s){return s}r.options=t.extend({},e,o||{});r.state="closed";r.$btn=r.$fab.find(".mdui-fab");r.$dial=r.$fab.find(".mdui-fab-dial");r.$dialBtns=r.$dial.find(".mdui-fab");if(r.options.trigger==="hover"){r.$btn.on("touchstart mouseenter",function(){r.open()});r.$fab.on("mouseleave",function(){r.close()})}if(r.options.trigger==="click"){r.$btn.on(a.start,function(){r.open()})}n.on(a.start,function(e){if(!t(e.target).parents(".mdui-fab-wrapper").length){r.close()}})}i.prototype.open=function(){var e=this;if(e.state==="opening"||e.state==="opened"){return}e.$dialBtns.each(function(t,n){n.style["transition-delay"]=n.style["-webkit-transition-delay"]=15*(e.$dialBtns.length-t)+"ms"});e.$dial.css("height","auto").addClass("mdui-fab-dial-show");if(e.$btn.find(".mdui-fab-opened").length){e.$btn.addClass("mdui-fab-opened")}e.state="opening";s("open","fab",e,e.$fab);e.$dialBtns.eq(0).transitionEnd(function(){if(e.$btn.hasClass("mdui-fab-opened")){e.state="opened";s("opened","fab",e,e.$fab)}})};i.prototype.close=function(){var e=this;if(e.state==="closing"||e.state==="closed"){return}e.$dialBtns.each(function(e,t){t.style["transition-delay"]=t.style["-webkit-transition-delay"]=15*e+"ms"});e.$dial.removeClass("mdui-fab-dial-show");e.$btn.removeClass("mdui-fab-opened");e.state="closing";s("close","fab",e,e.$fab);e.$dialBtns.eq(-1).transitionEnd(function(){if(!e.$btn.hasClass("mdui-fab-opened")){e.state="closed";s("closed","fab",e,e.$fab);e.$dial.css("height",0)}})};i.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};i.prototype.getState=function(){return this.state};i.prototype.show=function(){this.$fab.removeClass("mdui-fab-hide")};i.prototype.hide=function(){this.$fab.addClass("mdui-fab-hide")};return i}();t(function(){n.on("touchstart mousedown mouseover","[mdui-fab]",function(n){var i=t(this);var o=i.data("mdui.fab");if(!o){var a=r(i.attr("mdui-fab"));o=new e.Fab(i,a);i.data("mdui.fab",o)}})});e.Select=function(){var e={position:"auto",gutter:16};var o=function(e){var t=i.height();var n=e.options.gutter;var o=e.options.position;var a=parseInt(e.$select.height());var r=e.$items.eq(0);var s=parseInt(r.height());var u=parseInt(r.css("margin-top"));var l=parseFloat(e.$select.width()+.01);var d=s*e.size+u*2;var c=e.$select[0].getBoundingClientRect().top;var f;var p;if(o==="auto"){var h=t-n*2;if(d>h){d=h}p=-(u+e.selectedIndex*s+(s-a)/2);var m=-(u+(e.size-1)*s+(s-a)/2);if(p<m){p=m}var v=c+p;if(v<n){p=-(c-n)}else if(v+d+n>t){p=-(c+d+n-t)}f=e.selectedIndex*s+s/2+u+"px"}else if(o==="bottom"){p=a;f="0px"}else if(o==="top"){p=-d-1;f="100%"}e.$select.width(l);e.$menu.width(l).height(d).css({"margin-top":p+"px","transform-origin":"center "+f+" 0"})};function a(i,o){var a=this;var r=a.$selectNative=t(i).eq(0);if(!r.length){return}var s=r.data("mdui.select");if(s){return s}r.hide();a.options=t.extend({},e,o||{});a.uniqueID=t.guid();a.state="closed";a.handleUpdate();n.on("click touchstart",function(e){var n=t(e.target);if((a.state==="opening"||a.state==="opened")&&!n.is(a.$select)&&!t.contains(a.$select[0],n[0])){a.close()}})}a.prototype.handleUpdate=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}var n=e.$selectNative;e.value=n.val();e.text="";e.$items=t();n.find("option").each(function(n,i){var o={value:i.value,text:i.textContent,disabled:i.disabled,selected:e.value===i.value,index:n};if(e.value===o.value){e.text=o.text;e.selectedIndex=n}e.$items=e.$items.add(t('<div class="mdui-select-menu-item mdui-ripple"'+(o.disabled?" disabled":"")+(o.selected?" selected":"")+">"+o.text+"</div>").data(o))});e.$selected=t('<span class="mdui-select-selected">'+e.text+"</span>");e.$select=t('<div class="mdui-select mdui-select-position-'+e.options.position+'" '+'style="'+e.$selectNative.attr("style")+'" '+'id="'+e.uniqueID+'"></div>').show().append(e.$selected);e.$menu=t('<div class="mdui-select-menu"></div>').appendTo(e.$select).append(e.$items);t("#"+e.uniqueID).remove();n.after(e.$select);e.size=e.$selectNative.attr("size");if(!e.size){e.size=e.$items.length;if(e.size>8){e.size=8}}if(e.size<2){e.size=2}e.$items.on("click",function(){if(e.state==="closing"){return}var i=t(this);if(i.data("disabled")){return}var o=i.data();e.$selected.text(o.text);n.val(o.value);e.$items.removeAttr("selected");i.attr("selected","");e.selectedIndex=o.index;e.value=o.value;e.text=o.text;n.trigger("change");e.close()});e.$select.on("click",function(n){var i=t(n.target);if(i.is(".mdui-select-menu")||i.is(".mdui-select-menu-item")){return}e.toggle()})};var r=function(e){e.$select.removeClass("mdui-select-closing");if(e.state==="opening"){e.state="opened";s("opened","select",e,e.$selectNative);e.$menu.css("overflow-y","auto")}if(e.state==="closing"){e.state="closed";s("closed","select",e,e.$selectNative);e.$select.width("");e.$menu.css({"margin-top":"",height:"",width:""})}};a.prototype.open=function(){var e=this;if(e.state==="opening"||e.state==="opened"){return}e.state="opening";s("open","select",e,e.$selectNative);o(e);e.$select.addClass("mdui-select-open");e.$menu.transitionEnd(function(){r(e)})};a.prototype.close=function(){var e=this;if(e.state==="closing"||e.state==="closed"){return}e.state="closing";s("close","select",e,e.$selectNative);e.$menu.css("overflow-y","");e.$select.removeClass("mdui-select-open").addClass("mdui-select-closing");e.$menu.transitionEnd(function(){r(e)})};a.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};return a}();t(function(){e.mutation("[mdui-select]",function(){var n=t(this);var i=n.data("mdui.select");if(!i){i=new e.Select(n,r(n.attr("mdui-select")));n.data("mdui.select",i)}})});t(function(){e.mutation(".mdui-appbar-scroll-hide",function(){var n=t(this);n.data("mdui.headroom",new e.Headroom(n))});e.mutation(".mdui-appbar-scroll-toolbar-hide",function(){var n=t(this);var i=new e.Headroom(n,{pinnedClass:"mdui-headroom-pinned-toolbar",unpinnedClass:"mdui-headroom-unpinned-toolbar"});n.data("mdui.headroom",i)})});e.Tab=function(){var e={trigger:"click",loop:false};var n=function(e){return e[0].disabled||e.attr("disabled")!==null};function o(n,o){var a=this;a.$tab=t(n).eq(0);if(!a.$tab.length){return}var r=a.$tab.data("mdui.tab");if(r){return r}a.options=t.extend({},e,o||{});a.$tabs=a.$tab.children("a");a.$indicator=t('<div class="mdui-tab-indicator"></div>').appendTo(a.$tab);a.activeIndex=false;var s=location.hash;if(s){a.$tabs.each(function(e,n){if(t(n).attr("href")===s){a.activeIndex=e;return false}})}if(a.activeIndex===false){a.$tabs.each(function(e,n){if(t(n).hasClass("mdui-tab-active")){a.activeIndex=e;return false}})}if(a.$tabs.length&&a.activeIndex===false){a.activeIndex=0}a._setActive();i.on("resize",t.throttle(function(){a._setIndicatorPosition()},100));a.$tabs.each(function(e,t){a._bindTabEvent(t)})}o.prototype._bindTabEvent=function(e){var i=this;var o=t(e);var a=function(t){if(n(o)){t.preventDefault();return}i.activeIndex=i.$tabs.index(e);i._setActive()};o.on("click",a);if(i.options.trigger==="hover"){o.on("mouseenter",a)}o.on("click",function(e){if(o.attr("href").indexOf("#")===0){e.preventDefault()}})};o.prototype._setActive=function(){var e=this;e.$tabs.each(function(i,o){var a=t(o);var r=a.attr("href");if(i===e.activeIndex&&!n(a)){if(!a.hasClass("mdui-tab-active")){s("change","tab",e,e.$tab,{index:e.activeIndex,id:r.substr(1)});s("show","tab",e,a);a.addClass("mdui-tab-active")}t(r).show();e._setIndicatorPosition()}else{a.removeClass("mdui-tab-active");t(r).hide()}})};o.prototype._setIndicatorPosition=function(){var e=this;var t;var i;if(e.activeIndex===false){e.$indicator.css({left:0,width:0});return}t=e.$tabs.eq(e.activeIndex);if(n(t)){return}i=t.offset();e.$indicator.css({left:i.left+e.$tab[0].scrollLeft-e.$tab[0].getBoundingClientRect().left+"px",width:t.width()+"px"})};o.prototype.next=function(){var e=this;if(e.activeIndex===false){return}if(e.$tabs.length>e.activeIndex+1){e.activeIndex++}else if(e.options.loop){e.activeIndex=0}e._setActive()};o.prototype.prev=function(){var e=this;if(e.activeIndex===false){return}if(e.activeIndex>0){e.activeIndex--}else if(e.options.loop){e.activeIndex=e.$tabs.length-1}e._setActive()};o.prototype.show=function(e){var t=this;if(t.activeIndex===false){return}if(parseInt(e)===e){t.activeIndex=e}else{t.$tabs.each(function(n,i){if(i.id===e){t.activeIndex=n;return false}})}t._setActive()};o.prototype.handleUpdate=function(){var e=this;var t=e.$tabs;var n=e.$tab.children("a");var i=t.get();var o=n.get();if(!n.length){e.activeIndex=false;e.$tabs=n;e._setIndicatorPosition();return}n.each(function(t,n){if(i.indexOf(n)<0){e._bindTabEvent(n);if(e.activeIndex===false){e.activeIndex=0}else if(t<=e.activeIndex){e.activeIndex++}}});t.each(function(t,n){if(o.indexOf(n)<0){if(t<e.activeIndex){e.activeIndex--}else if(t===e.activeIndex){e.activeIndex=0}}});e.$tabs=n;e._setActive()};return o}();t(function(){e.mutation("[mdui-tab]",function(){var n=t(this);var i=n.data("mdui.tab");if(!i){i=new e.Tab(n,r(n.attr("mdui-tab")));n.data("mdui.tab",i)}})});e.Drawer=function(){var e={overlay:false,swipe:false};var n=function(){return i.width()>=1024};function o(o,r){var s=this;s.$drawer=t(o).eq(0);if(!s.$drawer.length){return}var u=s.$drawer.data("mdui.drawer");if(u){return u}s.options=t.extend({},e,r||{});s.overlay=false;s.position=s.$drawer.hasClass("mdui-drawer-right")?"right":"left";if(s.$drawer.hasClass("mdui-drawer-close")){s.state="closed"}else if(s.$drawer.hasClass("mdui-drawer-open")){s.state="opened"}else if(n()){s.state="opened"}else{s.state="closed"}i.on("resize",t.throttle(function(){if(n()){if(s.overlay&&!s.options.overlay){t.hideOverlay();s.overlay=false;t.unlockScreen()}if(!s.$drawer.hasClass("mdui-drawer-close")){s.state="opened"}}else{if(!s.overlay&&s.state==="opened"){if(s.$drawer.hasClass("mdui-drawer-open")){t.showOverlay();s.overlay=true;t.lockScreen();t(".mdui-overlay").one("click",function(){s.close()})}else{s.state="closed"}}}},100));s.$drawer.find("[mdui-drawer-close]").each(function(){t(this).on("click",function(){s.close()})});a(s)}var a=function(e){var n;var i;var o;var a;var r=false;var s=false;var u=t("body");var l=24;function d(){if(!n){u.on("touchstart",m);n=m}}function c(t,n){var i=e.position==="right"?-1:1;var o="translate("+-1*i*t+"px, 0) !important;";e.$drawer.css("cssText","transform:"+o+(n?"transition: initial !important;":""))}function f(){e.$drawer.css({transform:"",transition:""})}function p(){return e.$drawer.width()+10}function h(e){return Math.min(Math.max(r==="closing"?a-e:p()+a-e,0),p())}function m(t){i=t.touches[0].pageX;if(e.position==="right"){i=u.width()-i}o=t.touches[0].pageY;if(e.state!=="opened"){if(i>l||n!==m){return}}s=true;u.on({touchmove:v,touchend:g,touchcancel:v})}function v(n){var l=n.touches[0].pageX;if(e.position==="right"){l=u.width()-l}var d=n.touches[0].pageY;if(r){c(h(l),true)}else if(s){var f=Math.abs(l-i);var p=Math.abs(d-o);var m=8;if(f>m&&p<=m){a=l;r=e.state==="opened"?"closing":"opening";t.lockScreen();c(h(l),true)}else if(f<=m&&p>m){g()}}}function g(n){if(r){var i=n.changedTouches[0].pageX;if(e.position==="right"){i=u.width()-i}var o=h(i)/p();s=false;var a=r;r=null;if(a==="opening"){if(o<.92){f();e.open()}else{f()}}else{if(o>.08){f();e.close()}else{f()}}t.unlockScreen()}else{s=false}u.off({touchmove:v,touchend:g,touchcancel:v})}if(e.options.swipe){d()}};var r=function(e){if(e.$drawer.hasClass("mdui-drawer-open")){e.state="opened";s("opened","drawer",e,e.$drawer)}else{e.state="closed";s("closed","drawer",e,e.$drawer)}};o.prototype.open=function(){var e=this;if(e.state==="opening"||e.state==="opened"){return}e.state="opening";s("open","drawer",e,e.$drawer);if(!e.options.overlay){t("body").addClass("mdui-drawer-body-"+e.position)}e.$drawer.removeClass("mdui-drawer-close").addClass("mdui-drawer-open").transitionEnd(function(){r(e)});if(!n()||e.options.overlay){e.overlay=true;t.showOverlay().one("click",function(){e.close()});t.lockScreen()}};o.prototype.close=function(){var e=this;if(e.state==="closing"||e.state==="closed"){return}e.state="closing";s("close","drawer",e,e.$drawer);if(!e.options.overlay){t("body").removeClass("mdui-drawer-body-"+e.position)}e.$drawer.addClass("mdui-drawer-close").removeClass("mdui-drawer-open").transitionEnd(function(){r(e)});if(e.overlay){t.hideOverlay();e.overlay=false;t.unlockScreen()}};o.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};o.prototype.getState=function(){return this.state};return o}();t(function(){e.mutation("[mdui-drawer]",function(){var n=t(this);var i=r(n.attr("mdui-drawer"));var o=i.target;delete i.target;var a=t(o).eq(0);var s=a.data("mdui.drawer");if(!s){s=new e.Drawer(a,i);a.data("mdui.drawer",s)}n.on("click",function(){s.toggle()})})});e.Dialog=function(){var e={history:true,overlay:true,modal:false,closeOnEsc:true,closeOnCancel:true,closeOnConfirm:true,destroyOnClosed:false};var a;var r;var u;var l="__md_dialog";var d=function(){if(!u){return}var e=u.$dialog;var t=e.children(".mdui-dialog-title");var n=e.children(".mdui-dialog-content");var o=e.children(".mdui-dialog-actions");e.height("");n.height("");var a=e.height();e.css({top:(i.height()-a)/2+"px",height:a+"px"});n.height(a-(t.height()||0)-(o.height()||0))};var c=function(){if(location.hash.substring(1).indexOf("mdui-dialog")<0){u.close(true)}};var f=function(e){if(t(e.target).hasClass("mdui-overlay")&&u){u.close()}};function p(n,i){var o=this;o.$dialog=t(n).eq(0);if(!o.$dialog.length){return}var a=o.$dialog.data("mdui.dialog");if(a){return a}if(!t.contains(document.body,o.$dialog[0])){o.append=true;t("body").append(o.$dialog)}o.options=t.extend({},e,i||{});o.state="closed";o.$dialog.find("[mdui-dialog-cancel]").each(function(){t(this).on("click",function(){s("cancel","dialog",o,o.$dialog);if(o.options.closeOnCancel){o.close()}})});o.$dialog.find("[mdui-dialog-confirm]").each(function(){t(this).on("click",function(){s("confirm","dialog",o,o.$dialog);if(o.options.closeOnConfirm){o.close()}})});o.$dialog.find("[mdui-dialog-close]").each(function(){t(this).on("click",function(){o.close()})})}var h=function(e){if(e.$dialog.hasClass("mdui-dialog-open")){e.state="opened";s("opened","dialog",e,e.$dialog)}else{e.state="closed";s("closed","dialog",e,e.$dialog);e.$dialog.hide();if(o.queue(l).length===0&&!u&&r){t.unlockScreen();r=false}i.off("resize",t.throttle(function(){d()},100));if(e.options.destroyOnClosed){e.destroy()}}};p.prototype._doOpen=function(){var e=this;u=e;if(!r){t.lockScreen();r=true}e.$dialog.show();d();i.on("resize",t.throttle(function(){d()},100));e.state="opening";s("open","dialog",e,e.$dialog);e.$dialog.addClass("mdui-dialog-open").transitionEnd(function(){h(e)});if(!a){a=t.showOverlay(5100)}a[e.options.modal?"off":"on"]("click",f).css("opacity",e.options.overlay?"":0);if(e.options.history){var n=location.hash.substring(1);if(n.indexOf("mdui-dialog")>-1){n=n.replace(/[&?]?mdui-dialog/g,"")}if(n){location.hash=n+(n.indexOf("?")>-1?"&":"?")+"mdui-dialog"}else{location.hash="mdui-dialog"}i.on("hashchange",c)}};p.prototype.open=function(){var e=this;if(e.state==="opening"||e.state==="opened"){return}if(u&&(u.state==="opening"||u.state==="opened")||o.queue(l).length){o.queue(l,function(){e._doOpen()});return}e._doOpen()};p.prototype.close=function(){var e=this;var n=arguments;setTimeout(function(){if(e.state==="closing"||e.state==="closed"){return}u=null;e.state="closing";s("close","dialog",e,e.$dialog);if(o.queue(l).length===0&&a){t.hideOverlay();a=null}e.$dialog.removeClass("mdui-dialog-open").transitionEnd(function(){h(e)});if(e.options.history&&o.queue(l).length===0){if(!n[0]){window.history.back()}i.off("hashchange",c)}setTimeout(function(){o.dequeue(l)},100)},0)};p.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};p.prototype.getState=function(){return this.state};p.prototype.destroy=function(){var e=this;if(e.append){e.$dialog.remove()}e.$dialog.removeData("mdui.dialog");if(o.queue(l).length===0&&!u){if(a){t.hideOverlay();a=null}if(r){t.unlockScreen();r=false}}};p.prototype.handleUpdate=function(){d()};n.on("keydown",function(e){if(u&&u.options.closeOnEsc&&u.state==="opened"&&e.keyCode===27){u.close()}});return p}();t(function(){n.on("click","[mdui-dialog]",function(){var n=t(this);var i=r(n.attr("mdui-dialog"));var o=i.target;delete i.target;var a=t(o).eq(0);var s=a.data("mdui.dialog");if(!s){s=new e.Dialog(a,i);a.data("mdui.dialog",s)}s.open()})});e.dialog=function(n){var i={title:"",content:"",buttons:[],stackedButtons:false,cssClass:"",history:true,overlay:true,modal:false,closeOnEsc:true,destroyOnClosed:true,onOpen:function(){},onOpened:function(){},onClose:function(){},onClosed:function(){}};var o={text:"",bold:false,close:true,onClick:function(e){}};n=t.extend({},i,n||{});t.each(n.buttons,function(e,i){n.buttons[e]=t.extend({},o,i)});var a="";if(n.buttons.length){a='<div class="mdui-dialog-actions '+(n.stackedButtons?"mdui-dialog-actions-stacked":"")+'">';t.each(n.buttons,function(e,t){a+='<a href="javascript:void(0)" '+'class="mdui-btn mdui-ripple mdui-text-color-primary '+(t.bold?"mdui-btn-bold":"")+'">'+t.text+"</a>"});a+="</div>"}var r='<div class="mdui-dialog '+n.cssClass+'">'+(n.title?'<div class="mdui-dialog-title">'+n.title+"</div>":"")+(n.content?'<div class="mdui-dialog-content">'+n.content+"</div>":"")+a+"</div>";var s=new e.Dialog(r,{history:n.history,overlay:n.overlay,modal:n.modal,closeOnEsc:n.closeOnEsc,destroyOnClosed:n.destroyOnClosed});if(n.buttons.length){s.$dialog.find(".mdui-dialog-actions .mdui-btn").each(function(e,i){t(i).on("click",function(){if(typeof n.buttons[e].onClick==="function"){n.buttons[e].onClick(s)}if(n.buttons[e].close){s.close()}})})}if(typeof n.onOpen==="function"){s.$dialog.on("open.mdui.dialog",function(){n.onOpen(s)}).on("opened.mdui.dialog",function(){n.onOpened(s)}).on("close.mdui.dialog",function(){n.onClose(s)}).on("closed.mdui.dialog",function(){n.onClosed(s)})}s.open();return s};e.alert=function(n,i,o,a){if(typeof i==="function"){i="";o=arguments[1];a=arguments[2]}if(o===undefined){o=function(){}}if(a===undefined){a={}}var r={confirmText:"ok",history:true,modal:false,closeOnEsc:true};a=t.extend({},r,a);return e.dialog({title:i,content:n,buttons:[{text:a.confirmText,bold:false,close:true,onClick:o}],cssClass:"mdui-dialog-alert",history:a.history,modal:a.modal,closeOnEsc:a.closeOnEsc})};e.confirm=function(n,i,o,a,r){if(typeof i==="function"){i="";o=arguments[1];a=arguments[2];r=arguments[3]}if(o===undefined){o=function(){}}if(a===undefined){a=function(){}}if(r===undefined){r={}}var s={confirmText:"ok",cancelText:"cancel",history:true,modal:false,closeOnEsc:true};r=t.extend({},s,r);return e.dialog({title:i,content:n,buttons:[{text:r.cancelText,bold:false,close:true,onClick:a},{text:r.confirmText,bold:false,close:true,onClick:o}],cssClass:"mdui-dialog-confirm",history:r.history,modal:r.modal,closeOnEsc:r.closeOnEsc})};e.prompt=function(n,i,o,a,r){if(typeof i==="function"){i="";o=arguments[1];a=arguments[2];r=arguments[3]}if(o===undefined){o=function(){}}if(a===undefined){a=function(){}}if(r===undefined){r={}}var s={confirmText:"ok",cancelText:"cancel",history:true,modal:false,closeOnEsc:true,type:"text",maxlength:"",defaultValue:"",confirmOnEnter:false};r=t.extend({},s,r);var u='<div class="mdui-textfield">'+(n?'<label class="mdui-textfield-label">'+n+"</label>":"")+(r.type==="text"?'<input class="mdui-textfield-input" type="text" '+'value="'+r.defaultValue+'" '+(r.maxlength?'maxlength="'+r.maxlength+'"':"")+"/>":"")+(r.type==="textarea"?'<textarea class="mdui-textfield-input" '+(r.maxlength?'maxlength="'+r.maxlength+'"':"")+">"+r.defaultValue+"</textarea>":"")+"</div>";return e.dialog({title:i,content:u,buttons:[{text:r.cancelText,bold:false,close:true,onClick:function(e){var t=e.$dialog.find(".mdui-textfield-input").val();a(t,e)}},{text:r.confirmText,bold:false,close:true,onClick:function(e){var t=e.$dialog.find(".mdui-textfield-input").val();o(t,e)}}],cssClass:"mdui-dialog-prompt",history:r.history,modal:r.modal,closeOnEsc:r.closeOnEsc,onOpen:function(t){var n=t.$dialog.find(".mdui-textfield-input");e.updateTextFields(n);n[0].focus();if(r.type==="text"&&r.confirmOnEnter===true){n.on("keydown",function(e){if(e.keyCode===13){var n=t.$dialog.find(".mdui-textfield-input").val();o(n,t);t.close()}})}if(r.type==="textarea"){n.on("input",function(){t.handleUpdate()})}if(r.maxlength){t.handleUpdate()}}})};e.Tooltip=function(){var e={position:"auto",delay:0,content:""};var n=function(){return i.width()>1024};function o(e){var t;var o;var a;var r=e.$target[0].getBoundingClientRect();var s=n()?14:24;var u=e.$tooltip[0].offsetWidth;var l=e.$tooltip[0].offsetHeight;a=e.options.position;if(["bottom","top","left","right"].indexOf(a)===-1){if(r.top+r.height+s+l+2<i.height()){a="bottom"}else if(s+l+2<r.top){a="top"}else if(s+u+2<r.left){a="left"}else if(r.width+s+u+2<i.width()-r.left){a="right"}else{a="bottom"}}switch(a){case"bottom":t=-1*(u/2);o=r.height/2+s;e.$tooltip.transformOrigin("top center");break;case"top":t=-1*(u/2);o=-1*(l+r.height/2+s);e.$tooltip.transformOrigin("bottom center");break;case"left":t=-1*(u+r.width/2+s);o=-1*(l/2);e.$tooltip.transformOrigin("center right");break;case"right":t=r.width/2+s;o=-1*(l/2);e.$tooltip.transformOrigin("center left");break}var d=e.$target.offset();e.$tooltip.css({top:d.top+r.height/2+"px",left:d.left+r.width/2+"px","margin-left":t+"px","margin-top":o+"px"})}function u(n,i){var o=this;o.$target=t(n).eq(0);if(!o.$target.length){return}var r=o.$target.data("mdui.tooltip");if(r){return r}o.options=t.extend({},e,i||{});o.state="closed";o.$tooltip=t('<div class="mdui-tooltip" id="'+t.guid()+'">'+o.options.content+"</div>").appendTo(document.body);o.$target.on("touchstart mouseenter",function(e){if(this.disabled){return}if(!a.isAllow(e)){return}a.register(e);o.open()}).on("touchend mouseleave",function(e){if(this.disabled){return}if(!a.isAllow(e)){return}o.close()}).on(a.unlock,function(e){if(this.disabled){return}a.register(e)})}var l=function(e){if(e.$tooltip.hasClass("mdui-tooltip-open")){e.state="opened";s("opened","tooltip",e,e.$target)}else{e.state="closed";s("closed","tooltip",e,e.$target)}};u.prototype._doOpen=function(){var e=this;e.state="opening";s("open","tooltip",e,e.$target);e.$tooltip.addClass("mdui-tooltip-open").transitionEnd(function(){l(e)})};u.prototype.open=function(e){var n=this;if(n.state==="opening"||n.state==="opened"){return}var i=t.extend({},n.options);t.extend(n.options,r(n.$target.attr("mdui-tooltip")));if(e){t.extend(n.options,e)}if(i.content!==n.options.content){n.$tooltip.html(n.options.content)}o(n);if(n.options.delay){n.timeoutId=setTimeout(function(){n._doOpen()},n.options.delay)}else{n.timeoutId=false;n._doOpen()}};u.prototype.close=function(){var e=this;if(e.timeoutId){clearTimeout(e.timeoutId);e.timeoutId=false}if(e.state==="closing"||e.state==="closed"){return}e.state="closing";s("close","tooltip",e,e.$target);e.$tooltip.removeClass("mdui-tooltip-open").transitionEnd(function(){l(e)})};u.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};u.prototype.getState=function(){return this.state};return u}();t(function(){n.on("touchstart mouseover","[mdui-tooltip]",function(){var n=t(this);var i=n.data("mdui.tooltip");if(!i){var o=r(n.attr("mdui-tooltip"));i=new e.Tooltip(n,o);n.data("mdui.tooltip",i)}})});(function(){var i;var r="__md_snackbar";var s={timeout:4e3,buttonText:"",buttonColor:"",position:"bottom",closeOnButtonClick:true,closeOnOutsideClick:true,onClick:function(){},onButtonClick:function(){},onOpen:function(){},onOpened:function(){},onClose:function(){},onClosed:function(){}};var u=function(e){var n=t(e.target);if(!n.hasClass("mdui-snackbar")&&!n.parents(".mdui-snackbar").length){i.close()}};function l(e,n){var i=this;i.message=e;i.options=t.extend({},s,n||{});if(!i.message){return}i.state="closed";i.timeoutId=false;var o="";var a="";if(i.options.buttonColor.indexOf("#")===0||i.options.buttonColor.indexOf("rgb")===0){o='style="color:'+i.options.buttonColor+'"'}else if(i.options.buttonColor!==""){a="mdui-text-color-"+i.options.buttonColor}i.$snackbar=t('<div class="mdui-snackbar">'+'<div class="mdui-snackbar-text">'+i.message+"</div>"+(i.options.buttonText?'<a href="javascript:void(0)" '+'class="mdui-snackbar-action mdui-btn mdui-ripple mdui-ripple-white '+a+'" '+o+">"+i.options.buttonText+"</a>":"")+"</div>").appendTo(document.body);i._setPosition("close");i.$snackbar.reflow().addClass("mdui-snackbar-"+i.options.position)}l.prototype._setPosition=function(e){var t=this;var n=t.$snackbar[0].clientHeight;var i=t.options.position;var o;var a;if(i==="bottom"||i==="top"){o="-50%"}else{o="0"}if(e==="open"){a="0"}else{if(i==="bottom"){a=n}if(i==="top"){a=-n}if(i==="left-top"||i==="right-top"){a=-n-24}if(i==="left-bottom"||i==="right-bottom"){a=n+24}}t.$snackbar.transform("translate("+o+","+a+"px)")};l.prototype.open=function(){var e=this;if(!e.message){return}if(e.state==="opening"||e.state==="opened"){return}if(i){o.queue(r,function(){e.open()});return}i=e;e.state="opening";e.options.onOpen();e._setPosition("open");e.$snackbar.transitionEnd(function(){if(e.state!=="opening"){return}e.state="opened";e.options.onOpened();if(e.options.buttonText){e.$snackbar.find(".mdui-snackbar-action").on("click",function(){e.options.onButtonClick();if(e.options.closeOnButtonClick){e.close()}})}e.$snackbar.on("click",function(n){if(!t(n.target).hasClass("mdui-snackbar-action")){e.options.onClick()}});if(e.options.closeOnOutsideClick){n.on(a.start,u)}if(e.options.timeout){e.timeoutId=setTimeout(function(){e.close()},e.options.timeout)}})};l.prototype.close=function(){var e=this;if(!e.message){return}if(e.state==="closing"||e.state==="closed"){return}if(e.timeoutId){clearTimeout(e.timeoutId)}if(e.options.closeOnOutsideClick){n.off(a.start,u)}e.state="closing";e.options.onClose();e._setPosition("close");e.$snackbar.transitionEnd(function(){if(e.state!=="closing"){return}i=null;e.state="closed";e.options.onClosed();e.$snackbar.remove();o.dequeue(r)})};e.snackbar=function(e,t){if(typeof e!=="string"){t=e;e=t.message}var n=new l(e,t);n.open();return n}})();(function(){n.on("click",".mdui-bottom-nav>a",function(){var e=t(this);var n=e.parent();var i;n.children("a").each(function(o,a){i=e.is(a);if(i){s("change","bottomNav",null,n,{index:o})}t(a)[i?"addClass":"removeClass"]("mdui-bottom-nav-active")})});e.mutation(".mdui-bottom-nav-scroll-hide",function(){var n=t(this);var i=new e.Headroom(n,{pinnedClass:"mdui-headroom-pinned-down",unpinnedClass:"mdui-headroom-unpinned-down"});n.data("mdui.headroom",i)})})();(function(){var n=function(){var e=arguments.length?arguments[0]:false;return'<div class="mdui-spinner-layer '+(e?"mdui-spinner-layer-"+e:"")+'">'+'<div class="mdui-spinner-circle-clipper mdui-spinner-left">'+'<div class="mdui-spinner-circle"></div>'+"</div>"+'<div class="mdui-spinner-gap-patch">'+'<div class="mdui-spinner-circle"></div>'+"</div>"+'<div class="mdui-spinner-circle-clipper mdui-spinner-right">'+'<div class="mdui-spinner-circle"></div>'+"</div>"+"</div>"};var i=function(e){var i=t(e);var o;if(i.hasClass("mdui-spinner-colorful")){o=n("1")+n("2")+n("3")+n("4")}else{o=n()}i.html(o)};e.mutation(".mdui-spinner",function(){i(this)});e.updateSpinners=function(){t(arguments.length?arguments[0]:".mdui-spinner").each(function(){i(this)})}})();e.Panel=function(){function e(e,t){return new u(e,t,"panel")}return e}();t(function(){e.mutation("[mdui-panel]",function(){var n=t(this);var i=n.data("mdui.panel");if(!i){var o=r(n.attr("mdui-panel"));i=new e.Panel(n,o);n.data("mdui.panel",i)}})});e.Menu=function(){var e={position:"auto",align:"auto",gutter:16,fixed:false,covered:"auto",subMenuTrigger:"hover",subMenuDelay:200};var o=function(e){var t;var n;var o;var a;var r=i.height();var s=i.width();var u=e.options.gutter;var l=e.isCovered;var d=e.options.fixed;var c;var f;var p=e.$menu.width();var h=e.$menu.height();var m=e.$anchor;var v=m[0].getBoundingClientRect();var g=v.top;var b=v.left;var x=v.height;var y=v.width;var w=r-g-x;var $=s-b-y;var C=m[0].offsetTop;var k=m[0].offsetLeft;if(e.options.position==="auto"){if(w+(l?x:0)>h+u){o="bottom"}else if(g+(l?x:0)>h+u){o="top"}else{o="center"}}else{o=e.options.position}if(e.options.align==="auto"){if($+y>p+u){a="left"}else if(b+y>p+u){a="right"}else{a="center"}}else{a=e.options.align}if(o==="bottom"){f="0";n=(l?0:x)+(d?g:C)}else if(o==="top"){f="100%";n=(l?x:0)+(d?g-h:C-h)}else{f="50%";var O=h;if(!e.isCascade){
-if(h+u*2>r){O=r-u*2;e.$menu.height(O)}}n=(r-O)/2+(d?0:C-g)}e.$menu.css("top",n+"px");if(a==="left"){c="0";t=d?b:k}else if(a==="right"){c="100%";t=d?b+y-p:k+y-p}else{c="50%";var T=p;if(p+u*2>s){T=s-u*2;e.$menu.width(T)}t=(s-T)/2+(d?0:k-b)}e.$menu.css("left",t+"px");e.$menu.transformOrigin(c+" "+f)};var a=function(e){var t=e.parent(".mdui-menu-item");var n;var o;var a;var r;var s=i.height();var u=i.width();var l;var d;var c=e.width();var f=e.height();var p=t[0].getBoundingClientRect();var h=p.width;var m=p.height;var v=p.left;var g=p.top;if(s-g>f){a="bottom"}else if(g+m>f){a="top"}else{a="bottom"}if(u-v-h>c){r="left"}else if(v>c){r="right"}else{r="left"}if(a==="bottom"){d="0";n="0"}else if(a==="top"){d="100%";n=-f+m}e.css("top",n+"px");if(r==="left"){l="0";o=h}else if(r==="right"){l="100%";o=-c}e.css("left",o+"px");e.transformOrigin(l+" "+d)};var r=function(e){a(e);e.addClass("mdui-menu-open").parent(".mdui-menu-item").addClass("mdui-menu-item-active")};var u=function(e){e.removeClass("mdui-menu-open").addClass("mdui-menu-closing").transitionEnd(function(){e.removeClass("mdui-menu-closing")}).parent(".mdui-menu-item").removeClass("mdui-menu-item-active");e.find(".mdui-menu").each(function(){var e=t(this);e.removeClass("mdui-menu-open").addClass("mdui-menu-closing").transitionEnd(function(){e.removeClass("mdui-menu-closing")}).parent(".mdui-menu-item").removeClass("mdui-menu-item-active")})};var l=function(e){if(e.hasClass("mdui-menu-open")){u(e)}else{r(e)}};var d=function(e){e.$menu.on("click",".mdui-menu-item",function(e){var n=t(this);var i=t(e.target);if(n.attr("disabled")!==null){return}if(i.is(".mdui-menu")||i.is(".mdui-divider")){return}if(!i.parents(".mdui-menu-item").eq(0).is(n)){return}var o=n.children(".mdui-menu");n.parent(".mdui-menu").children(".mdui-menu-item").each(function(){var e=t(this).children(".mdui-menu");if(e.length&&(!o.length||!e.is(o))){u(e)}});if(o.length){l(o)}});if(e.options.subMenuTrigger==="hover"){var n;var i;var o;e.$menu.on("mouseover mouseout",".mdui-menu-item",function(a){var s=t(this);var l=a.type;var d=t(a.relatedTarget);if(s.attr("disabled")!==null){return}if(l==="mouseover"){if(!s.is(d)&&t.contains(s[0],d[0])){return}}else if(l==="mouseout"){if(s.is(d)||t.contains(s[0],d[0])){return}}var c=s.children(".mdui-menu");if(l==="mouseover"){if(c.length){var f=c.data("timeoutClose.mdui.menu");if(f){clearTimeout(f)}if(c.hasClass("mdui-menu-open")){return}clearTimeout(i);n=i=setTimeout(function(){r(c)},e.options.subMenuDelay);c.data("timeoutOpen.mdui.menu",n)}}else if(l==="mouseout"){if(c.length){var p=c.data("timeoutOpen.mdui.menu");if(p){clearTimeout(p)}n=o=setTimeout(function(){u(c)},e.options.subMenuDelay);c.data("timeoutClose.mdui.menu",n)}}})}};function c(a,r,s){var u=this;u.$anchor=t(a).eq(0);if(!u.$anchor.length){return}var l=u.$anchor.data("mdui.menu");if(l){return l}u.$menu=t(r).eq(0);if(!u.$anchor.siblings(u.$menu).length){return}u.options=t.extend({},e,s||{});u.state="closed";u.isCascade=u.$menu.hasClass("mdui-menu-cascade");if(u.options.covered==="auto"){u.isCovered=!u.isCascade}else{u.isCovered=u.options.covered}u.$anchor.on("click",function(){u.toggle()});n.on("click touchstart",function(e){var n=t(e.target);if((u.state==="opening"||u.state==="opened")&&!n.is(u.$menu)&&!t.contains(u.$menu[0],n[0])&&!n.is(u.$anchor)&&!t.contains(u.$anchor[0],n[0])){u.close()}});n.on("click",".mdui-menu-item",function(e){var n=t(this);if(!n.find(".mdui-menu").length&&n.attr("disabled")===null){u.close()}});d(u);i.on("resize",t.throttle(function(){o(u)},100))}c.prototype.toggle=function(){var e=this;if(e.state==="opening"||e.state==="opened"){e.close()}else if(e.state==="closing"||e.state==="closed"){e.open()}};var f=function(e){e.$menu.removeClass("mdui-menu-closing");if(e.state==="opening"){e.state="opened";s("opened","menu",e,e.$menu)}if(e.state==="closing"){e.state="closed";s("closed","menu",e,e.$menu);e.$menu.css({top:"",left:"",width:"",position:"fixed"})}};c.prototype.open=function(){var e=this;if(e.state==="opening"||e.state==="opened"){return}e.state="opening";s("open","menu",e,e.$menu);o(e);e.$menu.css("position",e.options.fixed?"fixed":"absolute").addClass("mdui-menu-open").transitionEnd(function(){f(e)})};c.prototype.close=function(){var e=this;if(e.state==="closing"||e.state==="closed"){return}e.state="closing";s("close","menu",e,e.$menu);e.$menu.find(".mdui-menu").each(function(){u(t(this))});e.$menu.removeClass("mdui-menu-open").addClass("mdui-menu-closing").transitionEnd(function(){f(e)})};return c}();t(function(){n.on("click","[mdui-menu]",function(){var n=t(this);var i=n.data("mdui.menu");if(!i){var o=r(n.attr("mdui-menu"));var a=o.target;delete o.target;i=new e.Menu(n,a,o);n.data("mdui.menu",i);i.toggle()}})});e.JQ=t;return e});
-//rebuild by neat 
+/*!
+ * mdui v0.4.2 (https://mdui.org)
+ * Copyright 2016-2018 zdhxiong
+ * Licensed under MIT
+ */
+/* jshint ignore:start */
+;(function(global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global.mdui = factory());
+}(this, (function() {
+  'use strict';
+
+  /* jshint ignore:end */
+  var mdui = {};
+
+  /**
+   * =============================================================================
+   * ************   浏览器兼容性问题修复   ************
+   * =============================================================================
+   */
+
+  /**
+   * requestAnimationFrame
+   * cancelAnimationFrame
+   */
+  (function () {
+    var lastTime = 0;
+
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = window.webkitRequestAnimationFrame;
+      window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+    }
+
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = function (callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+
+        var id = window.setTimeout(function () {
+            callback(currTime + timeToCall);
+          }, timeToCall);
+
+        lastTime = currTime + timeToCall;
+        return id;
+      };
+    }
+
+    if (!window.cancelAnimationFrame) {
+      window.cancelAnimationFrame = function (id) {
+        clearTimeout(id);
+      };
+    }
+  })();
+
+
+  /**
+   * JQ 1.0.0 (https://github.com/zdhxiong/mdui.JQ#readme)
+   * Copyright 2018-2018 zdhxiong
+   * Licensed under MIT
+   */
+  var $ = (function () {
+    'use strict';
+
+    var JQ = function JQ(arr) {
+      var self = this;
+
+      for (var i = 0; i < arr.length; i += 1) {
+        self[i] = arr[i];
+      }
+
+      self.length = arr.length;
+
+      return this;
+    };
+
+    function $$1(selector) {
+      var arr = [];
+
+      if (!selector) {
+        return new JQ(arr);
+      }
+
+      if (selector instanceof JQ) {
+        return selector;
+      }
+
+      if (typeof selector === 'string') {
+        var html = selector.trim();
+
+        if (html[0] === '<' && html[html.length - 1] === '>') {
+          // 创建 HTML 字符串
+          var toCreate = 'div';
+
+          if (html.indexOf('<li') === 0) {
+            toCreate = 'ul';
+          }
+
+          if (html.indexOf('<tr') === 0) {
+            toCreate = 'tbody';
+          }
+
+          if (html.indexOf('<td') === 0 || html.indexOf('<th') === 0) {
+            toCreate = 'tr';
+          }
+
+          if (html.indexOf('<tbody') === 0) {
+            toCreate = 'table';
+          }
+
+          if (html.indexOf('<option') === 0) {
+            toCreate = 'select';
+          }
+
+          var tempParent = document.createElement(toCreate);
+          tempParent.innerHTML = html;
+
+          for (var i = 0; i < tempParent.childNodes.length; i += 1) {
+            arr.push(tempParent.childNodes[i]);
+          }
+        } else {
+          // 选择器
+          var elems = selector[0] === '#' && !selector.match(/[ .<>:~]/)
+            ? [document.getElementById(selector.slice(1))]
+            : document.querySelectorAll(selector);
+
+          for (var i$1 = 0; i$1 < elems.length; i$1 += 1) {
+            if (elems[i$1]) {
+              arr.push(elems[i$1]);
+            }
+          }
+        }
+      } else if (typeof selector === 'function') {
+        // function
+        return $$1(document).ready(selector);
+      } else if (selector.nodeType || selector === window || selector === document) {
+        // Node
+        arr.push(selector);
+      } else if (selector.length > 0 && selector[0].nodeType) {
+        // NodeList
+        for (var i$2 = 0; i$2 < selector.length; i$2 += 1) {
+          arr.push(selector[i$2]);
+        }
+      }
+
+      return new JQ(arr);
+    }
+
+    $$1.fn = JQ.prototype;
+
+    function extend() {
+      var this$1 = this;
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      if (!args.length) {
+        return this;
+      }
+
+      // $.extend(obj)
+      if (args.length === 1) {
+        Object.keys(args[0]).forEach(function (prop) {
+          this$1[prop] = args[0][prop];
+        });
+
+        return this;
+      }
+
+      // $.extend({}, defaults[, obj])
+      var target = args.shift();
+
+      var loop = function ( i ) {
+        Object.keys(args[i]).forEach(function (prop) {
+          target[prop] = args[i][prop];
+        });
+      };
+
+      for (var i = 0; i < args.length; i += 1) loop( i );
+
+      return target;
+    }
+
+    $$1.fn.extend = extend;
+    $$1.extend = extend;
+
+    /**
+     * 判断一个节点名
+     * @param ele
+     * @param name
+     * @returns {boolean}
+     */
+    function isNodeName(ele, name) {
+      return ele.nodeName && ele.nodeName.toLowerCase() === name.toLowerCase();
+    }
+
+    /**
+     * 除去 null 后的 object 类型
+     * @param obj
+     * @returns {*|boolean}
+     */
+    function isObjectLike(obj) {
+      return typeof obj === 'object' && obj !== null;
+    }
+
+    function isFunction(fn) {
+      return typeof fn === 'function';
+    }
+
+    function isString(obj) {
+      return typeof obj === 'string';
+    }
+
+    function isWindow(win) {
+      return win && win === win.window;
+    }
+
+    function isDocument(doc) {
+      return doc && doc.nodeType === doc.DOCUMENT_NODE;
+    }
+
+    function isArrayLike(obj) {
+      return typeof obj.length === 'number';
+    }
+
+    /**
+     * 循环数组或对象
+     * @param obj
+     * @param callback
+     * @returns {*}
+     */
+    function each(obj, callback) {
+      if (isArrayLike(obj)) {
+        for (var i = 0; i < obj.length; i += 1) {
+          if (callback.call(obj[i], i, obj[i]) === false) {
+            return obj;
+          }
+        }
+      } else {
+        var keys = Object.keys(obj);
+        for (var i$1 = 0; i$1 < keys.length; i$1 += 1) {
+          if (callback.call(obj[keys[i$1]], keys[i$1], obj[keys[i$1]]) === false) {
+            return obj;
+          }
+        }
+      }
+
+      return obj;
+    }
+
+    /**
+     * 遍历数组或对象，通过函数返回一个新的数组或对象，null 和 undefined 将被过滤掉。
+     * @param elems
+     * @param callback
+     * @returns {Array}
+     */
+    function map(elems, callback) {
+      var ref;
+
+      var value;
+      var ret = [];
+
+      each(elems, function (i, elem) {
+        value = callback(elem, i);
+
+        if (value !== null && value !== undefined) {
+          ret.push(value);
+        }
+      });
+
+      return (ref = []).concat.apply(ref, ret);
+    }
+
+    /**
+     * 把对象合并到第一个参数中，并返回第一个参数
+     * @param first
+     * @param second
+     * @returns {*}
+     */
+    function merge(first, second) {
+      each(second, function (i, val) {
+        first.push(val);
+      });
+
+      return first;
+    }
+
+    /**
+     * 删除数组中重复元素
+     * @param arr {Array}
+     * @returns {Array}
+     */
+    function unique(arr) {
+      var result = [];
+
+      for (var i = 0; i < arr.length; i += 1) {
+        if (result.indexOf(arr[i]) === -1) {
+          result.push(arr[i]);
+        }
+      }
+
+      return result;
+    }
+
+    var elementDisplay = {};
+
+    /**
+     * 获取元素的默认 display 样式值，用于 .show() 方法
+     * @param nodeName
+     * @returns {*}
+     */
+    function defaultDisplay(nodeName) {
+      var element;
+      var display;
+
+      if (!elementDisplay[nodeName]) {
+        element = document.createElement(nodeName);
+        document.body.appendChild(element);
+        display = getComputedStyle(element, '').getPropertyValue('display');
+        element.parentNode.removeChild(element);
+        if (display === 'none') {
+          display = 'block';
+        }
+
+        elementDisplay[nodeName] = display;
+      }
+
+      return elementDisplay[nodeName];
+    }
+
+    $$1.extend({
+      each: each,
+      merge: merge,
+      unique: unique,
+      map: map,
+
+      /**
+       * 一个 DOM 节点是否包含另一个 DOM 节点
+       * @param parent {Node} 父节点
+       * @param node {Node} 子节点
+       * @returns {Boolean}
+       */
+      contains: function contains(parent, node) {
+        if (parent && !node) {
+          return document.documentElement.contains(parent);
+        }
+
+        return parent !== node && parent.contains(node);
+      },
+
+      /**
+       * 将数组或对象序列化
+       * @param obj
+       * @returns {String}
+       */
+      param: function param(obj) {
+        if (!isObjectLike(obj)) {
+          return '';
+        }
+
+        var args = [];
+
+        function destructure(key, value) {
+          var keyTmp;
+
+          if (isObjectLike(value)) {
+            each(value, function (i, v) {
+              if (Array.isArray(value) && !isObjectLike(v)) {
+                keyTmp = '';
+              } else {
+                keyTmp = i;
+              }
+
+              destructure((key + "[" + keyTmp + "]"), v);
+            });
+          } else {
+            if (value !== null && value !== '') {
+              keyTmp = "=" + (encodeURIComponent(value));
+            } else {
+              keyTmp = '';
+            }
+
+            args.push(encodeURIComponent(key) + keyTmp);
+          }
+        }
+
+        each(obj, function (key, value) {
+          destructure(key, value);
+        });
+
+        return args.join('&');
+      },
+    });
+
+    $$1.fn.extend({
+      /**
+       * 遍历对象
+       * @param callback {Function}
+       * @return {JQ}
+       */
+      each: function each$1(callback) {
+        return each(this, callback);
+      },
+
+      /**
+       * 通过遍历集合中的节点对象，通过函数返回一个新的对象，null 或 undefined 将被过滤掉。
+       * @param callback {Function}
+       * @returns {JQ}
+       */
+      map: function map$1(callback) {
+        return new JQ(map(this, function (el, i) { return callback.call(el, i, el); }));
+      },
+
+      /**
+       * 获取指定 DOM 元素，没有 index 参数时，获取所有 DOM 的数组
+       * @param index {Number=}
+       * @returns {Node|Array}
+       */
+      get: function get(index) {
+        return index === undefined
+          ? [].slice.call(this)
+          : this[index >= 0 ? index : index + this.length];
+      },
+
+      /**
+       * array中提取的方法。从start开始，如果end 指出。提取不包含end位置的元素。
+       * @param args {start, end}
+       * @returns {JQ}
+       */
+      slice: function slice() {
+        var args = [], len = arguments.length;
+        while ( len-- ) args[ len ] = arguments[ len ];
+
+        return new JQ([].slice.apply(this, args));
+      },
+
+      /**
+       * 筛选元素集合
+       * @param selector {String|JQ|Node|Function}
+       * @returns {JQ}
+       */
+      filter: function filter(selector) {
+        if (isFunction(selector)) {
+          return this.map(function (index, ele) { return (selector.call(ele, index, ele) ? ele : undefined); });
+        }
+
+        var $selector = $$1(selector);
+
+        return this.map(function (index, ele) { return ($selector.index(ele) > -1 ? ele : undefined); });
+      },
+
+      /**
+       * 从元素集合中删除指定的元素
+       * @param selector {String|Node|JQ|Function}
+       * @return {JQ}
+       */
+      not: function not(selector) {
+        var $excludes = this.filter(selector);
+
+        return this.map(function (index, ele) { return ($excludes.index(ele) > -1 ? undefined : ele); });
+      },
+
+      /**
+       * 获取元素相对于 document 的偏移
+       * @returns {Object}
+       */
+      offset: function offset() {
+        if (this[0]) {
+          var offset = this[0].getBoundingClientRect();
+
+          return {
+            left: offset.left + window.pageXOffset,
+            top: offset.top + window.pageYOffset,
+            width: offset.width,
+            height: offset.height,
+          };
+        }
+
+        return null;
+      },
+
+      /**
+       * 返回最近的用于定位的父元素
+       * @returns {*|JQ}
+       */
+      offsetParent: function offsetParent() {
+        return this.map(function () {
+          var parent = this.offsetParent;
+
+          while (parent && $$1(parent).css('position') === 'static') {
+            parent = parent.offsetParent;
+          }
+
+          return parent || document.documentElement;
+        });
+      },
+
+      /**
+       * 获取元素相对于父元素的偏移
+       * @return {Object}
+       */
+      position: function position() {
+        var self = this;
+
+        if (!self[0]) {
+          return null;
+        }
+
+        var offsetParent;
+        var offset;
+        var parentOffset = {
+          top: 0,
+          left: 0,
+        };
+
+        if (self.css('position') === 'fixed') {
+          offset = self[0].getBoundingClientRect();
+        } else {
+          offsetParent = self.offsetParent();
+          offset = self.offset();
+          if (!isNodeName(offsetParent[0], 'html')) {
+            parentOffset = offsetParent.offset();
+          }
+
+          parentOffset = {
+            top: parentOffset.top + offsetParent.css('borderTopWidth'),
+            left: parentOffset.left + offsetParent.css('borderLeftWidth'),
+          };
+        }
+
+        return {
+          top: offset.top - parentOffset.top - self.css('marginTop'),
+          left: offset.left - parentOffset.left - self.css('marginLeft'),
+          width: offset.width,
+          height: offset.height,
+        };
+      },
+
+      /**
+       * 显示指定元素
+       * @returns {JQ}
+       */
+      show: function show() {
+        return this.each(function () {
+          if (this.style.display === 'none') {
+            this.style.display = '';
+          }
+
+          if (window.getComputedStyle(this, '').getPropertyValue('display') === 'none') {
+            this.style.display = defaultDisplay(this.nodeName);
+          }
+        });
+      },
+
+      /**
+       * 隐藏指定元素
+       * @returns {JQ}
+       */
+      hide: function hide() {
+        return this.each(function () {
+          this.style.display = 'none';
+        });
+      },
+
+      /**
+       * 切换元素的显示状态
+       * @returns {JQ}
+       */
+      toggle: function toggle() {
+        return this.each(function () {
+          this.style.display = this.style.display === 'none' ? '' : 'none';
+        });
+      },
+
+      /**
+       * 是否含有指定的 CSS 类
+       * @param className {String}
+       * @returns {boolean}
+       */
+      hasClass: function hasClass(className) {
+        if (!this[0] || !className) {
+          return false;
+        }
+
+        return this[0].classList.contains(className);
+      },
+
+      /**
+       * 移除指定属性
+       * @param attr {String}
+       * @returns {JQ}
+       */
+      removeAttr: function removeAttr(attr) {
+        return this.each(function () {
+          this.removeAttribute(attr);
+        });
+      },
+
+      /**
+       * 删除属性值
+       * @param name {String}
+       * @returns {JQ}
+       */
+      removeProp: function removeProp(name) {
+        return this.each(function () {
+          try {
+            delete this[name];
+          } catch (e) {
+            // empty
+          }
+        });
+      },
+
+      /**
+       * 获取当前对象中第n个元素
+       * @param index {Number}
+       * @returns {JQ}
+       */
+      eq: function eq(index) {
+        var ret = index === -1
+          ? this.slice(index)
+          : this.slice(index, +index + 1);
+
+        return new JQ(ret);
+      },
+
+      /**
+       * 获取对象中第一个元素
+       * @returns {JQ}
+       */
+      first: function first() {
+        return this.eq(0);
+      },
+
+      /**
+       * 获取对象中最后一个元素
+       * @returns {JQ}
+       */
+      last: function last() {
+        return this.eq(-1);
+      },
+
+      /**
+       * 获取一个元素的位置。
+       * 当 elem 参数没有给出时，返回当前元素在兄弟节点中的位置。
+       * 有给出了 elem 参数时，返回 elem 元素在当前对象中的位置
+       * @param elem {Selector|Node=}
+       * @returns {Number}
+       */
+      index: function index(elem) {
+        if (!elem) {
+          // 获取当前 JQ 对象的第一个元素在同辈元素中的位置
+          return this
+            .eq(0)
+            .parent()
+            .children()
+            .get()
+            .indexOf(this[0]);
+        }
+
+        if (isString(elem)) {
+          // 返回当前 JQ 对象的第一个元素在指定选择器对应的元素中的位置
+          return $$1(elem)
+            .eq(0)
+            .parent()
+            .children()
+            .get()
+            .indexOf(this[0]);
+        }
+
+        // 返回指定元素在当前 JQ 对象中的位置
+        return this
+          .get()
+          .indexOf(elem);
+      },
+
+      /**
+       * 根据选择器、DOM元素或 JQ 对象来检测匹配元素集合，
+       * 如果其中至少有一个元素符合这个给定的表达式就返回true
+       * @param selector {String|Node|NodeList|Array|JQ|Window}
+       * @returns boolean
+       */
+      is: function is(selector) {
+        var self = this[0];
+
+        if (!self || selector === undefined || selector === null) {
+          return false;
+        }
+
+        if (isString(selector)) {
+          if (self === document || self === window) {
+            return false;
+          }
+
+          var matchesSelector = self.matches
+            || self.matchesSelector
+            || self.webkitMatchesSelector
+            || self.mozMatchesSelector
+            || self.oMatchesSelector
+            || self.msMatchesSelector;
+
+          return matchesSelector.call(self, selector);
+        }
+
+        if (selector === document || selector === window) {
+          return self === selector;
+        }
+
+        if (selector.nodeType || isArrayLike(selector)) {
+          var $compareWith = selector.nodeType ? [selector] : selector;
+
+          for (var i = 0; i < $compareWith.length; i += 1) {
+            if ($compareWith[i] === self) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        return false;
+      },
+
+      /**
+       * 根据 CSS 选择器找到后代节点的集合
+       * @param selector {String}
+       * @returns {JQ}
+       */
+      find: function find(selector) {
+        var foundElements = [];
+
+        this.each(function (i, _this) {
+          var nodeType = _this.nodeType;
+
+          if (nodeType !== 1 && nodeType !== 9) {
+            // 不是 element 和 document 则跳过
+            return;
+          }
+
+          merge(foundElements, _this.querySelectorAll(selector));
+        });
+
+        return new JQ(foundElements);
+      },
+
+      /**
+       * 找到直接子元素的元素集合
+       * @param selector {String=}
+       * @returns {JQ}
+       */
+      children: function children(selector) {
+        var children = [];
+
+        this.each(function (_, _this) {
+          each(_this.childNodes, function (__, childNode) {
+            if (childNode.nodeType !== 1) {
+              return;
+            }
+
+            if (!selector || (selector && $$1(childNode).is(selector))) {
+              children.push(childNode);
+            }
+          });
+        });
+
+        return new JQ(unique(children));
+      },
+
+      /**
+       * 保留含有指定子元素的元素，去掉不含有指定子元素的元素
+       * @param selector {String|Node|JQ|NodeList|Array}
+       * @return {JQ}
+       */
+      has: function has(selector) {
+        var $targets = isString(selector) ? this.find(selector) : $$1(selector);
+        var length = $targets.length;
+
+        return this.filter(function () {
+          var this$1 = this;
+
+          for (var i = 0; i < length; i += 1) {
+            if ($$1.contains(this$1, $targets[i])) {
+              return true;
+            }
+          }
+
+          return false;
+        });
+      },
+
+      /**
+       * 取得同辈元素的集合
+       * @param selector {String=}
+       * @returns {JQ}
+       */
+      siblings: function siblings(selector) {
+        return this.prevAll(selector).add(this.nextAll(selector));
+      },
+
+      /**
+       * 返回首先匹配到的父节点，包含父节点
+       * @param selector {String}
+       * @returns {JQ}
+       */
+      closest: function closest(selector) {
+        var self = this;
+
+        if (!self.is(selector)) {
+          self = self.parents(selector).eq(0);
+        }
+
+        return self;
+      },
+
+      /**
+       * 删除所有匹配的元素
+       * @returns {JQ}
+       */
+      remove: function remove() {
+        return this.each(function (i, _this) {
+          if (_this.parentNode) {
+            _this.parentNode.removeChild(_this);
+          }
+        });
+      },
+
+      /**
+       * 添加匹配的元素到当前对象中
+       * @param selector {String|JQ}
+       * @returns {JQ}
+       */
+      add: function add(selector) {
+        return new JQ(unique(merge(this.get(), $$1(selector))));
+      },
+
+      /**
+       * 删除子节点
+       * @returns {JQ}
+       */
+      empty: function empty() {
+        return this.each(function () {
+          this.innerHTML = '';
+        });
+      },
+
+      /**
+       * 通过深度克隆来复制集合中的所有元素。
+       * (通过原生 cloneNode 方法深度克隆来复制集合中的所有元素。此方法不会有数据和事件处理程序复制到新的元素。这点和jquery中利用一个参数来确定是否复制数据和事件处理不相同。)
+       * @returns {JQ}
+       */
+      clone: function clone() {
+        return this.map(function () {
+          return this.cloneNode(true);
+        });
+      },
+
+      /**
+       * 用新元素替换当前元素
+       * @param newContent {String|Node|NodeList|JQ}
+       * @returns {JQ}
+       */
+      replaceWith: function replaceWith(newContent) {
+        return this.before(newContent).remove();
+      },
+
+      /**
+       * 将表单元素的值组合成键值对数组
+       * @returns {Array}
+       */
+      serializeArray: function serializeArray() {
+        var result = [];
+        var elem = this[0];
+
+        if (!elem || !elem.elements) {
+          return result;
+        }
+
+        $$1([].slice.call(elem.elements)).each(function () {
+          var $elem = $$1(this);
+          var type = $elem.attr('type');
+          if (
+            this.nodeName.toLowerCase() !== 'fieldset'
+            && !this.disabled
+            && ['submit', 'reset', 'button'].indexOf(type) === -1
+            && (['radio', 'checkbox'].indexOf(type) === -1 || this.checked)
+          ) {
+            result.push({
+              name: $elem.attr('name'),
+              value: $elem.val(),
+            });
+          }
+        });
+
+        return result;
+      },
+
+      /**
+       * 将表单元素或对象序列化
+       * @returns {String}
+       */
+      serialize: function serialize() {
+        var result = [];
+
+        each(this.serializeArray(), function (i, elem) {
+          result.push(((encodeURIComponent(elem.name)) + "=" + (encodeURIComponent(elem.value))));
+        });
+
+        return result.join('&');
+      },
+    });
+
+    /**
+     * val - 获取或设置元素的值
+     * @param value {String=}
+     * @return {*|JQ}
+     */
+    /**
+     * html - 获取或设置元素的 HTML
+     * @param value {String=}
+     * @return {*|JQ}
+     */
+    /**
+     * text - 获取或设置元素的内容
+     * @param value {String=}
+     * @return {*|JQ}
+     */
+    each(['val', 'html', 'text'], function (nameIndex, name) {
+      var props = {
+        0: 'value',
+        1: 'innerHTML',
+        2: 'textContent',
+      };
+
+      var defaults = {
+        0: undefined,
+        1: undefined,
+        2: null,
+      };
+
+      $$1.fn[name] = function (value) {
+        if (value === undefined) {
+          // 获取值
+          return this[0] ? this[0][props[nameIndex]] : defaults[nameIndex];
+        }
+
+        // 设置值
+        return this.each(function (i, elem) {
+          elem[props[nameIndex]] = value;
+        });
+      };
+    });
+
+    /**
+     * attr - 获取或设置元素的属性值
+     * @param {name|props|key,value=}
+     * @return {String|JQ}
+     */
+    /**
+     * prop - 获取或设置元素的属性值
+     * @param {name|props|key,value=}
+     * @return {String|JQ}
+     */
+    /**
+     * css - 获取或设置元素的样式
+     * @param {name|props|key,value=}
+     * @return {String|JQ}
+     */
+    each(['attr', 'prop', 'css'], function (nameIndex, name) {
+      function set(elem, key, value) {
+        if (nameIndex === 0) {
+          elem.setAttribute(key, value);
+        } else if (nameIndex === 1) {
+          elem[key] = value;
+        } else {
+          elem.style[key] = value;
+        }
+      }
+
+      function get(elem, key) {
+        if (!elem) {
+          return undefined;
+        }
+
+        if (nameIndex === 0) {
+          return elem.getAttribute(key);
+        }
+
+        if (nameIndex === 1) {
+          return elem[key];
+        }
+
+        return window.getComputedStyle(elem, null).getPropertyValue(key);
+      }
+
+      $$1.fn[name] = function (key, value) {
+        var argLength = arguments.length;
+
+        if (argLength === 1 && isString(key)) {
+          // 获取值
+          return get(this[0], key);
+        }
+
+        // 设置值
+        return this.each(function (i, elem) {
+          if (argLength === 2) {
+            set(elem, key, value);
+          } else {
+            each(key, function (k, v) {
+              set(elem, k, v);
+            });
+          }
+        });
+      };
+    });
+
+    /**
+     * addClass - 添加 CSS 类，多个类名用空格分割
+     * @param className {String}
+     * @return {JQ}
+     */
+    /**
+     * removeClass - 移除 CSS 类，多个类名用空格分割
+     * @param className {String}
+     * @return {JQ}
+     */
+    /**
+     * toggleClass - 切换 CSS 类名，多个类名用空格分割
+     * @param className {String}
+     * @return {JQ}
+     */
+    each(['add', 'remove', 'toggle'], function (nameIndex, name) {
+      $$1.fn[(name + "Class")] = function (className) {
+        if (!className) {
+          return this;
+        }
+
+        var classes = className.split(' ');
+
+        return this.each(function (i, elem) {
+          each(classes, function (j, cls) {
+            elem.classList[name](cls);
+          });
+        });
+      };
+    });
+
+    /**
+     * width - 获取元素的宽度
+     * @return {Number}
+     */
+    /**
+     * height - 获取元素的高度
+     * @return {Number}
+     */
+    each({
+      Width: 'width',
+      Height: 'height',
+    }, function (prop, name) {
+      $$1.fn[name] = function (val) {
+        if (val === undefined) {
+          // 获取
+          var elem = this[0];
+
+          if (isWindow(elem)) {
+            return elem[("inner" + prop)];
+          }
+
+          if (isDocument(elem)) {
+            return elem.documentElement[("scroll" + prop)];
+          }
+
+          var $elem = $$1(elem);
+
+          // IE10、IE11 在 box-sizing:border-box 时，不会包含 padding 和 border，这里进行修复
+          var IEFixValue = 0;
+          var isWidth = name === 'width';
+          if ('ActiveXObject' in window) { // 判断是 IE 浏览器
+            if ($elem.css('box-sizing') === 'border-box') {
+              IEFixValue = parseFloat($elem.css(("padding-" + (isWidth ? 'left' : 'top'))))
+                + parseFloat($elem.css(("padding-" + ((isWidth ? 'right' : 'bottom')))))
+                + parseFloat($elem.css(("border-" + (isWidth ? 'left' : 'top') + "-width")))
+                + parseFloat($elem.css(("border-" + (isWidth ? 'right' : 'bottom') + "-width")));
+            }
+          }
+
+          return parseFloat($$1(elem).css(name)) + IEFixValue;
+        }
+
+        // 设置
+        /* eslint no-restricted-globals: 0 */
+        if (!isNaN(Number(val)) && val !== '') {
+          val += 'px';
+        }
+
+        return this.css(name, val);
+      };
+    });
+
+    /**
+     * innerWidth - 获取元素的宽度，包含内边距
+     * @return {Number}
+     */
+    /**
+     * innerHeight - 获取元素的高度，包含内边距
+     * @return {Number}
+     */
+    each({
+      Width: 'width',
+      Height: 'height',
+    }, function (prop, name) {
+      $$1.fn[("inner" + prop)] = function () {
+        var value = this[name]();
+        var $elem = $$1(this[0]);
+
+        if ($elem.css('box-sizing') !== 'border-box') {
+          value += parseFloat($elem.css(("padding-" + (name === 'width' ? 'left' : 'top'))));
+          value += parseFloat($elem.css(("padding-" + (name === 'width' ? 'right' : 'bottom'))));
+        }
+
+        return value;
+      };
+    });
+
+    function dir(nodes, selector, nameIndex, node) {
+      var ret = [];
+      var elem;
+
+      nodes.each(function (j, _this) {
+        elem = _this[node];
+        while (elem) {
+          if (nameIndex === 2) {
+            // prevUntil
+            if (!selector || (selector && $$1(elem).is(selector))) {
+              break;
+            }
+
+            ret.push(elem);
+          } else if (nameIndex === 0) {
+            // prev
+            if (!selector || (selector && $$1(elem).is(selector))) {
+              ret.push(elem);
+            }
+
+            break;
+          } else if (!selector || (selector && $$1(elem).is(selector))) {
+            // prevAll
+            ret.push(elem);
+          }
+
+          elem = elem[node];
+        }
+      });
+
+      return new JQ(unique(ret));
+    }
+
+    /**
+     * prev - 取得前一个匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * prevAll - 取得前面所有匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * prevUntil - 取得前面的所有元素，直到遇到匹配的元素，不包含匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    each(['', 'All', 'Until'], function (nameIndex, name) {
+      $$1.fn[("prev" + name)] = function (selector) {
+        // prevAll、prevUntil 需要把元素的顺序倒序处理，以便和 jQuery 的结果一致
+        var $nodes = nameIndex === 0 ? this : $$1(this.get().reverse());
+
+        return dir($nodes, selector, nameIndex, 'previousElementSibling');
+      };
+    });
+
+    /**
+     * next - 取得后一个匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * nextAll - 取得后面所有匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * nextUntil - 取得后面所有匹配的元素，直到遇到匹配的元素，不包含匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    each(['', 'All', 'Until'], function (nameIndex, name) {
+      $$1.fn[("next" + name)] = function (selector) {
+        return dir(this, selector, nameIndex, 'nextElementSibling');
+      };
+    });
+
+    /**
+     * parent - 取得匹配的直接父元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * parents - 取得所有匹配的父元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    /**
+     * parentUntil - 取得所有的父元素，直到遇到匹配的元素，不包含匹配的元素
+     * @param selector {String=}
+     * @return {JQ}
+     */
+    each(['', 's', 'sUntil'], function (nameIndex, name) {
+      $$1.fn[("parent" + name)] = function (selector) {
+        // parents、parentsUntil 需要把元素的顺序反向处理，以便和 jQuery 的结果一致
+        var $nodes = nameIndex === 0 ? this : $$1(this.get().reverse());
+
+        return dir($nodes, selector, nameIndex, 'parentNode');
+      };
+    });
+
+    /**
+     * append - 在元素内部追加内容
+     * @param newChild {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * prepend - 在元素内部前置内容
+     * @param newChild {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    each(['append', 'prepend'], function (nameIndex, name) {
+      $$1.fn[name] = function (newChild) {
+        var newChilds;
+        var copyByClone = this.length > 1;
+
+        if (isString(newChild)) {
+          var tempDiv = document.createElement('div');
+          tempDiv.innerHTML = newChild;
+          newChilds = [].slice.call(tempDiv.childNodes);
+        } else {
+          newChilds = $$1(newChild).get();
+        }
+
+        if (nameIndex === 1) {
+          // prepend
+          newChilds.reverse();
+        }
+
+        return this.each(function (i, _this) {
+          each(newChilds, function (j, child) {
+            // 一个元素要同时追加到多个元素中，需要先复制一份，然后追加
+            if (copyByClone && i > 0) {
+              child = child.cloneNode(true);
+            }
+
+            if (nameIndex === 0) {
+              // append
+              _this.appendChild(child);
+            } else {
+              // prepend
+              _this.insertBefore(child, _this.childNodes[0]);
+            }
+          });
+        });
+      };
+    });
+
+    /**
+     * insertBefore - 插入到指定元素的前面
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * insertAfter - 插入到指定元素的后面
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    each(['insertBefore', 'insertAfter'], function (nameIndex, name) {
+      $$1.fn[name] = function (selector) {
+        var $elem = $$1(selector);
+
+        return this.each(function (i, _this) {
+          $elem.each(function (j, elem) {
+            elem.parentNode.insertBefore(
+              $elem.length === 1 ? _this : _this.cloneNode(true),
+              nameIndex === 0 ? elem : elem.nextSibling
+            );
+          });
+        });
+      };
+    });
+
+    /**
+     * appendTo - 追加到指定元素内容
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * prependTo - 前置到指定元素内部
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * before - 插入到指定元素前面
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * after - 插入到指定元素后面
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    /**
+     * replaceAll - 替换掉指定元素
+     * @param selector {String|Node|NodeList|JQ}
+     * @return {JQ}
+     */
+    each({
+      appendTo: 'append',
+      prependTo: 'prepend',
+      before: 'insertBefore',
+      after: 'insertAfter',
+      replaceAll: 'replaceWith',
+    }, function (name, original) {
+      $$1.fn[name] = function (selector) {
+        $$1(selector)[original](this);
+        return this;
+      };
+    });
+
+    var dataNS = 'mduiElementDataStorage';
+
+    $$1.extend({
+      /**
+       * 在指定元素上存储数据，或从指定元素上读取数据
+       * @param elem 必须， DOM 元素
+       * @param key 必须，键名
+       * @param value 可选，值
+       */
+      data: function data(elem, key, value) {
+        var data = {};
+
+        if (value !== undefined) {
+          // 根据 key、value 设置值
+          data[key] = value;
+        } else if (isObjectLike(key)) {
+          // 根据键值对设置值
+          data = key;
+        } else if (key === undefined) {
+          // 获取所有值
+          var result = {};
+
+          each(elem.attributes, function (i, attribute) {
+            var name = attribute.name;
+
+            if (name.indexOf('data-') === 0) {
+              var prop = name.slice(5).replace(/-./g, function (u) { return u.charAt(1).toUpperCase(); });
+
+              result[prop] = attribute.value;
+            }
+          });
+
+          if (elem[dataNS]) {
+            each(elem[dataNS], function (k, v) {
+              result[k] = v;
+            });
+          }
+
+          return result;
+        } else if (elem[dataNS] && (key in elem[dataNS])) {
+          // 获取指定值
+          return elem[dataNS][key];
+        } else {
+          // 从 data- 中获取指定值
+          var dataKey = elem.getAttribute(("data-" + key));
+
+          if (dataKey) {
+            return dataKey;
+          }
+
+          return undefined;
+        }
+
+        // 设置值
+        if (!elem[dataNS]) {
+          elem[dataNS] = {};
+        }
+
+        each(data, function (k, v) {
+          elem[dataNS][k] = v;
+        });
+
+        return undefined;
+      },
+
+      /**
+       * 移除指定元素上存放的数据
+       * @param elem 必须，DOM 元素
+       * @param key 必须，键名
+       */
+      removeData: function removeData(elem, key) {
+        if (elem[dataNS] && elem[dataNS][key]) {
+          elem[dataNS][key] = null;
+          delete elem[dataNS][key];
+        }
+      },
+    });
+
+    $$1.fn.extend({
+      /**
+       * 在元素上读取或设置数据
+       * @param key 必须
+       * @param value
+       * @returns {*}
+       */
+      data: function data(key, value) {
+        if (value === undefined) {
+          if (isObjectLike(key)) {
+            // 同时设置多个值
+            return this.each(function (i, elem) {
+              $$1.data(elem, key);
+            });
+          }
+
+          if (this[0]) {
+            // 获取值
+            return $$1.data(this[0], key);
+          }
+
+          return undefined;
+        }
+
+        // 设置值
+        return this.each(function (i, elem) {
+          $$1.data(elem, key, value);
+        });
+      },
+
+      /**
+       * 移除元素上存储的数据
+       * @param key 必须
+       * @returns {*}
+       */
+      removeData: function removeData(key) {
+        return this.each(function (i, elem) {
+          $$1.removeData(elem, key);
+        });
+      },
+    });
+
+    !function(){!function(){try{return new e("test"),!1}catch(e){}var e=function(e,n){n=n||{bubbles:!1,cancelable:!1};var t=document.createEvent("MouseEvent");return t.initMouseEvent(e,n.bubbles,n.cancelable,window,0,0,0,0,0,!1,!1,!1,!1,0,null),t};e.prototype=Event.prototype,window.MouseEvent=e;}();}();
+
+    !function(){!function(){if("function"==typeof window.CustomEvent){ return!1; }function t(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var e=document.createEvent("CustomEvent");return e.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),e}t.prototype=window.Event.prototype,window.CustomEvent=t;}();}();
+
+  // 存储事件
+    var handlers = {
+      // i: { // 元素ID
+      //   j: { // 事件ID
+      //     e: 事件名
+      //     fn: 事件处理函数
+      //     i: 事件ID
+      //     proxy:
+      //     sel: 选择器
+      //   }
+      // }
+    };
+
+  // 元素ID
+    var mduiElementId = 1;
+
+    function fnFalse() {
+      return false;
+    }
+
+    /**
+     * 为元素赋予一个唯一的ID
+     * @param element
+     * @returns {number|*}
+     */
+    function getElementId(element) {
+      if (!element.mduiElementId) {
+        mduiElementId += 1;
+        element.mduiElementId = mduiElementId;
+      }
+
+      return element.mduiElementId;
+    }
+
+    /**
+     * 获取匹配的事件
+     * @param element
+     * @param eventName
+     * @param func
+     * @param selector
+     * @returns {Array}
+     */
+    function getHandlers(element, eventName, func, selector) {
+      return (handlers[getElementId(element)] || []).filter(function (handler) { return handler
+        && (!eventName || handler.e === eventName)
+        && (!func || handler.fn.toString() === func.toString())
+        && (!selector || handler.sel === selector); });
+    }
+
+    /**
+     * 添加事件监听
+     * @param element
+     * @param eventName
+     * @param func
+     * @param data
+     * @param selector
+     */
+    function add(element, eventName, func, data, selector) {
+      var elementId = getElementId(element);
+
+      if (!handlers[elementId]) {
+        handlers[elementId] = [];
+      }
+
+      // 传入 data.useCapture 来设置 useCapture: true
+      var useCapture = false;
+      if (isObjectLike(data) && data.useCapture) {
+        useCapture = true;
+      }
+
+      eventName.split(' ').forEach(function (event) {
+        var handler = {
+          e: event,
+          fn: func,
+          sel: selector,
+          i: handlers[elementId].length,
+        };
+
+        function callFn(e, elem) {
+          // 因为鼠标事件模拟事件的 detail 属性是只读的，因此在 e._detail 中存储参数
+          /* eslint no-underscore-dangle: 0 */
+          var result = func.apply(elem, e._detail === undefined ? [e] : [e].concat(e._detail));
+
+          if (result === false) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+
+        function proxyfn(e) {
+          e._data = data;
+
+          if (selector) {
+            // 事件代理
+            $$1(element)
+              .find(selector)
+              .get()
+              .reverse()
+              .forEach(function (elem) {
+                if (elem === e.target || $$1.contains(elem, e.target)) {
+                  callFn(e, elem);
+                }
+              });
+          } else {
+            // 不使用事件代理
+            callFn(e, element);
+          }
+        }
+
+        handler.proxy = proxyfn;
+        handlers[elementId].push(handler);
+        element.addEventListener(handler.e, proxyfn, useCapture);
+      });
+    }
+
+    /**
+     * 移除事件监听
+     * @param element
+     * @param eventName
+     * @param func
+     * @param selector
+     */
+    function remove(element, eventName, func, selector) {
+      (eventName || '').split(' ').forEach(function (event) {
+        getHandlers(element, event, func, selector).forEach(function (handler) {
+          delete handlers[getElementId(element)][handler.i];
+          element.removeEventListener(handler.e, handler.proxy, false);
+        });
+      });
+    }
+
+    $$1.fn.extend({
+      /**
+       * DOM 加载完毕后调用的函数
+       * @param callback
+       * @returns {ready}
+       */
+      ready: function ready(callback) {
+        if (/complete|loaded|interactive/.test(document.readyState) && document.body) {
+          callback($$1);
+        } else {
+          document.addEventListener('DOMContentLoaded', function () {
+            callback($$1);
+          }, false);
+        }
+
+        return this;
+      },
+
+      /**
+       * 绑定事件
+       *
+       * $().on({eventName: fn}, selector, data);
+       * $().on({eventName: fn}, selector)
+       * $().on({eventName: fn})
+       * $().on(eventName, selector, data, fn);
+       * $().on(eventName, selector, fn);
+       * $().on(eventName, data, fn);
+       * $().on(eventName, fn);
+       * $().on(eventName, false);
+       *
+       * @param eventName
+       * @param selector
+       * @param data
+       * @param callback
+       * @param one 是否是 one 方法，只在 JQ 内部使用
+       * @returns
+       */
+      on: function on(eventName, selector, data, callback, one) {
+        var self = this;
+
+        // 默认
+        // $().on(event, selector, data, callback)
+
+        // event 使用 事件:函数 键值对
+        // event = {
+        //   'event1': callback1,
+        //   'event2': callback2
+        // }
+        //
+        // $().on(event, selector, data)
+        if (eventName && !isString(eventName)) {
+          each(eventName, function (type, fn) {
+            self.on(type, selector, data, fn);
+          });
+
+          return self;
+        }
+
+        // selector 不存在
+        // $().on(event, data, callback)
+        if (!isString(selector) && !isFunction(callback) && callback !== false) {
+          callback = data;
+          data = selector;
+          selector = undefined;
+        }
+
+        // data 不存在
+        // $().on(event, callback)
+        if (isFunction(data) || data === false) {
+          callback = data;
+          data = undefined;
+        }
+
+        // callback 为 false
+        // $().on(event, false)
+        if (callback === false) {
+          callback = fnFalse;
+        }
+
+        if (one === 1) {
+          var origCallback = callback;
+          callback = function () {
+            self.off(eventName, selector, callback);
+            /* eslint prefer-rest-params: 0 */
+            return origCallback.apply(this, arguments);
+          };
+        }
+
+        return this.each(function () {
+          add(this, eventName, callback, data, selector);
+        });
+      },
+
+      /**
+       * 绑定事件，只触发一次
+       * @param eventName
+       * @param selector
+       * @param data
+       * @param callback
+       */
+      one: function one(eventName, selector, data, callback) {
+        var self = this;
+
+        if (!isString(eventName)) {
+          each(eventName, function (type, fn) {
+            type.split(' ').forEach(function (eName) {
+              self.on(eName, selector, data, fn, 1);
+            });
+          });
+        } else {
+          eventName.split(' ').forEach(function (eName) {
+            self.on(eName, selector, data, callback, 1);
+          });
+        }
+
+        return this;
+      },
+
+      /**
+       * 取消绑定事件
+       *
+       * $().off(eventName, selector);
+       * $().off(eventName, callback);
+       * $().off(eventName, false);
+       *
+       */
+      off: function off(eventName, selector, callback) {
+        var self = this;
+
+        // event 使用 事件:函数 键值对
+        // event = {
+        //   'event1': callback1,
+        //   'event2': callback2
+        // }
+        //
+        // $().off(event, selector)
+        if (eventName && !isString(eventName)) {
+          each(eventName, function (type, fn) {
+            self.off(type, selector, fn);
+          });
+
+          return self;
+        }
+
+        // selector 不存在
+        // $().off(event, callback)
+        if (!isString(selector) && !isFunction(callback) && callback !== false) {
+          callback = selector;
+          selector = undefined;
+        }
+
+        // callback 为 false
+        // $().off(event, false)
+        if (callback === false) {
+          callback = fnFalse;
+        }
+
+        return self.each(function () {
+          remove(this, eventName, callback, selector);
+        });
+      },
+
+      /**
+       * 触发一个事件
+       * @param eventName
+       * @param data
+       * @returns {*|JQ}
+       */
+      trigger: function trigger(eventName, data) {
+        var isMouseEvent = ['click', 'mousedown', 'mouseup', 'mousemove'].indexOf(eventName) > -1;
+        var evt;
+
+        if (isMouseEvent) {
+          // Note: MouseEvent 无法传入 detail 参数
+          evt = new MouseEvent(eventName, {
+            bubbles: true,
+            cancelable: true,
+          });
+        } else {
+          evt = new CustomEvent(eventName, {
+            detail: data,
+            bubbles: true,
+            cancelable: true,
+          });
+        }
+
+        evt._detail = data;
+
+        return this.each(function () {
+          this.dispatchEvent(evt);
+        });
+      },
+    });
+
+    var globalOptions = {};
+    var jsonpID = 0;
+
+  // 全局事件名
+    var ajaxEvent = {
+      ajaxStart: 'start.mdui.ajax',
+      ajaxSuccess: 'success.mdui.ajax',
+      ajaxError: 'error.mdui.ajax',
+      ajaxComplete: 'complete.mdui.ajax',
+    };
+
+    /**
+     * 判断此请求方法是否通过查询字符串提交参数
+     * @param method 请求方法，大写
+     * @returns {boolean}
+     */
+    function isQueryStringData(method) {
+      return ['GET', 'HEAD'].indexOf(method) >= 0;
+    }
+
+    /**
+     * 添加参数到 URL 上，且 URL 中不存在 ? 时，自动把第一个 & 替换为 ?
+     * @param url
+     * @param query 参数 key=value
+     * @returns {string}
+     */
+    function appendQuery(url, query) {
+      return ((url + "&" + query)).replace(/[&?]{1,2}/, '?');
+    }
+
+    $$1.extend({
+
+      /**
+       * 为 ajax 请求设置全局配置参数
+       * @param options
+       */
+      ajaxSetup: function ajaxSetup(options) {
+        $$1.extend(globalOptions, options || {});
+      },
+
+      /**
+       * 发送 ajax 请求
+       * @param options
+       */
+      ajax: function ajax(options) {
+        // 配置参数
+        var defaults = {
+          // 请求方式
+          method: 'GET',
+          // 请求的数据，查询字符串或对象
+          data: false,
+          // 是否把数据转换为查询字符串发送，为 false 时不进行自动转换。
+          processData: true,
+          // 是否为异步请求
+          async: true,
+          // 是否从缓存中读取，只对 GET/HEAD 请求有效，dataType 为 jsonp 时为 false
+          cache: true,
+          // HTTP 访问认证的用户名
+          username: '',
+          // HTTP 访问认证的密码
+          password: '',
+          // 一个键值对，随着请求一起发送
+          headers: {},
+          // 设置 XHR 对象
+          xhrFields: {},
+          // 一个 HTTP 代码和函数的对象
+          statusCode: {},
+          // 预期服务器返回的数据类型 text、json、jsonp
+          dataType: 'text',
+          // jsonp 请求的回调函数名称
+          jsonp: 'callback',
+          // （string 或 Function）使用指定的回调函数名代替自动生成的回调函数名
+          jsonpCallback: function () {
+            jsonpID += 1;
+
+            return ("mduijsonp_" + (Date.now()) + "_" + jsonpID);
+          },
+          // 发送信息至服务器时内容编码类型
+          contentType: 'application/x-www-form-urlencoded',
+          // 设置请求超时时间（毫秒）
+          timeout: 0,
+          // 是否在 document 上触发全局 ajax 事件
+          global: true,
+          // beforeSend:    function (XMLHttpRequest) 请求发送前执行，返回 false 可取消本次 ajax 请求
+          // success:       function (data, textStatus, XMLHttpRequest) 请求成功时调用
+          // error:         function (XMLHttpRequest, textStatus) 请求失败时调用
+          // statusCode:    {404: function ()}
+          //                200-299之间的状态码表示成功，参数和 success 回调一样；其他状态码表示失败，参数和 error 回调一样
+          // complete:      function (XMLHttpRequest, textStatus) 请求完成后回调函数 (请求成功或失败之后均调用)
+        };
+
+        // 回调函数
+        var callbacks = [
+          'beforeSend',
+          'success',
+          'error',
+          'statusCode',
+          'complete' ];
+
+        // 是否已取消请求
+        var isCanceled = false;
+
+        // 保存全局配置
+        var globals = globalOptions;
+
+        // 事件参数
+        var eventParams = {};
+
+        // 合并全局参数到默认参数，全局回调函数不覆盖
+        each(globals, function (key, value) {
+          if (callbacks.indexOf(key) < 0) {
+            defaults[key] = value;
+          }
+        });
+
+        // 参数合并
+        options = $$1.extend({}, defaults, options);
+
+        /**
+         * 触发全局事件
+         * @param event string 事件名
+         * @param xhr XMLHttpRequest 事件参数
+         */
+        function triggerEvent(event, xhr) {
+          if (options.global) {
+            $$1(document).trigger(event, xhr);
+          }
+        }
+
+        /**
+         * 触发 XHR 回调和事件
+         * @param callback string 回调函数名称
+         * @param args
+         */
+        function triggerCallback(callback) {
+          var args = [], len = arguments.length - 1;
+          while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+          var result1;
+          var result2;
+
+          if (callback) {
+            // 全局回调
+            if (callback in globals) {
+              result1 = globals[callback].apply(globals, args);
+            }
+
+            // 自定义回调
+            if (options[callback]) {
+              result2 = options[callback].apply(options, args);
+            }
+
+            // beforeSend 回调返回 false 时取消 ajax 请求
+            if (callback === 'beforeSend' && (result1 === false || result2 === false)) {
+              isCanceled = true;
+            }
+          }
+        }
+
+        // 请求方式转为大写
+        var method = options.method.toUpperCase();
+
+        // 默认使用当前页面 URL
+        if (!options.url) {
+          options.url = window.location.toString();
+        }
+
+        // 需要发送的数据
+        // GET/HEAD 请求和 processData 为 true 时，转换为查询字符串格式，特殊格式不转换
+        var sendData;
+        if (
+          (isQueryStringData(method) || options.processData)
+          && options.data
+          && [ArrayBuffer, Blob, Document, FormData].indexOf(options.data.constructor) < 0
+        ) {
+          sendData = isString(options.data) ? options.data : $$1.param(options.data);
+        } else {
+          sendData = options.data;
+        }
+
+        // 对于 GET、HEAD 类型的请求，把 data 数据添加到 URL 中
+        if (isQueryStringData(method) && sendData) {
+          // 查询字符串拼接到 URL 中
+          options.url = appendQuery(options.url, sendData);
+          sendData = null;
+        }
+
+        // JSONP
+        if (options.dataType === 'jsonp') {
+          // URL 中添加自动生成的回调函数名
+          var callbackName = isFunction(options.jsonpCallback)
+            ? options.jsonpCallback()
+            : options.jsonpCallback;
+          var requestUrl = appendQuery(options.url, ((options.jsonp) + "=" + callbackName));
+
+          eventParams.options = options;
+
+          triggerEvent(ajaxEvent.ajaxStart, eventParams);
+          triggerCallback('beforeSend', null);
+
+          if (isCanceled) {
+            return undefined;
+          }
+
+          var abortTimeout;
+
+          // 创建 script
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+
+          // 创建 script 失败
+          script.onerror = function () {
+            if (abortTimeout) {
+              clearTimeout(abortTimeout);
+            }
+
+            triggerEvent(ajaxEvent.ajaxError, eventParams);
+            triggerCallback('error', null, 'scripterror');
+
+            triggerEvent(ajaxEvent.ajaxComplete, eventParams);
+            triggerCallback('complete', null, 'scripterror');
+          };
+
+          script.src = requestUrl;
+
+          // 处理
+          window[callbackName] = function (data) {
+            if (abortTimeout) {
+              clearTimeout(abortTimeout);
+            }
+
+            eventParams.data = data;
+
+            triggerEvent(ajaxEvent.ajaxSuccess, eventParams);
+            triggerCallback('success', data, 'success', null);
+
+            $$1(script).remove();
+            script = null;
+            delete window[callbackName];
+          };
+
+          $$1('head').append(script);
+
+          if (options.timeout > 0) {
+            abortTimeout = setTimeout(function () {
+              $$1(script).remove();
+              script = null;
+
+              triggerEvent(ajaxEvent.ajaxError, eventParams);
+              triggerCallback('error', null, 'timeout');
+            }, options.timeout);
+          }
+
+          return undefined;
+        }
+
+        // GET/HEAD 请求的缓存处理
+        if (isQueryStringData(method) && !options.cache) {
+          options.url = appendQuery(options.url, ("_=" + (Date.now())));
+        }
+
+        // 创建 XHR
+        var xhr = new XMLHttpRequest();
+
+        xhr.open(method, options.url, options.async, options.username, options.password);
+
+        if (
+          options.contentType
+          || (
+            sendData
+            && !isQueryStringData(method)
+            && options.contentType !== false
+          )
+        ) {
+          xhr.setRequestHeader('Content-Type', options.contentType);
+        }
+
+        // 设置 Accept
+        if (options.dataType === 'json') {
+          xhr.setRequestHeader('Accept', 'application/json, text/javascript');
+        }
+
+        // 添加 headers
+        if (options.headers) {
+          each(options.headers, function (key, value) {
+            xhr.setRequestHeader(key, value);
+          });
+        }
+
+        // 检查是否是跨域请求
+        if (options.crossDomain === undefined) {
+          options.crossDomain = /^([\w-]+:)?\/\/([^/]+)/.test(options.url)
+            && RegExp.$2 !== window.location.host;
+        }
+
+        if (!options.crossDomain) {
+          xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        }
+
+        if (options.xhrFields) {
+          each(options.xhrFields, function (key, value) {
+            xhr[key] = value;
+          });
+        }
+
+        eventParams.xhr = xhr;
+        eventParams.options = options;
+
+        var xhrTimeout;
+
+        xhr.onload = function () {
+          if (xhrTimeout) {
+            clearTimeout(xhrTimeout);
+          }
+
+          // 包含成功或错误代码的字符串
+          var textStatus;
+
+          // AJAX 返回的 HTTP 响应码是否表示成功
+          var isHttpStatusSuccess = (xhr.status >= 200 && xhr.status < 300) || xhr.status === 0;
+
+          var responseData;
+
+          if (isHttpStatusSuccess) {
+            if (xhr.status === 204 || method === 'HEAD') {
+              textStatus = 'nocontent';
+            } else if (xhr.status === 304) {
+              textStatus = 'notmodified';
+            } else {
+              textStatus = 'success';
+            }
+
+            if (options.dataType === 'json') {
+              try {
+                responseData = JSON.parse(xhr.responseText);
+                eventParams.data = responseData;
+              } catch (err) {
+                textStatus = 'parsererror';
+
+                triggerEvent(ajaxEvent.ajaxError, eventParams);
+                triggerCallback('error', xhr, textStatus);
+              }
+
+              if (textStatus !== 'parsererror') {
+                triggerEvent(ajaxEvent.ajaxSuccess, eventParams);
+                triggerCallback('success', responseData, textStatus, xhr);
+              }
+            } else {
+              responseData = xhr.responseType === 'text' || xhr.responseType === ''
+                ? xhr.responseText
+                : xhr.response;
+              eventParams.data = responseData;
+
+              triggerEvent(ajaxEvent.ajaxSuccess, eventParams);
+              triggerCallback('success', responseData, textStatus, xhr);
+            }
+          } else {
+            textStatus = 'error';
+
+            triggerEvent(ajaxEvent.ajaxError, eventParams);
+            triggerCallback('error', xhr, textStatus);
+          }
+
+          // statusCode
+          each([globals.statusCode, options.statusCode], function (i, func) {
+            if (func && func[xhr.status]) {
+              if (isHttpStatusSuccess) {
+                func[xhr.status](responseData, textStatus, xhr);
+              } else {
+                func[xhr.status](xhr, textStatus);
+              }
+            }
+          });
+
+          triggerEvent(ajaxEvent.ajaxComplete, eventParams);
+          triggerCallback('complete', xhr, textStatus);
+        };
+
+        xhr.onerror = function () {
+          if (xhrTimeout) {
+            clearTimeout(xhrTimeout);
+          }
+
+          triggerEvent(ajaxEvent.ajaxError, eventParams);
+          triggerCallback('error', xhr, xhr.statusText);
+
+          triggerEvent(ajaxEvent.ajaxComplete, eventParams);
+          triggerCallback('complete', xhr, 'error');
+        };
+
+        xhr.onabort = function () {
+          var textStatus = 'abort';
+
+          if (xhrTimeout) {
+            textStatus = 'timeout';
+            clearTimeout(xhrTimeout);
+          }
+
+          triggerEvent(ajaxEvent.ajaxError, eventParams);
+          triggerCallback('error', xhr, textStatus);
+
+          triggerEvent(ajaxEvent.ajaxComplete, eventParams);
+          triggerCallback('complete', xhr, textStatus);
+        };
+
+        // ajax start 回调
+        triggerEvent(ajaxEvent.ajaxStart, eventParams);
+        triggerCallback('beforeSend', xhr);
+
+        if (isCanceled) {
+          return xhr;
+        }
+
+        // Timeout
+        if (options.timeout > 0) {
+          xhrTimeout = setTimeout(function () {
+            xhr.abort();
+          }, options.timeout);
+        }
+
+        // 发送 XHR
+        xhr.send(sendData);
+
+        return xhr;
+      },
+    });
+
+  // 监听全局事件
+  //
+  // 通过 $(document).on('success.mdui.ajax', function (event, params) {}) 调用时，包含两个参数
+  // event: 事件对象
+  // params: {
+  //   xhr: XMLHttpRequest 对象
+  //   options: ajax 请求的配置参数
+  //   data: ajax 请求返回的数据
+  // }
+
+  // 全局 Ajax 事件快捷方法
+  // $(document).ajaxStart(function (event, xhr, options) {})
+  // $(document).ajaxSuccess(function (event, xhr, options, data) {})
+  // $(document).ajaxError(function (event, xhr, options) {})
+  // $(document).ajaxComplete(function (event, xhr, options) {})
+    each(ajaxEvent, function (name, eventName) {
+      $$1.fn[name] = function (fn) {
+        return this.on(eventName, function (e, params) {
+          fn(e, params.xhr, params.options, params.data);
+        });
+      };
+    });
+
+    return $$1;
+
+  }());
+
+
+  /**
+   * =============================================================================
+   * ************   定义全局变量   ************
+   * =============================================================================
+   */
+
+  var $document = $(document);
+  var $window = $(window);
+
+  /**
+   * 队列 -- 当前队列的 api 和 jquery 不一样，所以不打包进 mdui.JQ 里
+   */
+  var queue = {};
+  (function () {
+    var queueData = [];
+
+    /**
+     * 写入队列
+     * @param queueName 对列名
+     * @param func 函数名，该参数为空时，返回所有队列
+     */
+    queue.queue = function (queueName, func) {
+      if (queueData[queueName] === undefined) {
+        queueData[queueName] = [];
+      }
+
+      if (func === undefined) {
+        return queueData[queueName];
+      }
+
+      queueData[queueName].push(func);
+    };
+
+    /**
+     * 从队列中移除第一个函数，并执行该函数
+     * @param queueName
+     */
+    queue.dequeue = function (queueName) {
+      if (queueData[queueName] !== undefined && queueData[queueName].length) {
+        (queueData[queueName].shift())();
+      }
+    };
+
+  })();
+
+  /**
+   * touch 事件后的 500ms 内禁用 mousedown 事件
+   *
+   * 不支持触控的屏幕上事件顺序为 mousedown -> mouseup -> click
+   * 支持触控的屏幕上事件顺序为 touchstart -> touchend -> mousedown -> mouseup -> click
+   */
+  var TouchHandler = {
+    touches: 0,
+
+    /**
+     * 该事件是否被允许
+     * 在执行事件前调用该方法判断事件是否可以执行
+     * @param e
+     * @returns {boolean}
+     */
+    isAllow: function (e) {
+      var allow = true;
+
+      if (
+        TouchHandler.touches &&
+        [
+          'mousedown',
+          'mouseup',
+          'mousemove',
+          'click',
+          'mouseover',
+          'mouseout',
+          'mouseenter',
+          'mouseleave',
+        ].indexOf(e.type) > -1
+      ) {
+        // 触发了 touch 事件后阻止鼠标事件
+        allow = false;
+      }
+
+      return allow;
+    },
+
+    /**
+     * 在 touchstart 和 touchmove、touchend、touchcancel 事件中调用该方法注册事件
+     * @param e
+     */
+    register: function (e) {
+      if (e.type === 'touchstart') {
+        // 触发了 touch 事件
+        TouchHandler.touches += 1;
+      } else if (['touchmove', 'touchend', 'touchcancel'].indexOf(e.type) > -1) {
+        // touch 事件结束 500ms 后解除对鼠标事件的阻止
+        setTimeout(function () {
+          if (TouchHandler.touches) {
+            TouchHandler.touches -= 1;
+          }
+        }, 500);
+      }
+    },
+
+    start: 'touchstart mousedown',
+    move: 'touchmove mousemove',
+    end: 'touchend mouseup',
+    cancel: 'touchcancel mouseleave',
+    unlock: 'touchend touchmove touchcancel',
+  };
+
+  // 测试事件
+  // 在每一个事件中都使用 TouchHandler.isAllow(e) 判断事件是否可执行
+  // 在 touchstart 和 touchmove、touchend、touchcancel
+  // (function () {
+  //
+  //   $document
+  //     .on(TouchHandler.start, function (e) {
+  //       if (!TouchHandler.isAllow(e)) {
+  //         return;
+  //       }
+  //       TouchHandler.register(e);
+  //       console.log(e.type);
+  //     })
+  //     .on(TouchHandler.move, function (e) {
+  //       if (!TouchHandler.isAllow(e)) {
+  //         return;
+  //       }
+  //       console.log(e.type);
+  //     })
+  //     .on(TouchHandler.end, function (e) {
+  //       if (!TouchHandler.isAllow(e)) {
+  //         return;
+  //       }
+  //       console.log(e.type);
+  //     })
+  //     .on(TouchHandler.unlock, TouchHandler.register);
+  // })();
+
+  $(function () {
+    // 避免页面加载完后直接执行css动画
+    // https://css-tricks.com/transitions-only-after-page-load/
+
+    setTimeout(function () {
+      $('body').addClass('mdui-loaded');
+    }, 0);
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   MDUI 内部使用的函数   ************
+   * =============================================================================
+   */
+
+  /**
+   * 解析 DATA API 的参数
+   * @param str
+   * @returns {*}
+   */
+  var parseOptions = function (str) {
+    var options = {};
+
+    if (str === null || !str) {
+      return options;
+    }
+
+    if (typeof str === 'object') {
+      return str;
+    }
+
+    /* jshint ignore:start */
+    var start = str.indexOf('{');
+    try {
+      options = (new Function('',
+        'var json = ' + str.substr(start) +
+        '; return JSON.parse(JSON.stringify(json));'))();
+    } catch (e) {
+    }
+    /* jshint ignore:end */
+
+    return options;
+  };
+
+  /**
+   * 绑定组件的事件
+   * @param eventName 事件名
+   * @param pluginName 插件名
+   * @param inst 插件实例
+   * @param trigger 在该元素上触发
+   * @param obj 事件参数
+   */
+  var componentEvent = function (eventName, pluginName, inst, trigger, obj) {
+    if (!obj) {
+      obj = {};
+    }
+
+    obj.inst = inst;
+
+    var fullEventName = eventName + '.mdui.' + pluginName;
+
+    // jQuery 事件
+    if (typeof jQuery !== 'undefined') {
+      jQuery(trigger).trigger(fullEventName, obj);
+    }
+
+    // JQ 事件
+    $(trigger).trigger(fullEventName, obj);
+  };
+
+
+  /**
+   * =============================================================================
+   * ************   开放的常用方法   ************
+   * =============================================================================
+   */
+
+  $.fn.extend({
+
+    /**
+     * 执行强制重绘
+     */
+    reflow: function () {
+      return this.each(function () {
+        return this.clientLeft;
+      });
+    },
+
+    /**
+     * 设置 transition 时间
+     * @param duration
+     */
+    transition: function (duration) {
+      if (typeof duration !== 'string') {
+        duration = duration + 'ms';
+      }
+
+      return this.each(function () {
+        this.style.webkitTransitionDuration = duration;
+        this.style.transitionDuration = duration;
+      });
+    },
+
+    /**
+     * transition 动画结束回调
+     * @param callback
+     * @returns {transitionEnd}
+     */
+    transitionEnd: function (callback) {
+      var events = [
+          'webkitTransitionEnd',
+          'transitionend',
+        ];
+      var i;
+      var _this = this;
+
+      function fireCallBack(e) {
+        if (e.target !== this) {
+          return;
+        }
+
+        callback.call(this, e);
+
+        for (i = 0; i < events.length; i++) {
+          _this.off(events[i], fireCallBack);
+        }
+      }
+
+      if (callback) {
+        for (i = 0; i < events.length; i++) {
+          _this.on(events[i], fireCallBack);
+        }
+      }
+
+      return this;
+    },
+
+    /**
+     * 设置 transform-origin 属性
+     * @param transformOrigin
+     */
+    transformOrigin: function (transformOrigin) {
+      return this.each(function () {
+        this.style.webkitTransformOrigin = transformOrigin;
+        this.style.transformOrigin = transformOrigin;
+      });
+    },
+
+    /**
+     * 设置 transform 属性
+     * @param transform
+     */
+    transform: function (transform) {
+      return this.each(function () {
+        this.style.webkitTransform = transform;
+        this.style.transform = transform;
+      });
+    },
+
+  });
+
+  $.extend({
+    /**
+     * 创建并显示遮罩
+     * @param zIndex 遮罩层的 z-index
+     */
+    showOverlay: function (zIndex) {
+      var $overlay = $('.mdui-overlay');
+
+      if ($overlay.length) {
+        $overlay.data('isDeleted', 0);
+
+        if (zIndex !== undefined) {
+          $overlay.css('z-index', zIndex);
+        }
+      } else {
+        if (zIndex === undefined) {
+          zIndex = 2000;
+        }
+
+        $overlay = $('<div class="mdui-overlay">')
+          .appendTo(document.body)
+          .reflow()
+          .css('z-index', zIndex);
+      }
+
+      var level = $overlay.data('overlay-level') || 0;
+      return $overlay
+        .data('overlay-level', ++level)
+        .addClass('mdui-overlay-show');
+    },
+
+    /**
+     * 隐藏遮罩层
+     * @param force 是否强制隐藏遮罩
+     */
+    hideOverlay: function (force) {
+      var $overlay = $('.mdui-overlay');
+
+      if (!$overlay.length) {
+        return;
+      }
+
+      var level = force ? 1 : $overlay.data('overlay-level');
+      if (level > 1) {
+        $overlay.data('overlay-level', --level);
+        return;
+      }
+
+      $overlay
+        .data('overlay-level', 0)
+        .removeClass('mdui-overlay-show')
+        .data('isDeleted', 1)
+        .transitionEnd(function () {
+          if ($overlay.data('isDeleted')) {
+            $overlay.remove();
+          }
+        });
+    },
+
+    /**
+     * 锁定屏幕
+     */
+    lockScreen: function () {
+      var $body = $('body');
+
+      // 不直接把 body 设为 box-sizing: border-box，避免污染全局样式
+      var newBodyWidth = $body.width();
+
+      $body
+        .addClass('mdui-locked')
+        .width(newBodyWidth);
+
+      var level = $body.data('lockscreen-level') || 0;
+      $body.data('lockscreen-level', ++level);
+    },
+
+    /**
+     * 解除屏幕锁定
+     * @param force 是否强制解锁屏幕
+     */
+    unlockScreen: function (force) {
+      var $body = $('body');
+
+      var level = force ? 1 : $body.data('lockscreen-level');
+      if (level > 1) {
+        $body.data('lockscreen-level', --level);
+        return;
+      }
+
+      $body
+        .data('lockscreen-level', 0)
+        .removeClass('mdui-locked')
+        .width('');
+    },
+
+    /**
+     * 函数节流
+     * @param fn
+     * @param delay
+     * @returns {Function}
+     */
+    throttle: function (fn, delay) {
+      var timer = null;
+      if (!delay || delay < 16) {
+        delay = 16;
+      }
+
+      return function () {
+        var _this = this;
+        var args = arguments;
+
+        if (timer === null) {
+          timer = setTimeout(function () {
+            fn.apply(_this, args);
+            timer = null;
+          }, delay);
+        }
+      };
+    },
+  });
+
+  /**
+   * 生成唯一 id
+   * @param string name id的名称，若该名称对于的guid不存在，则生成新的guid并返回；若已存在，则返回原有guid
+   * @returns {string}
+   */
+  (function () {
+    var GUID = {};
+
+    $.extend({
+      guid: function (name) {
+        if (typeof name !== 'undefined' && typeof GUID[name] !== 'undefined') {
+          return GUID[name];
+        }
+
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        }
+
+        var guid = s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+
+        if (typeof name !== 'undefined') {
+          GUID[name] = guid;
+        }
+
+        return guid;
+      },
+    });
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Mutation   ************
+   * =============================================================================
+   */
+
+  (function () {
+    /**
+     * API 初始化代理, 当 DOM 突变再次执行代理的初始化函数. 使用方法:
+     *
+     * 1. 代理组件 API 执行初始化函数, selector 必须为字符串.
+     *    mdui.mutation(selector, apiInit);
+     *    mutation 会执行 $(selector).each(apiInit)
+     *
+     * 2. 突变时, 再次执行代理的初始化函数
+     *    mdui.mutation()        等价 $(document).mutation()
+     *    $(selector).mutation() 在 selector 节点内进行 API 初始化
+     *
+     * 原理:
+     *
+     *    mutation 执行了 $().data('mdui.mutation', [selector]).
+     *    当元素被重构时, 该数据会丢失, 由此判断是否突变.
+     *
+     * 提示:
+     *
+     *    类似 Drawer 可以使用委托事件完成.
+     *    类似 Collapse 需要知道 DOM 发生突变, 并再次进行初始化.
+     */
+    var entries = { };
+
+    function mutation(selector, apiInit, that, i, item) {
+      var $this = $(that);
+      var m = $this.data('mdui.mutation');
+
+      if (!m) {
+        m = [];
+        $this.data('mdui.mutation', m);
+      }
+
+      if (m.indexOf(selector) === -1) {
+        m.push(selector);
+        apiInit.call(that, i, item);
+      }
+    }
+
+    $.fn.extend({
+      mutation: function () {
+        return this.each(function (i, item) {
+          var $this = $(this);
+          $.each(entries, function (selector, apiInit) {
+            if ($this.is(selector)) {
+              mutation(selector, apiInit, $this[0], i, item);
+            }
+
+            $this.find(selector).each(function (i, item) {
+              mutation(selector, apiInit, this, i, item);
+            });
+          });
+        });
+      },
+    });
+
+    mdui.mutation = function (selector, apiInit) {
+      if (typeof selector !== 'string' || typeof apiInit !== 'function') {
+        $(document).mutation();
+        return;
+      }
+
+      entries[selector] = apiInit;
+      $(selector).each(function (i, item) {
+        mutation(selector, apiInit, this, i, item);
+      });
+    };
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Headroom.js   ************
+   * =============================================================================
+   */
+
+  mdui.Headroom = (function () {
+
+    /**
+     * 默认参数
+     * @type {{}}
+     */
+    var DEFAULT = {
+      tolerance: 5,                                 // 滚动条滚动多少距离开始隐藏或显示元素，{down: num, up: num}，或数字
+      offset: 0,                                    // 在页面顶部多少距离内滚动不会隐藏元素
+      initialClass: 'mdui-headroom',                // 初始化时添加的类
+      pinnedClass: 'mdui-headroom-pinned-top',      // 元素固定时添加的类
+      unpinnedClass: 'mdui-headroom-unpinned-top',  // 元素隐藏时添加的类
+    };
+
+    /**
+     * Headroom
+     * @param selector
+     * @param opts
+     * @constructor
+     */
+    function Headroom(selector, opts) {
+      var _this = this;
+
+      _this.$headroom = $(selector).eq(0);
+      if (!_this.$headroom.length) {
+        return;
+      }
+
+      // 已通过自定义属性实例化过，不再重复实例化
+      var oldInst = _this.$headroom.data('mdui.headroom');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+
+      // 数值转为 {down: bum, up: num}
+      var tolerance = _this.options.tolerance;
+      if (tolerance !== Object(tolerance)) {
+        _this.options.tolerance = {
+          down: tolerance,
+          up: tolerance,
+        };
+      }
+
+      _this._init();
+    }
+
+    /**
+     * 初始化
+     * @private
+     */
+    Headroom.prototype._init = function () {
+      var _this = this;
+
+      _this.state = 'pinned';
+      _this.$headroom
+        .addClass(_this.options.initialClass)
+        .removeClass(_this.options.pinnedClass + ' ' + _this.options.unpinnedClass);
+
+      _this.inited = false;
+      _this.lastScrollY = 0;
+
+      _this._attachEvent();
+    };
+
+    /**
+     * 监听滚动事件
+     * @private
+     */
+    Headroom.prototype._attachEvent = function () {
+      var _this = this;
+
+      if (!_this.inited) {
+        _this.lastScrollY = window.pageYOffset;
+        _this.inited = true;
+
+        $window.on('scroll', function () {
+          _this._scroll();
+        });
+      }
+    };
+
+    /**
+     * 滚动时的处理
+     * @private
+     */
+    Headroom.prototype._scroll = function () {
+      var _this = this;
+      _this.rafId = window.requestAnimationFrame(function () {
+        var currentScrollY = window.pageYOffset;
+        var direction = currentScrollY > _this.lastScrollY ? 'down' : 'up';
+        var toleranceExceeded =
+          Math.abs(currentScrollY - _this.lastScrollY) >=
+          _this.options.tolerance[direction];
+
+        if (
+          currentScrollY > _this.lastScrollY &&
+          currentScrollY >= _this.options.offset &&
+          toleranceExceeded) {
+          _this.unpin();
+        } else if (
+          (currentScrollY < _this.lastScrollY && toleranceExceeded) ||
+          currentScrollY <= _this.options.offset
+        ) {
+          _this.pin();
+        }
+
+        _this.lastScrollY = currentScrollY;
+      });
+    };
+
+    /**
+     * 动画结束回调
+     * @param inst
+     */
+    var transitionEnd = function (inst) {
+      if (inst.state === 'pinning') {
+        inst.state = 'pinned';
+        componentEvent('pinned', 'headroom', inst, inst.$headroom);
+      }
+
+      if (inst.state === 'unpinning') {
+        inst.state = 'unpinned';
+        componentEvent('unpinned', 'headroom', inst, inst.$headroom);
+      }
+    };
+
+    /**
+     * 固定住
+     */
+    Headroom.prototype.pin = function () {
+      var _this = this;
+
+      if (
+        _this.state === 'pinning' ||
+        _this.state === 'pinned' ||
+        !_this.$headroom.hasClass(_this.options.initialClass)
+      ) {
+        return;
+      }
+
+      componentEvent('pin', 'headroom', _this, _this.$headroom);
+
+      _this.state = 'pinning';
+
+      _this.$headroom
+        .removeClass(_this.options.unpinnedClass)
+        .addClass(_this.options.pinnedClass)
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    /**
+     * 不固定住
+     */
+    Headroom.prototype.unpin = function () {
+      var _this = this;
+
+      if (
+        _this.state === 'unpinning' ||
+        _this.state === 'unpinned' ||
+        !_this.$headroom.hasClass(_this.options.initialClass)
+      ) {
+        return;
+      }
+
+      componentEvent('unpin', 'headroom', _this, _this.$headroom);
+
+      _this.state = 'unpinning';
+
+      _this.$headroom
+        .removeClass(_this.options.pinnedClass)
+        .addClass(_this.options.unpinnedClass)
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    /**
+     * 启用
+     */
+    Headroom.prototype.enable = function () {
+      var _this = this;
+
+      if (!_this.inited) {
+        _this._init();
+      }
+    };
+
+    /**
+     * 禁用
+     */
+    Headroom.prototype.disable = function () {
+      var _this = this;
+
+      if (_this.inited) {
+        _this.inited = false;
+        _this.$headroom
+          .removeClass([
+            _this.options.initialClass,
+            _this.options.pinnedClass,
+            _this.options.unpinnedClass,
+          ].join(' '));
+
+        $window.off('scroll', function () {
+          _this._scroll();
+        });
+
+        window.cancelAnimationFrame(_this.rafId);
+      }
+    };
+
+    /**
+     * 获取当前状态 pinning | pinned | unpinning | unpinned
+     */
+    Headroom.prototype.getState = function () {
+      return this.state;
+    };
+
+    return Headroom;
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Headroom 自定义属性 API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-headroom]', function () {
+      var $this = $(this);
+      var options = parseOptions($this.attr('mdui-headroom'));
+
+      var inst = $this.data('mdui.headroom');
+      if (!inst) {
+        inst = new mdui.Headroom($this, options);
+        $this.data('mdui.headroom', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   供 Collapse、 Panel 调用的折叠内容块插件   ************
+   * =============================================================================
+   */
+  var CollapsePrivate = (function () {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      accordion: false,                             // 是否使用手风琴效果
+    };
+
+    /**
+     * 折叠内容块
+     * @param selector
+     * @param opts
+     * @param namespace
+     * @constructor
+     */
+    function Collapse(selector, opts, namespace) {
+      var _this = this;
+
+      // 命名空间
+      _this.ns = namespace;
+
+      // 类名
+      var classpPefix = 'mdui-' + _this.ns + '-item';
+      _this.class_item = classpPefix;
+      _this.class_item_open = classpPefix + '-open';
+      _this.class_header = classpPefix + '-header';
+      _this.class_body = classpPefix + '-body';
+
+      // 折叠面板元素
+      _this.$collapse = $(selector).eq(0);
+      if (!_this.$collapse.length) {
+        return;
+      }
+
+      // 已通过自定义属性实例化过，不再重复实例化
+      var oldInst = _this.$collapse.data('mdui.' + _this.ns);
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+
+      _this.$collapse.on('click', '.' + _this.class_header, function () {
+        var $item = $(this).parent('.' + _this.class_item);
+        if (_this.$collapse.children($item).length) {
+          _this.toggle($item);
+        }
+      });
+
+      // 绑定关闭按钮
+      _this.$collapse.on('click', '[mdui-' + _this.ns + '-item-close]', function () {
+        var $item = $(this).parents('.' + _this.class_item).eq(0);
+        if (_this._isOpen($item)) {
+          _this.close($item);
+        }
+      });
+    }
+
+    /**
+     * 指定 item 是否处于打开状态
+     * @param $item
+     * @returns {boolean}
+     * @private
+     */
+    Collapse.prototype._isOpen = function ($item) {
+      return $item.hasClass(this.class_item_open);
+    };
+
+    /**
+     * 获取指定 item
+     * @param item
+     * @returns {*}
+     * @private
+     */
+    Collapse.prototype._getItem = function (item) {
+      var _this = this;
+
+      if (parseInt(item) === item) {
+        // item 是索引号
+        return _this.$collapse.children('.' + _this.class_item).eq(item);
+      }
+
+      return $(item).eq(0);
+    };
+
+    /**
+     * 动画结束回调
+     * @param inst
+     * @param $content
+     * @param $item
+     */
+    var transitionEnd = function (inst, $content, $item) {
+      if (inst._isOpen($item)) {
+        $content
+          .transition(0)
+          .height('auto')
+          .reflow()
+          .transition('');
+
+        componentEvent('opened', inst.ns, inst, $item[0]);
+      } else {
+        $content.height('');
+
+        componentEvent('closed', inst.ns, inst, $item[0]);
+      }
+    };
+
+    /**
+     * 打开指定面板项
+     * @param item 面板项的索引号或 DOM 元素或 CSS 选择器
+     */
+    Collapse.prototype.open = function (item) {
+      var _this = this;
+      var $item = _this._getItem(item);
+
+      if (_this._isOpen($item)) {
+        return;
+      }
+
+      // 关闭其他项
+      if (_this.options.accordion) {
+        _this.$collapse.children('.' + _this.class_item_open).each(function () {
+          var $tmpItem = $(this);
+
+          if ($tmpItem !== $item) {
+            _this.close($tmpItem);
+          }
+        });
+      }
+
+      var $content = $item.children('.' + _this.class_body);
+
+      $content
+        .height($content[0].scrollHeight)
+        .transitionEnd(function () {
+          transitionEnd(_this, $content, $item);
+        });
+
+      componentEvent('open', _this.ns, _this, $item[0]);
+
+      $item.addClass(_this.class_item_open);
+    };
+
+    /**
+     * 关闭指定项
+     * @param item 面板项的索引号或 DOM 元素或 CSS 选择器
+     */
+    Collapse.prototype.close = function (item) {
+      var _this = this;
+      var $item = _this._getItem(item);
+
+      if (!_this._isOpen($item)) {
+        return;
+      }
+
+      var $content = $item.children('.' + _this.class_body);
+
+      componentEvent('close', _this.ns, _this, $item[0]);
+
+      $item.removeClass(_this.class_item_open);
+
+      $content
+        .transition(0)
+        .height($content[0].scrollHeight)
+        .reflow()
+        .transition('')
+        .height('')
+        .transitionEnd(function () {
+          transitionEnd(_this, $content, $item);
+        });
+    };
+
+    /**
+     * 切换指定项的状态
+     * @param item 面板项的索引号或 DOM 元素或 CSS 选择器或 JQ 对象
+     */
+    Collapse.prototype.toggle = function (item) {
+      var _this = this;
+      var $item = _this._getItem(item);
+
+      if (_this._isOpen($item)) {
+        _this.close($item);
+      } else {
+        _this.open($item);
+      }
+    };
+
+    /**
+     * 打开所有项
+     */
+    Collapse.prototype.openAll = function () {
+      var _this = this;
+
+      _this.$collapse.children('.' + _this.class_item).each(function () {
+        var $tmpItem = $(this);
+
+        if (!_this._isOpen($tmpItem)) {
+          _this.open($tmpItem);
+        }
+      });
+    };
+
+    /**
+     * 关闭所有项
+     */
+    Collapse.prototype.closeAll = function () {
+      var _this = this;
+
+      _this.$collapse.children('.' + _this.class_item).each(function () {
+        var $tmpItem = $(this);
+
+        if (_this._isOpen($tmpItem)) {
+          _this.close($tmpItem);
+        }
+      });
+    };
+
+    return Collapse;
+  })();
+
+  /**
+   * =============================================================================
+   * ************   Collapse 折叠内容块插件   ************
+   * =============================================================================
+   */
+  mdui.Collapse = (function () {
+
+    function Collapse(selector, opts) {
+      return new CollapsePrivate(selector, opts, 'collapse');
+    }
+
+    return Collapse;
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Collapse 自定义属性   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-collapse]', function () {
+      var $target = $(this);
+
+      var inst = $target.data('mdui.collapse');
+      if (!inst) {
+        var options = parseOptions($target.attr('mdui-collapse'));
+        inst = new mdui.Collapse($target, options);
+        $target.data('mdui.collapse', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Table 表格   ************
+   * =============================================================================
+   */
+
+  (function () {
+
+    /**
+     * 生成 checkbox 的 HTML 结构
+     * @param tag
+     * @returns {string}
+     */
+    var checkboxHTML = function (tag) {
+      return '<' + tag + ' class="mdui-table-cell-checkbox">' +
+               '<label class="mdui-checkbox">' +
+                 '<input type="checkbox"/>' +
+                 '<i class="mdui-checkbox-icon"></i>' +
+               '</label>' +
+             '</' + tag + '>';
+    };
+
+    /**
+     * Table 表格
+     * @param selector
+     * @constructor
+     */
+    function Table(selector) {
+      var _this = this;
+
+      _this.$table = $(selector).eq(0);
+
+      if (!_this.$table.length) {
+        return;
+      }
+
+      _this.init();
+    }
+
+    /**
+     * 初始化
+     */
+    Table.prototype.init = function () {
+      var _this = this;
+
+      _this.$thRow = _this.$table.find('thead tr');
+      _this.$tdRows = _this.$table.find('tbody tr');
+      _this.$tdCheckboxs = $();
+      _this.selectable = _this.$table.hasClass('mdui-table-selectable');
+      _this.selectedRow = 0;
+
+      _this._updateThCheckbox();
+      _this._updateTdCheckbox();
+      _this._updateNumericCol();
+    };
+
+    /**
+     * 更新表格行的 checkbox
+     */
+    Table.prototype._updateTdCheckbox = function () {
+      var _this = this;
+
+      _this.$tdRows.each(function () {
+        var $tdRow = $(this);
+
+        // 移除旧的 checkbox
+        $tdRow.find('.mdui-table-cell-checkbox').remove();
+
+        if (!_this.selectable) {
+          return;
+        }
+
+        // 创建 DOM
+        var $checkbox = $(checkboxHTML('td'))
+          .prependTo($tdRow)
+          .find('input[type="checkbox"]');
+
+        // 默认选中的行
+        if ($tdRow.hasClass('mdui-table-row-selected')) {
+          $checkbox[0].checked = true;
+          _this.selectedRow++;
+        }
+
+        // 所有行都选中后，选中表头；否则，不选中表头
+        _this.$thCheckbox[0].checked = _this.selectedRow === _this.$tdRows.length;
+
+        // 绑定事件
+        $checkbox.on('change', function () {
+          if ($checkbox[0].checked) {
+            $tdRow.addClass('mdui-table-row-selected');
+            _this.selectedRow++;
+          } else {
+            $tdRow.removeClass('mdui-table-row-selected');
+            _this.selectedRow--;
+          }
+
+          // 所有行都选中后，选中表头；否则，不选中表头
+          _this.$thCheckbox[0].checked = _this.selectedRow === _this.$tdRows.length;
+        });
+
+        _this.$tdCheckboxs = _this.$tdCheckboxs.add($checkbox);
+      });
+    };
+
+    /**
+     * 更新表头的 checkbox
+     */
+    Table.prototype._updateThCheckbox = function () {
+      var _this = this;
+
+      // 移除旧的 checkbox
+      _this.$thRow.find('.mdui-table-cell-checkbox').remove();
+
+      if (!_this.selectable) {
+        return;
+      }
+
+      _this.$thCheckbox = $(checkboxHTML('th'))
+        .prependTo(_this.$thRow)
+        .find('input[type="checkbox"]')
+        .on('change', function () {
+
+          var isCheckedAll = _this.$thCheckbox[0].checked;
+          _this.selectedRow = isCheckedAll ? _this.$tdRows.length : 0;
+
+          _this.$tdCheckboxs.each(function (i, checkbox) {
+            checkbox.checked = isCheckedAll;
+          });
+
+          _this.$tdRows.each(function (i, row) {
+            $(row)[isCheckedAll ? 'addClass' : 'removeClass']('mdui-table-row-selected');
+          });
+
+        });
+    };
+
+    /**
+     * 更新数值列
+     */
+    Table.prototype._updateNumericCol = function () {
+      var _this = this;
+      var $th;
+      var $tdRow;
+
+      _this.$thRow.find('th').each(function (i, th) {
+        $th = $(th);
+
+        _this.$tdRows.each(function () {
+          $tdRow = $(this);
+          var method = $th.hasClass('mdui-table-col-numeric') ? 'addClass' : 'removeClass';
+          $tdRow.find('td').eq(i)[method]('mdui-table-col-numeric');
+        });
+      });
+    };
+
+    /**
+     * 初始化表格
+     */
+    mdui.mutation('.mdui-table', function () {
+      var $table = $(this);
+      if (!$table.data('mdui.table')) {
+        $table.data('mdui.table', new Table($table));
+      }
+    });
+
+    /**
+     * 更新表格
+     */
+    mdui.updateTables = function () {
+      $(arguments.length ? arguments[0] : '.mdui-table').each(function () {
+        var $table = $(this);
+        var inst = $table.data('mdui.table');
+
+        if (inst) {
+          inst.init();
+        } else {
+          $table.data('mdui.table', new Table($table));
+        }
+      });
+    };
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   涟漪   ************
+   * =============================================================================
+   *
+   * Inspired by https://github.com/nolimits4web/Framework7/blob/master/src/js/fast-clicks.js
+   * https://github.com/nolimits4web/Framework7/blob/master/LICENSE
+   *
+   * Inspired by https://github.com/fians/Waves
+   */
+
+  (function () {
+
+    var Ripple = {
+
+      /**
+       * 延时，避免手指滑动时也触发涟漪（单位：毫秒）
+       */
+      delay: 200,
+
+      /**
+       * 显示涟漪动画
+       * @param e
+       * @param $ripple
+       */
+      show: function (e, $ripple) {
+
+        // 鼠标右键不产生涟漪
+        if (e.button === 2) {
+          return;
+        }
+
+        // 点击位置坐标
+        var tmp;
+        if ('touches' in e && e.touches.length) {
+          tmp = e.touches[0];
+        } else {
+          tmp = e;
+        }
+
+        var touchStartX = tmp.pageX;
+        var touchStartY = tmp.pageY;
+
+        // 涟漪位置
+        var offset = $ripple.offset();
+        var center = {
+          x: touchStartX - offset.left,
+          y: touchStartY - offset.top,
+        };
+
+        var height = $ripple.innerHeight();
+        var width = $ripple.innerWidth();
+        var diameter = Math.max(
+          Math.pow((Math.pow(height, 2) + Math.pow(width, 2)), 0.5), 48
+        );
+
+        // 涟漪扩散动画
+        var translate =
+          'translate3d(' + (-center.x + width / 2) + 'px, ' + (-center.y + height / 2) + 'px, 0) ' +
+          'scale(1)';
+
+        // 涟漪的 DOM 结构
+        $('<div class="mdui-ripple-wave" style="' +
+          'width: ' + diameter + 'px; ' +
+          'height: ' + diameter + 'px; ' +
+          'margin-top:-' + diameter / 2 + 'px; ' +
+          'margin-left:-' + diameter / 2 + 'px; ' +
+          'left:' + center.x + 'px; ' +
+          'top:' + center.y + 'px;">' +
+          '</div>')
+
+          // 缓存动画效果
+          .data('translate', translate)
+
+          .prependTo($ripple)
+          .reflow()
+          .transform(translate);
+      },
+
+      /**
+       * 隐藏涟漪动画
+       */
+      hide: function (e, element) {
+        var $ripple = $(element || this);
+
+        $ripple.children('.mdui-ripple-wave').each(function () {
+          removeRipple($(this));
+        });
+
+        $ripple.off('touchmove touchend touchcancel mousemove mouseup mouseleave', Ripple.hide);
+      },
+    };
+
+    /**
+     * 隐藏并移除涟漪
+     * @param $wave
+     */
+    function removeRipple($wave) {
+      if (!$wave.length || $wave.data('isRemoved')) {
+        return;
+      }
+
+      $wave.data('isRemoved', true);
+
+      var removeTimeout = setTimeout(function () {
+        $wave.remove();
+      }, 400);
+
+      var translate = $wave.data('translate');
+
+      $wave
+        .addClass('mdui-ripple-wave-fill')
+        .transform(translate.replace('scale(1)', 'scale(1.01)'))
+        .transitionEnd(function () {
+          clearTimeout(removeTimeout);
+
+          $wave
+            .addClass('mdui-ripple-wave-out')
+            .transform(translate.replace('scale(1)', 'scale(1.01)'));
+
+          removeTimeout = setTimeout(function () {
+            $wave.remove();
+          }, 700);
+
+          setTimeout(function () {
+            $wave.transitionEnd(function () {
+              clearTimeout(removeTimeout);
+              $wave.remove();
+            });
+          }, 0);
+        });
+    }
+
+    /**
+     * 显示涟漪，并绑定 touchend 等事件
+     * @param e
+     */
+    function showRipple(e) {
+      if (!TouchHandler.isAllow(e)) {
+        return;
+      }
+
+      TouchHandler.register(e);
+
+      // Chrome 59 点击滚动条时，会在 document 上触发事件
+      if (e.target === document) {
+        return;
+      }
+
+      var $ripple;
+      var $target = $(e.target);
+
+      // 获取含 .mdui-ripple 类的元素
+      if ($target.hasClass('mdui-ripple')) {
+        $ripple = $target;
+      } else {
+        $ripple = $target.parents('.mdui-ripple').eq(0);
+      }
+
+      if ($ripple.length) {
+
+        // 禁用状态的元素上不产生涟漪效果
+        if ($ripple[0].disabled || $ripple.attr('disabled') !== null) {
+          return;
+        }
+
+        if (e.type === 'touchstart') {
+          var hidden = false;
+
+          // toucstart 触发指定时间后开始涟漪动画
+          var timer = setTimeout(function () {
+            timer = null;
+            Ripple.show(e, $ripple);
+          }, Ripple.delay);
+
+          var hideRipple = function (hideEvent) {
+            // 如果手指没有移动，且涟漪动画还没有开始，则开始涟漪动画
+            if (timer) {
+              clearTimeout(timer);
+              timer = null;
+              Ripple.show(e, $ripple);
+            }
+
+            if (!hidden) {
+              hidden = true;
+              Ripple.hide(hideEvent, $ripple);
+            }
+          };
+
+          // 手指移动后，移除涟漪动画
+          var touchMove = function (moveEvent) {
+            if (timer) {
+              clearTimeout(timer);
+              timer = null;
+            }
+
+            hideRipple(moveEvent);
+          };
+
+          $ripple
+            .on('touchmove', touchMove)
+            .on('touchend touchcancel', hideRipple);
+
+        } else {
+          Ripple.show(e, $ripple);
+          $ripple.on('touchmove touchend touchcancel mousemove mouseup mouseleave', Ripple.hide);
+        }
+      }
+    }
+
+    // 初始化绑定的事件
+    $document
+      .on(TouchHandler.start, showRipple)
+      .on(TouchHandler.unlock, TouchHandler.register);
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Text Field 文本框   ************
+   * =============================================================================
+   */
+
+  (function () {
+
+    var getProp = function (obj, prop) {
+      return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        obj[prop] !== undefined &&
+        obj[prop]
+      ) ? obj[prop] : false;
+    };
+
+    /**
+     * 输入框事件
+     * @param e
+     */
+    var inputEvent = function (e) {
+      var input = e.target;
+      var $input = $(input);
+      var event = e.type;
+      var value = $input.val();
+
+      // reInit 为 true 时，需要重新初始化文本框
+      var reInit = getProp(e.detail, 'reInit');
+
+      // domLoadedEvent 为 true 时，为 DOM 加载完毕后自动触发的事件
+      var domLoadedEvent = getProp(e.detail, 'domLoadedEvent');
+
+      // 文本框类型
+      var type = $input.attr('type') || '';
+      if (['checkbox', 'button', 'submit', 'range', 'radio', 'image'].indexOf(type) >= 0) {
+        return;
+      }
+
+      var $textField = $input.parent('.mdui-textfield');
+
+      // 输入框是否聚焦
+      if (event === 'focus') {
+        $textField.addClass('mdui-textfield-focus');
+      }
+
+      if (event === 'blur') {
+        $textField.removeClass('mdui-textfield-focus');
+      }
+
+      // 输入框是否为空
+      if (event === 'blur' || event === 'input') {
+        $textField[(value && value !== '') ? 'addClass' : 'removeClass']('mdui-textfield-not-empty');
+      }
+
+      // 输入框是否禁用
+      $textField[input.disabled ? 'addClass' : 'removeClass']('mdui-textfield-disabled');
+
+      // 表单验证
+      if ((event === 'input' || event === 'blur') && !domLoadedEvent) {
+        if (input.validity) {
+          var method = input.validity.valid ? 'removeClass' : 'addClass';
+          $textField[method]('mdui-textfield-invalid-html5');
+        }
+      }
+
+      // textarea 高度自动调整
+      if (e.target.nodeName.toLowerCase() === 'textarea') {
+
+        // IE bug：textarea 的值仅为多个换行，不含其他内容时，textarea 的高度不准确
+        //         此时，在计算高度前，在值的开头加入一个空格，计算完后，移除空格
+        var inputValue = $input.val();
+        var hasExtraSpace = false;
+        if (inputValue.replace(/[\r\n]/g, '') === '') {
+          $input.val(' ' + inputValue);
+          hasExtraSpace = true;
+        }
+
+        // 设置 textarea 高度
+        $input.height('');
+        var height = $input.height();
+        var scrollHeight = input.scrollHeight;
+
+        if (scrollHeight > height) {
+          $input.height(scrollHeight);
+        }
+
+        // 计算完，还原 textarea 的值
+        if (hasExtraSpace) {
+          $input.val(inputValue);
+        }
+      }
+
+      // 实时字数统计
+      if (reInit) {
+        $textField
+          .find('.mdui-textfield-counter')
+          .remove();
+      }
+
+      var maxlength = $input.attr('maxlength');
+      if (maxlength) {
+        if (reInit || domLoadedEvent) {
+          $('<div class="mdui-textfield-counter">' +
+              '<span class="mdui-textfield-counter-inputed"></span> / ' + maxlength +
+            '</div>').appendTo($textField);
+        }
+
+        $textField.find('.mdui-textfield-counter-inputed').text(value.length.toString());
+      }
+
+      // 含 帮助文本、错误提示、字数统计 时，增加文本框底部内边距
+      if (
+        $textField.find('.mdui-textfield-helper').length ||
+        $textField.find('.mdui-textfield-error').length ||
+        maxlength
+      ) {
+        $textField.addClass('mdui-textfield-has-bottom');
+      }
+    };
+
+    // 绑定事件
+    $document.on('input focus blur', '.mdui-textfield-input', { useCapture: true }, inputEvent);
+
+    // 可展开文本框展开
+    $document.on('click', '.mdui-textfield-expandable .mdui-textfield-icon', function () {
+      $(this)
+
+        // 展开文本框
+        .parents('.mdui-textfield')
+        .addClass('mdui-textfield-expanded')
+
+        // 聚焦到输入框
+        .find('.mdui-textfield-input')[0].focus();
+    });
+
+    // 可展开文本框关闭
+    $document.on('click', '.mdui-textfield-expanded .mdui-textfield-close', function () {
+      $(this)
+
+        // 关闭文本框
+        .parents('.mdui-textfield')
+        .removeClass('mdui-textfield-expanded')
+
+        // 清空输入框
+        .find('.mdui-textfield-input')
+        .val('');
+    });
+
+    /**
+     * 通过 JS 更新了表单内容，需要重新进行表单处理
+     * @param- 如果传入了 .mdui-textfield 所在的 DOM 元素，则更新该文本框；否则，更新所有文本框
+     */
+    mdui.updateTextFields = function () {
+      $(arguments.length ? arguments[0] : '.mdui-textfield').each(function () {
+        $(this)
+          .find('.mdui-textfield-input')
+          .trigger('input', {
+            reInit: true,
+          });
+      });
+    };
+  })();
+
+  $(function () {
+    /**
+     * 初始化文本框
+     */
+    mdui.mutation('.mdui-textfield', function () {
+      $(this)
+        .find('.mdui-textfield-input')
+        .trigger('input', {
+          domLoadedEvent: true,
+        });
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Slider 滑块   ************
+   * =============================================================================
+   */
+
+  (function () {
+
+    /**
+     * 滑块的值变更后修改滑块样式
+     * @param $slider
+     */
+    var updateValueStyle = function ($slider) {
+      var data = $slider.data();
+
+      var $track = data.$track;
+      var $fill = data.$fill;
+      var $thumb = data.$thumb;
+      var $input = data.$input;
+      var min = data.min;
+      var max = data.max;
+      var isDisabled = data.disabled;
+      var isDiscrete = data.discrete;
+      var $thumbText = data.$thumbText;
+      var value = $input.val();
+      var percent = (value - min) / (max - min) * 100;
+
+      $fill.width(percent + '%');
+      $track.width((100 - percent) + '%');
+
+      if (isDisabled) {
+        $fill.css('padding-right', '6px');
+        $track.css('padding-left', '6px');
+      }
+
+      $thumb.css('left', percent + '%');
+
+      if (isDiscrete) {
+        $thumbText.text(value);
+      }
+
+      $slider[parseFloat(percent) === 0 ? 'addClass' : 'removeClass']('mdui-slider-zero');
+    };
+
+    /**
+     * 重新初始化
+     * @param $slider
+     */
+    var reInit = function ($slider) {
+      var $track = $('<div class="mdui-slider-track"></div>');
+      var $fill = $('<div class="mdui-slider-fill"></div>');
+      var $thumb = $('<div class="mdui-slider-thumb"></div>');
+      var $input = $slider.find('input[type="range"]');
+
+      // 禁用状态
+      var isDisabled = $input[0].disabled;
+      $slider[isDisabled ? 'addClass' : 'removeClass']('mdui-slider-disabled');
+
+      // 重新填充 HTML
+      $slider.find('.mdui-slider-track').remove();
+      $slider.find('.mdui-slider-fill').remove();
+      $slider.find('.mdui-slider-thumb').remove();
+      $slider.append($track).append($fill).append($thumb);
+
+      // 间续型滑块
+      var isDiscrete = $slider.hasClass('mdui-slider-discrete');
+
+      var $thumbText;
+      if (isDiscrete) {
+        $thumbText = $('<span></span>');
+        $thumb.empty().append($thumbText);
+      }
+
+      $slider.data({
+        $track: $track,
+        $fill: $fill,
+        $thumb: $thumb,
+        $input: $input,
+        min: $input.attr('min'),    // 滑块最小值
+        max: $input.attr('max'),    // 滑块最大值
+        disabled: isDisabled,       // 是否禁用状态
+        discrete: isDiscrete,       // 是否是间续型滑块
+        $thumbText: $thumbText,      // 间续型滑块的数值
+      });
+
+      // 设置默认值
+      updateValueStyle($slider);
+    };
+
+    var rangeSelector = '.mdui-slider input[type="range"]';
+
+    $document
+
+      // 滑动滑块事件
+      .on('input change', rangeSelector, function () {
+        var $slider = $(this).parent();
+        updateValueStyle($slider);
+      })
+
+      // 开始触摸滑块事件
+      .on(TouchHandler.start, rangeSelector, function (e) {
+        if (!TouchHandler.isAllow(e)) {
+          return;
+        }
+
+        TouchHandler.register(e);
+
+        if (!this.disabled) {
+          var $slider = $(this).parent();
+          $slider.addClass('mdui-slider-focus');
+        }
+      })
+
+      // 结束触摸滑块事件
+      .on(TouchHandler.end, rangeSelector, function (e) {
+        if (!TouchHandler.isAllow(e)) {
+          return;
+        }
+
+        if (!this.disabled) {
+          var $slider = $(this).parent();
+          $slider.removeClass('mdui-slider-focus');
+        }
+      })
+
+      .on(TouchHandler.unlock, rangeSelector, TouchHandler.register);
+
+    /**
+     * 重新初始化滑块（强制重新初始化）
+     */
+    mdui.updateSliders = function () {
+      $(arguments.length ? arguments[0] : '.mdui-slider').each(function () {
+        reInit($(this));
+      });
+    };
+
+    $(function () {
+      /**
+       * 页面加载完后自动初始化（未初始化时，可以调用该方法初始化）
+       */
+      mdui.mutation('.mdui-slider', function () {
+        reInit($(this));
+      });
+    });
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Fab 浮动操作按钮   ************
+   * =============================================================================
+   */
+
+  mdui.Fab = (function () {
+
+    /**
+     * 默认参数
+     * @type {{}}
+     */
+    var DEFAULT = {
+      trigger: 'hover',      // 触发方式 ['hover', 'click']
+    };
+
+    /**
+     * 浮动操作按钮实例
+     * @param selector 选择器或 HTML 字符串或 DOM 元素或 JQ 对象
+     * @param opts
+     * @constructor
+     */
+    function Fab(selector, opts) {
+      var _this = this;
+
+      _this.$fab = $(selector).eq(0);
+      if (!_this.$fab.length) {
+        return;
+      }
+
+      // 已通过 data 属性实例化过，不再重复实例化
+      var oldInst = _this.$fab.data('mdui.fab');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+      _this.state = 'closed';
+
+      _this.$btn = _this.$fab.find('.mdui-fab');
+      _this.$dial = _this.$fab.find('.mdui-fab-dial');
+      _this.$dialBtns = _this.$dial.find('.mdui-fab');
+
+      if (_this.options.trigger === 'hover') {
+        _this.$btn
+          .on('touchstart mouseenter', function () {
+            _this.open();
+          });
+
+        _this.$fab
+          .on('mouseleave', function () {
+            _this.close();
+          });
+      }
+
+      if (_this.options.trigger === 'click') {
+        _this.$btn
+          .on(TouchHandler.start, function () {
+            _this.open();
+          });
+      }
+
+      // 触摸屏幕其他地方关闭快速拨号
+      $document.on(TouchHandler.start, function (e) {
+        if (!$(e.target).parents('.mdui-fab-wrapper').length) {
+          _this.close();
+        }
+      });
+    }
+
+    /**
+     * 打开菜单
+     */
+    Fab.prototype.open = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      // 为菜单中的按钮添加不同的 transition-delay
+      _this.$dialBtns.each(function (index, btn) {
+        btn.style['transition-delay'] = btn.style['-webkit-transition-delay'] =
+          15 * (_this.$dialBtns.length - index) + 'ms';
+      });
+
+      _this.$dial
+        .css('height', 'auto')
+        .addClass('mdui-fab-dial-show');
+
+      // 如果按钮中存在 .mdui-fab-opened 的图标，则进行图标切换
+      if (_this.$btn.find('.mdui-fab-opened').length) {
+        _this.$btn.addClass('mdui-fab-opened');
+      }
+
+      _this.state = 'opening';
+      componentEvent('open', 'fab', _this, _this.$fab);
+
+      // 打开顺序为从下到上逐个打开，最上面的打开后才表示动画完成
+      _this.$dialBtns.eq(0).transitionEnd(function () {
+        if (_this.$btn.hasClass('mdui-fab-opened')) {
+          _this.state = 'opened';
+          componentEvent('opened', 'fab', _this, _this.$fab);
+        }
+      });
+    };
+
+    /**
+     * 关闭菜单
+     */
+    Fab.prototype.close = function () {
+      var _this = this;
+
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      // 为菜单中的按钮添加不同的 transition-delay
+      _this.$dialBtns.each(function (index, btn) {
+        btn.style['transition-delay'] = btn.style['-webkit-transition-delay'] = 15 * index + 'ms';
+      });
+
+      _this.$dial.removeClass('mdui-fab-dial-show');
+      _this.$btn.removeClass('mdui-fab-opened');
+      _this.state = 'closing';
+      componentEvent('close', 'fab', _this, _this.$fab);
+
+      // 从上往下依次关闭，最后一个关闭后才表示动画完成
+      _this.$dialBtns.eq(-1).transitionEnd(function () {
+        if (!_this.$btn.hasClass('mdui-fab-opened')) {
+          _this.state = 'closed';
+          componentEvent('closed', 'fab', _this, _this.$fab);
+          _this.$dial.css('height', 0);
+        }
+      });
+    };
+
+    /**
+     * 切换菜单的打开状态
+     */
+    Fab.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    /**
+     * 获取当前菜单状态
+     * @returns {'opening'|'opened'|'closing'|'closed'}
+     */
+    Fab.prototype.getState = function () {
+      return this.state;
+    };
+
+    /**
+     * 以动画的形式显示浮动操作按钮
+     */
+    Fab.prototype.show = function () {
+      this.$fab.removeClass('mdui-fab-hide');
+    };
+
+    /**
+     * 以动画的形式隐藏浮动操作按钮
+     */
+    Fab.prototype.hide = function () {
+      this.$fab.addClass('mdui-fab-hide');
+    };
+
+    return Fab;
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Fab DATA API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    // mouseenter 不冒泡，无法进行事件委托，这里用 mouseover 代替。
+    // 不管是 click 、 mouseover 还是 touchstart ，都先初始化。
+
+    $document.on('touchstart mousedown mouseover', '[mdui-fab]', function (e) {
+      var $this = $(this);
+
+      var inst = $this.data('mdui.fab');
+      if (!inst) {
+        var options = parseOptions($this.attr('mdui-fab'));
+        inst = new mdui.Fab($this, options);
+        $this.data('mdui.fab', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Select 下拉选择   ************
+   * =============================================================================
+   */
+
+  mdui.Select = (function () {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      position: 'auto',                // 下拉框位置，auto、bottom、top
+      gutter: 16,                      // 菜单与窗口上下边框至少保持多少间距
+    };
+
+    /**
+     * 调整菜单位置
+     * @param _this Select 实例
+     */
+    var readjustMenu = function (_this) {
+      // 窗口高度
+      var windowHeight = $window.height();
+
+      // 配置参数
+      var gutter = _this.options.gutter;
+      var position = _this.options.position;
+
+      // mdui-select 高度
+      var selectHeight = parseInt(_this.$select.height());
+
+      // 菜单项高度
+      var $menuItemFirst = _this.$items.eq(0);
+      var menuItemHeight = parseInt($menuItemFirst.height());
+      var menuItemMargin = parseInt($menuItemFirst.css('margin-top'));
+
+      // 菜单高度
+      var menuWidth = parseFloat(_this.$select.width() + 0.01); // 必须比真实宽度多一点，不然会出现省略号
+      var menuHeight = menuItemHeight * _this.size + menuItemMargin * 2;
+
+      // var menuRealHeight = menuItemHeight * _this.$items.length + menuItemMargin * 2;
+
+      // 菜单是否出现了滚动条
+      //var isMenuScrollable = menuRealHeight > menuHeight;
+
+      // select 在窗口中的位置
+      var selectTop = _this.$select[0].getBoundingClientRect().top;
+
+      var transformOriginY;
+      var menuMarginTop;
+
+      // position 为 auto 时
+      if (position === 'auto') {
+
+        // 菜单高度不能超过窗口高度
+        var heightTemp = windowHeight - gutter * 2;
+        if (menuHeight > heightTemp) {
+          menuHeight = heightTemp;
+        }
+
+        // 菜单的 margin-top
+        menuMarginTop = -(
+          menuItemMargin + _this.selectedIndex * menuItemHeight +
+          (menuItemHeight - selectHeight) / 2
+        );
+        var menuMarginTopMax = -(
+          menuItemMargin + (_this.size - 1) * menuItemHeight +
+          (menuItemHeight - selectHeight) / 2
+        );
+        if (menuMarginTop < menuMarginTopMax) {
+          menuMarginTop = menuMarginTopMax;
+        }
+
+        // 菜单不能超出窗口
+        var menuTop = selectTop + menuMarginTop;
+
+        if (menuTop < gutter) {
+          // 不能超出窗口上方
+          menuMarginTop = -(selectTop - gutter);
+        } else if (menuTop + menuHeight + gutter > windowHeight) {
+          // 不能超出窗口下方
+          menuMarginTop = -(selectTop + menuHeight + gutter - windowHeight);
+        }
+
+        // transform 的 Y 轴坐标
+        transformOriginY = (_this.selectedIndex * menuItemHeight + menuItemHeight / 2 + menuItemMargin) + 'px';
+      } else if (position === 'bottom') {
+        menuMarginTop = selectHeight;
+        transformOriginY = '0px';
+      } else if (position === 'top') {
+        menuMarginTop = -menuHeight - 1;
+        transformOriginY = '100%';
+      }
+
+      // 设置样式
+      _this.$select.width(menuWidth);
+      _this.$menu
+        .width(menuWidth)
+        .height(menuHeight)
+        .css({
+          'margin-top': menuMarginTop + 'px',
+          'transform-origin':
+          'center ' + transformOriginY + ' 0',
+        });
+    };
+
+    /**
+     * 下拉选择
+     * @param selector
+     * @param opts
+     * @constructor
+     */
+    function Select(selector, opts) {
+      var _this = this;
+
+      var $selectNative =  _this.$selectNative = $(selector).eq(0);
+      if (!$selectNative.length) {
+        return;
+      }
+
+      // 已通过自定义属性实例化过，不再重复实例化
+      var oldInst = $selectNative.data('mdui.select');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      $selectNative.hide();
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+
+      // 为当前 select 生成唯一 ID
+      _this.uniqueID = $.guid();
+
+      _this.state = 'closed';
+
+      // 生成 select
+      _this.handleUpdate();
+
+      // 点击 select 外面区域关闭
+      $document.on('click touchstart', function (e) {
+        var $target = $(e.target);
+        if (
+          (_this.state === 'opening' || _this.state === 'opened') &&
+          !$target.is(_this.$select) &&
+          !$.contains(_this.$select[0], $target[0])
+        ) {
+          _this.close();
+        }
+      });
+    }
+
+    /**
+     * 对原生 select 组件进行了修改后，需要调用该方法
+     */
+    Select.prototype.handleUpdate = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      }
+
+      var $selectNative = _this.$selectNative;
+
+      // 当前的值和文本
+      _this.value = $selectNative.val();
+      _this.text = '';
+
+      // 生成 HTML
+      // 菜单项
+      _this.$items = $();
+      $selectNative.find('option').each(function (index, option) {
+        var data = {
+          value: option.value,
+          text: option.textContent,
+          disabled: option.disabled,
+          selected: _this.value === option.value,
+          index: index,
+        };
+
+        if (_this.value === data.value) {
+          _this.text = data.text;
+          _this.selectedIndex = index;
+        }
+
+        _this.$items = _this.$items.add(
+          $('<div class="mdui-select-menu-item mdui-ripple"' +
+            (data.disabled ? ' disabled' : '') +
+            (data.selected ? ' selected' : '') + '>' + data.text + '</div>')
+            .data(data)
+        );
+      });
+
+      // selected
+      _this.$selected = $('<span class="mdui-select-selected">' + _this.text + '</span>');
+
+      // select
+      _this.$select =
+        $(
+          '<div class="mdui-select mdui-select-position-' + _this.options.position + '" ' +
+          'style="' + _this.$selectNative.attr('style') + '" ' +
+          'id="' + _this.uniqueID + '"></div>'
+        )
+          .show()
+          .append(_this.$selected);
+
+      // menu
+      _this.$menu =
+        $('<div class="mdui-select-menu"></div>')
+          .appendTo(_this.$select)
+          .append(_this.$items);
+
+      $('#' + _this.uniqueID).remove();
+      $selectNative.after(_this.$select);
+
+      // 根据 select 的 size 属性设置高度，默认为 6
+      _this.size = _this.$selectNative.attr('size');
+
+      if (!_this.size) {
+        _this.size = _this.$items.length;
+        if (_this.size > 8) {
+          _this.size = 8;
+        }
+      }
+
+      if (_this.size < 2) {
+        _this.size = 2;
+      }
+
+      // 点击选项时关闭下拉菜单
+      _this.$items.on('click', function () {
+        if (_this.state === 'closing') {
+          return;
+        }
+
+        var $item = $(this);
+
+        if ($item.data('disabled')) {
+          return;
+        }
+
+        var itemData = $item.data();
+
+        _this.$selected.text(itemData.text);
+        $selectNative.val(itemData.value);
+        _this.$items.removeAttr('selected');
+        $item.attr('selected', '');
+        _this.selectedIndex = itemData.index;
+        _this.value = itemData.value;
+        _this.text = itemData.text;
+        $selectNative.trigger('change');
+
+        _this.close();
+      });
+
+      // 点击 select 时打开下拉菜单
+      _this.$select.on('click', function (e) {
+        var $target = $(e.target);
+
+        // 在菜单上点击时不打开
+        if ($target.is('.mdui-select-menu') || $target.is('.mdui-select-menu-item')) {
+          return;
+        }
+
+        _this.toggle();
+      });
+    };
+
+    /**
+     * 动画结束回调
+     * @param inst
+     */
+    var transitionEnd = function (inst) {
+      inst.$select.removeClass('mdui-select-closing');
+
+      if (inst.state === 'opening') {
+        inst.state = 'opened';
+        componentEvent('opened', 'select', inst, inst.$selectNative);
+
+        inst.$menu.css('overflow-y', 'auto');
+      }
+
+      if (inst.state === 'closing') {
+        inst.state = 'closed';
+        componentEvent('closed', 'select', inst, inst.$selectNative);
+
+        // 恢复样式
+        inst.$select.width('');
+        inst.$menu.css({
+          'margin-top': '',
+          height: '',
+          width: '',
+        });
+      }
+    };
+
+    /**
+     * 打开 Select
+     */
+    Select.prototype.open = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      _this.state = 'opening';
+      componentEvent('open', 'select', _this, _this.$selectNative);
+
+      readjustMenu(_this);
+
+      _this.$select.addClass('mdui-select-open');
+
+      _this.$menu.transitionEnd(function () {
+        transitionEnd(_this);
+      });
+    };
+
+    /**
+     * 关闭 Select
+     */
+    Select.prototype.close = function () {
+      var _this = this;
+
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      _this.state = 'closing';
+      componentEvent('close', 'select', _this, _this.$selectNative);
+
+      _this.$menu.css('overflow-y', '');
+
+      _this.$select
+        .removeClass('mdui-select-open')
+        .addClass('mdui-select-closing');
+      _this.$menu.transitionEnd(function () {
+        transitionEnd(_this);
+      });
+    };
+
+    /**
+     * 切换 Select 显示状态
+     */
+    Select.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    return Select;
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Select 下拉选择   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-select]', function () {
+      var $this = $(this);
+      var inst = $this.data('mdui.select');
+      if (!inst) {
+        inst = new mdui.Select($this, parseOptions($this.attr('mdui-select')));
+        $this.data('mdui.select', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Appbar   ************
+   * =============================================================================
+   * 滚动时自动隐藏应用栏
+   * mdui-appbar-scroll-hide
+   * mdui-appbar-scroll-toolbar-hide
+   */
+
+  $(function () {
+    // 滚动时隐藏应用栏
+    mdui.mutation('.mdui-appbar-scroll-hide', function () {
+      var $this = $(this);
+      $this.data('mdui.headroom', new mdui.Headroom($this));
+    });
+
+    // 滚动时只隐藏应用栏中的工具栏
+    mdui.mutation('.mdui-appbar-scroll-toolbar-hide', function () {
+      var $this = $(this);
+      var inst = new mdui.Headroom($this, {
+        pinnedClass: 'mdui-headroom-pinned-toolbar',
+        unpinnedClass: 'mdui-headroom-unpinned-toolbar',
+      });
+      $this.data('mdui.headroom', inst);
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Tab   ************
+   * =============================================================================
+   */
+
+  mdui.Tab = (function () {
+
+    var DEFAULT = {
+      trigger: 'click',       // 触发方式 click: 鼠标点击切换 hover: 鼠标悬浮切换
+      //animation: false,       // 切换时是否显示动画
+      loop: false,            // 为true时，在最后一个选项卡时调用 next() 方法会回到第一个选项卡
+    };
+
+    // 元素是否已禁用
+    var isDisabled = function ($ele) {
+      return $ele[0].disabled || $ele.attr('disabled') !== null;
+    };
+
+    /**
+     * 选项卡
+     * @param selector
+     * @param opts
+     * @returns {*}
+     * @constructor
+     */
+    function Tab(selector, opts) {
+      var _this = this;
+
+      _this.$tab = $(selector).eq(0);
+      if (!_this.$tab.length) {
+        return;
+      }
+
+      // 已通过自定义属性实例化过，不再重复实例化
+      var oldInst = _this.$tab.data('mdui.tab');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+      _this.$tabs = _this.$tab.children('a');
+      _this.$indicator = $('<div class="mdui-tab-indicator"></div>').appendTo(_this.$tab);
+      _this.activeIndex = false; // 为 false 时表示没有激活的选项卡，或不存在选项卡
+
+      // 根据 url hash 获取默认激活的选项卡
+      var hash = location.hash;
+      if (hash) {
+        _this.$tabs.each(function (i, tab) {
+          if ($(tab).attr('href') === hash) {
+            _this.activeIndex = i;
+            return false;
+          }
+        });
+      }
+
+      // 含 mdui-tab-active 的元素默认激活
+      if (_this.activeIndex === false) {
+        _this.$tabs.each(function (i, tab) {
+          if ($(tab).hasClass('mdui-tab-active')) {
+            _this.activeIndex = i;
+            return false;
+          }
+        });
+      }
+
+      // 存在选项卡时，默认激活第一个选项卡
+      if (_this.$tabs.length && _this.activeIndex === false) {
+        _this.activeIndex = 0;
+      }
+
+      // 设置激活状态选项卡
+      _this._setActive();
+
+      // 监听窗口大小变化事件，调整指示器位置
+      $window.on('resize', $.throttle(function () {
+        _this._setIndicatorPosition();
+      }, 100));
+
+      // 监听点击选项卡事件
+      _this.$tabs.each(function (i, tab) {
+        _this._bindTabEvent(tab);
+      });
+    }
+
+    /**
+     * 绑定在 Tab 上点击或悬浮的事件
+     * @private
+     */
+    Tab.prototype._bindTabEvent = function (tab) {
+      var _this = this;
+      var $tab = $(tab);
+
+      // 点击或鼠标移入触发的事件
+      var clickEvent = function (e) {
+        // 禁用状态的选项无法选中
+        if (isDisabled($tab)) {
+          e.preventDefault();
+          return;
+        }
+
+        _this.activeIndex = _this.$tabs.index(tab);
+        _this._setActive();
+      };
+
+      // 无论 trigger 是 click 还是 hover，都会响应 click 事件
+      $tab.on('click', clickEvent);
+
+      // trigger 为 hover 时，额外响应 mouseenter 事件
+      if (_this.options.trigger === 'hover') {
+        $tab.on('mouseenter', clickEvent);
+      }
+
+      $tab.on('click', function (e) {
+        // 阻止链接的默认点击动作
+        if ($tab.attr('href').indexOf('#') === 0) {
+          e.preventDefault();
+        }
+      });
+    };
+
+    /**
+     * 设置激活状态的选项卡
+     * @private
+     */
+    Tab.prototype._setActive = function () {
+      var _this = this;
+
+      _this.$tabs.each(function (i, tab) {
+        var $tab = $(tab);
+        var targetId = $tab.attr('href');
+
+        // 设置选项卡激活状态
+        if (i === _this.activeIndex && !isDisabled($tab)) {
+          if (!$tab.hasClass('mdui-tab-active')) {
+            componentEvent('change', 'tab', _this, _this.$tab, {
+              index: _this.activeIndex,
+              id: targetId.substr(1),
+            });
+            componentEvent('show', 'tab', _this, $tab);
+
+            $tab.addClass('mdui-tab-active');
+          }
+
+          $(targetId).show();
+          _this._setIndicatorPosition();
+        } else {
+          $tab.removeClass('mdui-tab-active');
+          $(targetId).hide();
+        }
+      });
+    };
+
+    /**
+     * 设置选项卡指示器的位置
+     */
+    Tab.prototype._setIndicatorPosition = function () {
+      var _this = this;
+      var $activeTab;
+      var activeTabOffset;
+
+      // 选项卡数量为 0 时，不显示指示器
+      if (_this.activeIndex === false) {
+        _this.$indicator.css({
+          left: 0,
+          width: 0,
+        });
+
+        return;
+      }
+
+      $activeTab = _this.$tabs.eq(_this.activeIndex);
+      if (isDisabled($activeTab)) {
+        return;
+      }
+
+      activeTabOffset = $activeTab.offset();
+      _this.$indicator.css({
+        left: activeTabOffset.left + _this.$tab[0].scrollLeft -
+              _this.$tab[0].getBoundingClientRect().left + 'px',
+        width: $activeTab.width() + 'px',
+      });
+    };
+
+    /**
+     * 切换到下一个选项卡
+     */
+    Tab.prototype.next = function () {
+      var _this = this;
+
+      if (_this.activeIndex === false) {
+        return;
+      }
+
+      if (_this.$tabs.length > _this.activeIndex + 1) {
+        _this.activeIndex++;
+      } else if (_this.options.loop) {
+        _this.activeIndex = 0;
+      }
+
+      _this._setActive();
+    };
+
+    /**
+     * 切换到上一个选项卡
+     */
+    Tab.prototype.prev = function () {
+      var _this = this;
+
+      if (_this.activeIndex === false) {
+        return;
+      }
+
+      if (_this.activeIndex > 0) {
+        _this.activeIndex--;
+      } else if (_this.options.loop) {
+        _this.activeIndex = _this.$tabs.length - 1;
+      }
+
+      _this._setActive();
+    };
+
+    /**
+     * 显示指定序号或指定id的选项卡
+     * @param index 从0开始的序号，或以#开头的id
+     */
+    Tab.prototype.show = function (index) {
+      var _this = this;
+
+      if (_this.activeIndex === false) {
+        return;
+      }
+
+      if (parseInt(index) === index) {
+        _this.activeIndex = index;
+      } else {
+        _this.$tabs.each(function (i, tab) {
+          if (tab.id === index) {
+            _this.activeIndex = i;
+            return false;
+          }
+        });
+      }
+
+      _this._setActive();
+    };
+
+    /**
+     * 在父元素的宽度变化时，需要调用该方法重新调整指示器位置
+     * 在添加或删除选项卡时，需要调用该方法
+     */
+    Tab.prototype.handleUpdate = function () {
+      var _this = this;
+
+      var $oldTabs = _this.$tabs;               // 旧的 tabs JQ对象
+      var $newTabs = _this.$tab.children('a');  // 新的 tabs JQ对象
+      var oldTabsEle = $oldTabs.get();          // 旧 tabs 的元素数组
+      var newTabsEle = $newTabs.get();          // 新的 tabs 元素数组
+
+      if (!$newTabs.length) {
+        _this.activeIndex = false;
+        _this.$tabs = $newTabs;
+        _this._setIndicatorPosition();
+
+        return;
+      }
+
+      // 重新遍历选项卡，找出新增的选项卡
+      $newTabs.each(function (i, tab) {
+        // 有新增的选项卡
+        if (oldTabsEle.indexOf(tab) < 0) {
+          _this._bindTabEvent(tab);
+
+          if (_this.activeIndex === false) {
+            _this.activeIndex = 0;
+          } else if (i <= _this.activeIndex) {
+            _this.activeIndex++;
+          }
+        }
+      });
+
+      // 找出被移除的选项卡
+      $oldTabs.each(function (i, tab) {
+        // 有被移除的选项卡
+        if (newTabsEle.indexOf(tab) < 0) {
+
+          if (i < _this.activeIndex) {
+            _this.activeIndex--;
+          } else if (i === _this.activeIndex) {
+            _this.activeIndex = 0;
+          }
+        }
+      });
+
+      _this.$tabs = $newTabs;
+
+      _this._setActive();
+    };
+
+    return Tab;
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Tab 自定义属性 API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-tab]', function () {
+      var $this = $(this);
+      var inst = $this.data('mdui.tab');
+      if (!inst) {
+        inst = new mdui.Tab($this, parseOptions($this.attr('mdui-tab')));
+        $this.data('mdui.tab', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Drawer 抽屉栏   ************
+   * =============================================================================
+   *
+   * 在桌面设备上默认显示抽屉栏，不显示遮罩层
+   * 在手机和平板设备上默认不显示抽屉栏，始终显示遮罩层，且覆盖导航栏
+   */
+
+  mdui.Drawer = (function () {
+
+    /**
+     * 默认参数
+     * @type {{}}
+     */
+    var DEFAULT = {
+      // 在桌面设备上是否显示遮罩层。手机和平板不受这个参数影响，始终会显示遮罩层
+      overlay: false,
+
+      // 是否开启手势
+      swipe: false,
+    };
+
+    var isDesktop = function () {
+      return $window.width() >= 1024;
+    };
+
+    /**
+     * 抽屉栏实例
+     * @param selector 选择器或 HTML 字符串或 DOM 元素
+     * @param opts
+     * @constructor
+     */
+    function Drawer(selector, opts) {
+      var _this = this;
+
+      _this.$drawer = $(selector).eq(0);
+      if (!_this.$drawer.length) {
+        return;
+      }
+
+      var oldInst = _this.$drawer.data('mdui.drawer');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+
+      _this.overlay = false; // 是否显示着遮罩层
+      _this.position = _this.$drawer.hasClass('mdui-drawer-right') ? 'right' : 'left';
+
+      if (_this.$drawer.hasClass('mdui-drawer-close')) {
+        _this.state = 'closed';
+      } else if (_this.$drawer.hasClass('mdui-drawer-open')) {
+        _this.state = 'opened';
+      } else if (isDesktop()) {
+        _this.state = 'opened';
+      } else {
+        _this.state = 'closed';
+      }
+
+      // 浏览器窗口大小调整时
+      $window.on('resize', $.throttle(function () {
+        // 由手机平板切换到桌面时
+        if (isDesktop()) {
+          // 如果显示着遮罩，则隐藏遮罩
+          if (_this.overlay && !_this.options.overlay) {
+            $.hideOverlay();
+            _this.overlay = false;
+            $.unlockScreen();
+          }
+
+          // 没有强制关闭，则状态为打开状态
+          if (!_this.$drawer.hasClass('mdui-drawer-close')) {
+            _this.state = 'opened';
+          }
+        }
+
+        // 由桌面切换到手机平板时。如果抽屉栏是打开着的且没有遮罩层，则关闭抽屉栏
+        else {
+          if (!_this.overlay && _this.state === 'opened') {
+            // 抽屉栏处于强制打开状态，添加遮罩
+            if (_this.$drawer.hasClass('mdui-drawer-open')) {
+              $.showOverlay();
+              _this.overlay = true;
+              $.lockScreen();
+
+              $('.mdui-overlay').one('click', function () {
+                _this.close();
+              });
+            } else {
+              _this.state = 'closed';
+            }
+          }
+        }
+      }, 100));
+
+      // 绑定关闭按钮事件
+      _this.$drawer.find('[mdui-drawer-close]').each(function () {
+        $(this).on('click', function () {
+          _this.close();
+        });
+      });
+
+      swipeSupport(_this);
+    }
+
+    /**
+     * 滑动手势支持
+     * @param _this
+     */
+    var swipeSupport = function (_this) {
+      // 抽屉栏滑动手势控制
+      var openNavEventHandler;
+      var touchStartX;
+      var touchStartY;
+      var swipeStartX;
+      var swiping = false;
+      var maybeSwiping = false;
+      var $body = $('body');
+
+      // 手势触发的范围
+      var swipeAreaWidth = 24;
+
+      function enableSwipeHandling() {
+        if (!openNavEventHandler) {
+          $body.on('touchstart', onBodyTouchStart);
+          openNavEventHandler = onBodyTouchStart;
+        }
+      }
+
+      function setPosition(translateX, closeTransform) {
+        var rtlTranslateMultiplier = _this.position === 'right' ? -1 : 1;
+        var transformCSS = 'translate(' + (-1 * rtlTranslateMultiplier * translateX) + 'px, 0) !important;';
+        _this.$drawer.css(
+          'cssText',
+          'transform:' + transformCSS + (closeTransform ? 'transition: initial !important;' : '')
+        );
+      }
+
+      function cleanPosition() {
+        _this.$drawer.css({
+          transform: '',
+          transition: '',
+        });
+      }
+
+      function getMaxTranslateX() {
+        return _this.$drawer.width() + 10;
+      }
+
+      function getTranslateX(currentX) {
+        return Math.min(
+          Math.max(
+            swiping === 'closing' ? (swipeStartX - currentX) : (getMaxTranslateX() + swipeStartX - currentX),
+            0
+          ),
+          getMaxTranslateX()
+        );
+      }
+
+      function onBodyTouchStart(event) {
+        touchStartX = event.touches[0].pageX;
+        if (_this.position === 'right') {
+          touchStartX = $body.width() - touchStartX;
+        }
+
+        touchStartY = event.touches[0].pageY;
+
+        if (_this.state !== 'opened') {
+          if (touchStartX > swipeAreaWidth || openNavEventHandler !== onBodyTouchStart) {
+            return;
+          }
+        }
+
+        maybeSwiping = true;
+
+        $body.on({
+          touchmove: onBodyTouchMove,
+          touchend: onBodyTouchEnd,
+          touchcancel: onBodyTouchMove,
+        });
+      }
+
+      function onBodyTouchMove(event) {
+        var touchX = event.touches[0].pageX;
+        if (_this.position === 'right') {
+          touchX = $body.width() - touchX;
+        }
+
+        var touchY = event.touches[0].pageY;
+
+        if (swiping) {
+          setPosition(getTranslateX(touchX), true);
+        } else if (maybeSwiping) {
+          var dXAbs = Math.abs(touchX - touchStartX);
+          var dYAbs = Math.abs(touchY - touchStartY);
+          var threshold = 8;
+
+          if (dXAbs > threshold && dYAbs <= threshold) {
+            swipeStartX = touchX;
+            swiping = _this.state === 'opened' ? 'closing' : 'opening';
+            $.lockScreen();
+            setPosition(getTranslateX(touchX), true);
+          } else if (dXAbs <= threshold && dYAbs > threshold) {
+            onBodyTouchEnd();
+          }
+        }
+      }
+
+      function onBodyTouchEnd(event) {
+        if (swiping) {
+          var touchX = event.changedTouches[0].pageX;
+          if (_this.position === 'right') {
+            touchX = $body.width() - touchX;
+          }
+
+          var translateRatio = getTranslateX(touchX) / getMaxTranslateX();
+
+          maybeSwiping = false;
+          var swipingState = swiping;
+          swiping = null;
+
+          if (swipingState === 'opening') {
+            if (translateRatio < 0.92) {
+              cleanPosition();
+              _this.open();
+            } else {
+              cleanPosition();
+            }
+          } else {
+            if (translateRatio > 0.08) {
+              cleanPosition();
+              _this.close();
+            } else {
+              cleanPosition();
+            }
+          }
+
+          $.unlockScreen();
+        } else {
+          maybeSwiping = false;
+        }
+
+        $body.off({
+          touchmove: onBodyTouchMove,
+          touchend: onBodyTouchEnd,
+          touchcancel: onBodyTouchMove,
+        });
+      }
+
+      if (_this.options.swipe) {
+        enableSwipeHandling();
+      }
+    };
+
+    /**
+     * 动画结束回调
+     * @param inst
+     */
+    var transitionEnd = function (inst) {
+      if (inst.$drawer.hasClass('mdui-drawer-open')) {
+        inst.state = 'opened';
+        componentEvent('opened', 'drawer', inst, inst.$drawer);
+      } else {
+        inst.state = 'closed';
+        componentEvent('closed', 'drawer', inst, inst.$drawer);
+      }
+    };
+
+    /**
+     * 打开抽屉栏
+     */
+    Drawer.prototype.open = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      _this.state = 'opening';
+      componentEvent('open', 'drawer', _this, _this.$drawer);
+
+      if (!_this.options.overlay) {
+        $('body').addClass('mdui-drawer-body-' + _this.position);
+      }
+
+      _this.$drawer
+        .removeClass('mdui-drawer-close')
+        .addClass('mdui-drawer-open')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+
+      if (!isDesktop() || _this.options.overlay) {
+        _this.overlay = true;
+        $.showOverlay().one('click', function () {
+          _this.close();
+        });
+
+        $.lockScreen();
+      }
+    };
+
+    /**
+     * 关闭抽屉栏
+     */
+    Drawer.prototype.close = function () {
+      var _this = this;
+
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      _this.state = 'closing';
+      componentEvent('close', 'drawer', _this, _this.$drawer);
+
+      if (!_this.options.overlay) {
+        $('body').removeClass('mdui-drawer-body-' + _this.position);
+      }
+
+      _this.$drawer
+        .addClass('mdui-drawer-close')
+        .removeClass('mdui-drawer-open')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+
+      if (_this.overlay) {
+        $.hideOverlay();
+        _this.overlay = false;
+        $.unlockScreen();
+      }
+    };
+
+    /**
+     * 切换抽屉栏打开/关闭状态
+     */
+    Drawer.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    /**
+     * 获取抽屉栏状态
+     * @returns {'opening'|'opened'|'closing'|'closed'}
+     */
+    Drawer.prototype.getState = function () {
+      return this.state;
+    };
+
+    return Drawer;
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Drawer 自定义属性 API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-drawer]', function () {
+      var $this = $(this);
+      var options = parseOptions($this.attr('mdui-drawer'));
+      var selector = options.target;
+      delete options.target;
+
+      var $drawer = $(selector).eq(0);
+
+      var inst = $drawer.data('mdui.drawer');
+      if (!inst) {
+        inst = new mdui.Drawer($drawer, options);
+        $drawer.data('mdui.drawer', inst);
+      }
+
+      $this.on('click', function () {
+        inst.toggle();
+      });
+
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Dialog 对话框   ************
+   * =============================================================================
+   */
+
+  mdui.Dialog = (function () {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      history: true,                // 监听 hashchange 事件
+      overlay: true,                // 打开对话框时是否显示遮罩
+      modal: false,                 // 是否模态化对话框，为 false 时点击对话框外面区域关闭对话框，为 true 时不关闭
+      closeOnEsc: true,             // 按下 esc 关闭对话框
+      closeOnCancel: true,          // 按下取消按钮时关闭对话框
+      closeOnConfirm: true,         // 按下确认按钮时关闭对话框
+      destroyOnClosed: false,        // 关闭后销毁
+    };
+
+    /**
+     * 遮罩层元素
+     */
+    var $overlay;
+
+    /**
+     * 窗口是否已锁定
+     */
+    var isLockScreen;
+
+    /**
+     * 当前对话框实例
+     */
+    var currentInst;
+
+    /**
+     * 队列名
+     */
+    var queueName = '__md_dialog';
+
+    /**
+     * 窗口宽度变化，或对话框内容变化时，调整对话框位置和对话框内的滚动条
+     */
+    var readjust = function () {
+      if (!currentInst) {
+        return;
+      }
+
+      var $dialog = currentInst.$dialog;
+
+      var $dialogTitle = $dialog.children('.mdui-dialog-title');
+      var $dialogContent = $dialog.children('.mdui-dialog-content');
+      var $dialogActions = $dialog.children('.mdui-dialog-actions');
+
+      // 调整 dialog 的 top 和 height 值
+      $dialog.height('');
+      $dialogContent.height('');
+
+      var dialogHeight = $dialog.height();
+      $dialog.css({
+        top: (($window.height() - dialogHeight) / 2) + 'px',
+        height: dialogHeight + 'px',
+      });
+
+      // 调整 mdui-dialog-content 的高度
+      $dialogContent.height(dialogHeight - ($dialogTitle.height() || 0) - ($dialogActions.height() || 0));
+    };
+
+    /**
+     * hashchange 事件触发时关闭对话框
+     */
+    var hashchangeEvent = function () {
+      if (location.hash.substring(1).indexOf('mdui-dialog') < 0) {
+        currentInst.close(true);
+      }
+    };
+
+    /**
+     * 点击遮罩层关闭对话框
+     * @param e
+     */
+    var overlayClick = function (e) {
+      if ($(e.target).hasClass('mdui-overlay') && currentInst) {
+        currentInst.close();
+      }
+    };
+
+    /**
+     * 对话框实例
+     * @param selector 选择器或 HTML 字符串或 DOM 元素
+     * @param opts
+     * @constructor
+     */
+    function Dialog(selector, opts) {
+      var _this = this;
+
+      // 对话框元素
+      _this.$dialog = $(selector).eq(0);
+      if (!_this.$dialog.length) {
+        return;
+      }
+
+      // 已通过 data 属性实例化过，不再重复实例化
+      var oldInst = _this.$dialog.data('mdui.dialog');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      // 如果对话框元素没有在当前文档中，则需要添加
+      if (!$.contains(document.body, _this.$dialog[0])) {
+        _this.append = true;
+        $('body').append(_this.$dialog);
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+      _this.state = 'closed';
+
+      // 绑定取消按钮事件
+      _this.$dialog.find('[mdui-dialog-cancel]').each(function () {
+        $(this).on('click', function () {
+          componentEvent('cancel', 'dialog', _this, _this.$dialog);
+          if (_this.options.closeOnCancel) {
+            _this.close();
+          }
+        });
+      });
+
+      // 绑定确认按钮事件
+      _this.$dialog.find('[mdui-dialog-confirm]').each(function () {
+        $(this).on('click', function () {
+          componentEvent('confirm', 'dialog', _this, _this.$dialog);
+          if (_this.options.closeOnConfirm) {
+            _this.close();
+          }
+        });
+      });
+
+      // 绑定关闭按钮事件
+      _this.$dialog.find('[mdui-dialog-close]').each(function () {
+        $(this).on('click', function () {
+          _this.close();
+        });
+      });
+    }
+
+    /**
+     * 动画结束回调
+     * @param inst
+     */
+    var transitionEnd = function (inst) {
+      if (inst.$dialog.hasClass('mdui-dialog-open')) {
+        inst.state = 'opened';
+        componentEvent('opened', 'dialog', inst, inst.$dialog);
+      } else {
+        inst.state = 'closed';
+        componentEvent('closed', 'dialog', inst, inst.$dialog);
+
+        inst.$dialog.hide();
+
+        // 所有对话框都关闭，且当前没有打开的对话框时，解锁屏幕
+        if (queue.queue(queueName).length === 0 && !currentInst && isLockScreen) {
+          $.unlockScreen();
+          isLockScreen = false;
+        }
+
+        $window.off('resize', $.throttle(function () {
+          readjust();
+        }, 100));
+
+        if (inst.options.destroyOnClosed) {
+          inst.destroy();
+        }
+      }
+    };
+
+    /**
+     * 打开指定对话框
+     * @private
+     */
+    Dialog.prototype._doOpen = function () {
+      var _this = this;
+
+      currentInst = _this;
+
+      if (!isLockScreen) {
+        $.lockScreen();
+        isLockScreen = true;
+      }
+
+      _this.$dialog.show();
+
+      readjust();
+      $window.on('resize', $.throttle(function () {
+        readjust();
+      }, 100));
+
+      // 打开消息框
+      _this.state = 'opening';
+      componentEvent('open', 'dialog', _this, _this.$dialog);
+
+      _this.$dialog
+        .addClass('mdui-dialog-open')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+
+      // 不存在遮罩层元素时，添加遮罩层
+      if (!$overlay) {
+        $overlay = $.showOverlay(5100);
+      }
+
+      $overlay
+
+        // 点击遮罩层时是否关闭对话框
+        [_this.options.modal ? 'off' : 'on']('click', overlayClick)
+
+        // 是否显示遮罩层，不显示时，把遮罩层背景透明
+        .css('opacity', _this.options.overlay ? '' : 0);
+
+      if (_this.options.history) {
+        // 如果 hash 中原来就有 mdui-dialog，先删除，避免后退历史纪录后仍然有 mdui-dialog 导致无法关闭
+        // 包括 mdui-dialog 和 &mdui-dialog 和 ?mdui-dialog
+        var hash = location.hash.substring(1);
+        if (hash.indexOf('mdui-dialog') > -1) {
+          hash = hash.replace(/[&?]?mdui-dialog/g, '');
+        }
+
+        // 后退按钮关闭对话框
+        if (hash) {
+          location.hash = hash + (hash.indexOf('?') > -1 ? '&' : '?') + 'mdui-dialog';
+        } else {
+          location.hash = 'mdui-dialog';
+        }
+
+        $window.on('hashchange', hashchangeEvent);
+      }
+    };
+
+    /**
+     * 打开对话框
+     */
+    Dialog.prototype.open = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      // 如果当前有正在打开或已经打开的对话框,或队列不为空，则先加入队列，等旧对话框开始关闭时再打开
+      if (
+        (currentInst && (currentInst.state === 'opening' || currentInst.state === 'opened')) ||
+        queue.queue(queueName).length
+      ) {
+        queue.queue(queueName, function () {
+          _this._doOpen();
+        });
+
+        return;
+      }
+
+      _this._doOpen();
+    };
+
+    /**
+     * 关闭对话框
+     */
+    Dialog.prototype.close = function () {
+      var _this = this;
+      var _arguments = arguments;
+
+      // setTimeout 的作用是：
+      // 当同时关闭一个对话框，并打开另一个对话框时，使打开对话框的操作先执行，以使需要打开的对话框先加入队列
+      setTimeout(function () {
+        if (_this.state === 'closing' || _this.state === 'closed') {
+          return;
+        }
+
+        currentInst = null;
+
+        _this.state = 'closing';
+        componentEvent('close', 'dialog', _this, _this.$dialog);
+
+        // 所有对话框都关闭，且当前没有打开的对话框时，隐藏遮罩
+        if (queue.queue(queueName).length === 0 && $overlay) {
+          $.hideOverlay();
+          $overlay = null;
+        }
+
+        _this.$dialog
+          .removeClass('mdui-dialog-open')
+          .transitionEnd(function () {
+            transitionEnd(_this);
+          });
+
+        if (_this.options.history && queue.queue(queueName).length === 0) {
+          // 是否需要后退历史纪录，默认为 false。
+          // 为 false 时是通过 js 关闭，需要后退一个历史记录
+          // 为 true 时是通过后退按钮关闭，不需要后退历史记录
+          if (!_arguments[0]) {
+            window.history.back();
+          }
+
+          $window.off('hashchange', hashchangeEvent);
+        }
+
+        // 关闭旧对话框，打开新对话框。
+        // 加一点延迟，仅仅为了视觉效果更好。不加延时也不影响功能
+        setTimeout(function () {
+          queue.dequeue(queueName);
+        }, 100);
+      }, 0);
+    };
+
+    /**
+     * 切换对话框打开/关闭状态
+     */
+    Dialog.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    /**
+     * 获取对话框状态
+     * @returns {'opening'|'opened'|'closing'|'closed'}
+     */
+    Dialog.prototype.getState = function () {
+      return this.state;
+    };
+
+    /**
+     * 销毁对话框
+     */
+    Dialog.prototype.destroy = function () {
+      var _this = this;
+
+      if (_this.append) {
+        _this.$dialog.remove();
+      }
+
+      _this.$dialog.removeData('mdui.dialog');
+
+      if (queue.queue(queueName).length === 0 && !currentInst) {
+        if ($overlay) {
+          $.hideOverlay();
+          $overlay = null;
+        }
+
+        if (isLockScreen) {
+          $.unlockScreen();
+          isLockScreen = false;
+        }
+      }
+    };
+
+    /**
+     * 对话框内容变化时，需要调用该方法来调整对话框位置和滚动条高度
+     */
+    Dialog.prototype.handleUpdate = function () {
+      readjust();
+    };
+
+    // esc 按下时关闭对话框
+    $document.on('keydown', function (e) {
+      if (
+        currentInst &&
+        currentInst.options.closeOnEsc &&
+        currentInst.state === 'opened' &&
+        e.keyCode === 27
+      ) {
+        currentInst.close();
+      }
+    });
+
+    return Dialog;
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Dialog DATA API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    $document.on('click', '[mdui-dialog]', function () {
+      var $this = $(this);
+      var options = parseOptions($this.attr('mdui-dialog'));
+      var selector = options.target;
+      delete options.target;
+
+      var $dialog = $(selector).eq(0);
+
+      var inst = $dialog.data('mdui.dialog');
+      if (!inst) {
+        inst = new mdui.Dialog($dialog, options);
+        $dialog.data('mdui.dialog', inst);
+      }
+
+      inst.open();
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   mdui.dialog(options)   ************
+   * =============================================================================
+   */
+
+  mdui.dialog = function (options) {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      title: '',                // 标题
+      content: '',              // 文本
+      buttons: [],              // 按钮
+      stackedButtons: false,    // 垂直排列按钮
+      cssClass: '',             // 在 Dialog 上添加的 CSS 类
+      history: true,            // 监听 hashchange 事件
+      overlay: true,            // 是否显示遮罩
+      modal: false,             // 是否模态化对话框
+      closeOnEsc: true,         // 按下 esc 时关闭对话框
+      destroyOnClosed: true,    // 关闭后销毁
+      onOpen: function () {     // 打开动画开始时的回调
+      },
+
+      onOpened: function () {   // 打开动画结束后的回调
+      },
+
+      onClose: function () {    // 关闭动画开始时的回调
+      },
+
+      onClosed: function () {   // 关闭动画结束时的回调
+      },
+    };
+
+    /**
+     * 按钮的默认参数
+     */
+    var DEFAULT_BUTTON = {
+      text: '',                   // 按钮文本
+      bold: false,                // 按钮文本是否加粗
+      close: true,                // 点击按钮后关闭对话框
+      onClick: function (inst) {  // 点击按钮的回调
+      },
+    };
+
+    // 合并参数
+    options = $.extend({}, DEFAULT, (options || {}));
+    $.each(options.buttons, function (i, button) {
+      options.buttons[i] = $.extend({}, DEFAULT_BUTTON, button);
+    });
+
+    // 按钮的 HTML
+    var buttonsHTML = '';
+    if (options.buttons.length) {
+      buttonsHTML =
+        '<div class="mdui-dialog-actions ' +
+          (options.stackedButtons ? 'mdui-dialog-actions-stacked' : '') +
+        '">';
+      $.each(options.buttons, function (i, button) {
+        buttonsHTML +=
+          '<a href="javascript:void(0)" ' +
+            'class="mdui-btn mdui-ripple mdui-text-color-primary ' +
+            (button.bold ? 'mdui-btn-bold' : '') + '">' +
+            button.text +
+          '</a>';
+      });
+
+      buttonsHTML += '</div>';
+    }
+
+    // Dialog 的 HTML
+    var HTML =
+      '<div class="mdui-dialog ' + options.cssClass + '">' +
+        (options.title ? '<div class="mdui-dialog-title">' + options.title + '</div>' : '') +
+        (options.content ? '<div class="mdui-dialog-content">' + options.content + '</div>' : '') +
+        buttonsHTML +
+      '</div>';
+
+    // 实例化 Dialog
+    var inst = new mdui.Dialog(HTML, {
+      history: options.history,
+      overlay: options.overlay,
+      modal: options.modal,
+      closeOnEsc: options.closeOnEsc,
+      destroyOnClosed: options.destroyOnClosed,
+    });
+
+    // 绑定按钮事件
+    if (options.buttons.length) {
+      inst.$dialog.find('.mdui-dialog-actions .mdui-btn').each(function (i, button) {
+        $(button).on('click', function () {
+          if (typeof options.buttons[i].onClick === 'function') {
+            options.buttons[i].onClick(inst);
+          }
+
+          if (options.buttons[i].close) {
+            inst.close();
+          }
+        });
+      });
+    }
+
+    // 绑定打开关闭事件
+    if (typeof options.onOpen === 'function') {
+      inst.$dialog
+        .on('open.mdui.dialog', function () {
+          options.onOpen(inst);
+        })
+        .on('opened.mdui.dialog', function () {
+          options.onOpened(inst);
+        })
+        .on('close.mdui.dialog', function () {
+          options.onClose(inst);
+        })
+        .on('closed.mdui.dialog', function () {
+          options.onClosed(inst);
+        });
+    }
+
+    inst.open();
+
+    return inst;
+  };
+
+
+  /**
+   * =============================================================================
+   * ************   mdui.alert(text, title, onConfirm, options)   ************
+   * ************   mdui.alert(text, onConfirm, options)   ************
+   * =============================================================================
+   */
+
+  mdui.alert = function (text, title, onConfirm, options) {
+
+    // title 参数可选
+    if (typeof title === 'function') {
+      title = '';
+      onConfirm = arguments[1];
+      options = arguments[2];
+    }
+
+    if (onConfirm === undefined) {
+      onConfirm = function () {};
+    }
+
+    if (options === undefined) {
+      options = {};
+    }
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      confirmText: 'ok',             // 按钮上的文本
+      history: true,                 // 监听 hashchange 事件
+      modal: false,                  // 是否模态化对话框，为 false 时点击对话框外面区域关闭对话框，为 true 时不关闭
+      closeOnEsc: true,              // 按下 esc 关闭对话框
+    };
+
+    options = $.extend({}, DEFAULT, options);
+
+    return mdui.dialog({
+      title: title,
+      content: text,
+      buttons: [
+        {
+          text: options.confirmText,
+          bold: false,
+          close: true,
+          onClick: onConfirm,
+        },
+      ],
+      cssClass: 'mdui-dialog-alert',
+      history: options.history,
+      modal: options.modal,
+      closeOnEsc: options.closeOnEsc,
+    });
+  };
+
+
+  /**
+   * =============================================================================
+   * ************   mdui.confirm(text, title, onConfirm, onCancel, options)   ************
+   * ************   mdui.confirm(text, onConfirm, onCancel, options)          ************
+   * =============================================================================
+   */
+
+  mdui.confirm = function (text, title, onConfirm, onCancel, options) {
+
+    // title 参数可选
+    if (typeof title === 'function') {
+      title = '';
+      onConfirm = arguments[1];
+      onCancel = arguments[2];
+      options = arguments[3];
+    }
+
+    if (onConfirm === undefined) {
+      onConfirm = function () {};
+    }
+
+    if (onCancel === undefined) {
+      onCancel = function () {};
+    }
+
+    if (options === undefined) {
+      options = {};
+    }
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      confirmText: 'ok',            // 确认按钮的文本
+      cancelText: 'cancel',         // 取消按钮的文本
+      history: true,                // 监听 hashchange 事件
+      modal: false,                 // 是否模态化对话框，为 false 时点击对话框外面区域关闭对话框，为 true 时不关闭
+      closeOnEsc: true,             // 按下 esc 关闭对话框
+    };
+
+    options = $.extend({}, DEFAULT, options);
+
+    return mdui.dialog({
+      title: title,
+      content: text,
+      buttons: [
+        {
+          text: options.cancelText,
+          bold: false,
+          close: true,
+          onClick: onCancel,
+        },
+        {
+          text: options.confirmText,
+          bold: false,
+          close: true,
+          onClick: onConfirm,
+        },
+      ],
+      cssClass: 'mdui-dialog-confirm',
+      history: options.history,
+      modal: options.modal,
+      closeOnEsc: options.closeOnEsc,
+    });
+  };
+
+
+  /**
+   * =============================================================================
+   * ************   mdui.prompt(label, title, onConfirm, onCancel, options)   ************
+   * ************   mdui.prompt(label, onConfirm, onCancel, options)          ************
+   * =============================================================================
+   */
+
+  mdui.prompt = function (label, title, onConfirm, onCancel, options) {
+
+    // title 参数可选
+    if (typeof title === 'function') {
+      title = '';
+      onConfirm = arguments[1];
+      onCancel = arguments[2];
+      options = arguments[3];
+    }
+
+    if (onConfirm === undefined) {
+      onConfirm = function () {};
+    }
+
+    if (onCancel === undefined) {
+      onCancel = function () {};
+    }
+
+    if (options === undefined) {
+      options = {};
+    }
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      confirmText: 'ok',        // 确认按钮的文本
+      cancelText: 'cancel',     // 取消按钮的文本
+      history: true,            // 监听 hashchange 事件
+      modal: false,             // 是否模态化对话框，为 false 时点击对话框外面区域关闭对话框，为 true 时不关闭
+      closeOnEsc: true,         // 按下 esc 关闭对话框
+      type: 'text',             // 输入框类型，text: 单行文本框 textarea: 多行文本框
+      maxlength: '',            // 最大输入字符数
+      defaultValue: '',         // 输入框中的默认文本
+      confirmOnEnter: false,    // 按下 enter 确认输入内容
+    };
+
+    options = $.extend({}, DEFAULT, options);
+
+    var content =
+      '<div class="mdui-textfield">' +
+        (label ? '<label class="mdui-textfield-label">' + label + '</label>' : '') +
+        (options.type === 'text' ?
+          '<input class="mdui-textfield-input" type="text" ' +
+            'value="' + options.defaultValue + '" ' +
+            (options.maxlength ? ('maxlength="' + options.maxlength + '"') : '') + '/>' :
+          '') +
+        (options.type === 'textarea' ?
+          '<textarea class="mdui-textfield-input" ' +
+            (options.maxlength ? ('maxlength="' + options.maxlength + '"') : '') + '>' +
+              options.defaultValue +
+          '</textarea>' :
+          '') +
+      '</div>';
+
+    return mdui.dialog({
+      title: title,
+      content: content,
+      buttons: [
+        {
+          text: options.cancelText,
+          bold: false,
+          close: true,
+          onClick: function (inst) {
+            var value = inst.$dialog.find('.mdui-textfield-input').val();
+            onCancel(value, inst);
+          },
+        },
+        {
+          text: options.confirmText,
+          bold: false,
+          close: true,
+          onClick: function (inst) {
+            var value = inst.$dialog.find('.mdui-textfield-input').val();
+            onConfirm(value, inst);
+          },
+        },
+      ],
+      cssClass: 'mdui-dialog-prompt',
+      history: options.history,
+      modal: options.modal,
+      closeOnEsc: options.closeOnEsc,
+      onOpen: function (inst) {
+
+        // 初始化输入框
+        var $input = inst.$dialog.find('.mdui-textfield-input');
+        mdui.updateTextFields($input);
+
+        // 聚焦到输入框
+        $input[0].focus();
+
+        // 捕捉文本框回车键，在单行文本框的情况下触发回调
+        if (options.type === 'text' && options.confirmOnEnter === true) {
+          $input.on('keydown', function (event) {
+            if (event.keyCode === 13) {
+              var value = inst.$dialog.find('.mdui-textfield-input').val();
+              onConfirm(value, inst);
+              inst.close();
+            }
+          });
+        }
+
+        // 如果是多行输入框，监听输入框的 input 事件，更新对话框高度
+        if (options.type === 'textarea') {
+          $input.on('input', function () {
+            inst.handleUpdate();
+          });
+        }
+
+        // 有字符数限制时，加载完文本框后 DOM 会变化，需要更新对话框高度
+        if (options.maxlength) {
+          inst.handleUpdate();
+        }
+      },
+    });
+
+  };
+
+
+  /**
+   * =============================================================================
+   * ************   ToolTip 工具提示   ************
+   * =============================================================================
+   */
+
+  mdui.Tooltip = (function () {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      position: 'auto',     // 提示所在位置
+      delay: 0,             // 延迟，单位毫秒
+      content: '',          // 提示文本，允许包含 HTML
+    };
+
+    /**
+     * 是否是桌面设备
+     * @returns {boolean}
+     */
+    var isDesktop = function () {
+      return $window.width() > 1024;
+    };
+
+    /**
+     * 设置 Tooltip 的位置
+     * @param inst
+     */
+    function setPosition(inst) {
+      var marginLeft;
+      var marginTop;
+      var position;
+
+      // 触发的元素
+      var targetProps = inst.$target[0].getBoundingClientRect();
+
+      // 触发的元素和 Tooltip 之间的距离
+      var targetMargin = (isDesktop() ? 14 : 24);
+
+      // Tooltip 的宽度和高度
+      var tooltipWidth = inst.$tooltip[0].offsetWidth;
+      var tooltipHeight = inst.$tooltip[0].offsetHeight;
+
+      // Tooltip 的方向
+      position = inst.options.position;
+
+      // 自动判断位置，加 2px，使 Tooltip 距离窗口边框至少有 2px 的间距
+      if (['bottom', 'top', 'left', 'right'].indexOf(position) === -1) {
+        if (
+          targetProps.top + targetProps.height + targetMargin + tooltipHeight + 2 <
+          $window.height()
+        ) {
+          position = 'bottom';
+        } else if (targetMargin + tooltipHeight + 2 < targetProps.top) {
+          position = 'top';
+        } else if (targetMargin + tooltipWidth + 2 < targetProps.left) {
+          position = 'left';
+        } else if (
+          targetProps.width + targetMargin + tooltipWidth + 2 <
+          $window.width() - targetProps.left
+        ) {
+          position = 'right';
+        } else {
+          position = 'bottom';
+        }
+      }
+
+      // 设置位置
+      switch (position) {
+        case 'bottom':
+          marginLeft = -1 * (tooltipWidth / 2);
+          marginTop = (targetProps.height / 2) + targetMargin;
+          inst.$tooltip.transformOrigin('top center');
+          break;
+        case 'top':
+          marginLeft = -1 * (tooltipWidth / 2);
+          marginTop = -1 * (tooltipHeight + (targetProps.height / 2) + targetMargin);
+          inst.$tooltip.transformOrigin('bottom center');
+          break;
+        case 'left':
+          marginLeft = -1 * (tooltipWidth + (targetProps.width / 2) + targetMargin);
+          marginTop = -1 * (tooltipHeight / 2);
+          inst.$tooltip.transformOrigin('center right');
+          break;
+        case 'right':
+          marginLeft = (targetProps.width / 2) + targetMargin;
+          marginTop = -1 * (tooltipHeight / 2);
+          inst.$tooltip.transformOrigin('center left');
+          break;
+      }
+
+      var targetOffset = inst.$target.offset();
+      inst.$tooltip.css({
+        top: targetOffset.top + (targetProps.height / 2) + 'px',
+        left: targetOffset.left + (targetProps.width / 2) + 'px',
+        'margin-left': marginLeft + 'px',
+        'margin-top': marginTop + 'px',
+      });
+    }
+
+    /**
+     * Tooltip 实例
+     * @param selector
+     * @param opts
+     * @constructor
+     */
+    function Tooltip(selector, opts) {
+      var _this = this;
+
+      _this.$target = $(selector).eq(0);
+      if (!_this.$target.length) {
+        return;
+      }
+
+      // 已通过 data 属性实例化过，不再重复实例化
+      var oldInst = _this.$target.data('mdui.tooltip');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+      _this.state = 'closed';
+
+      // 创建 Tooltip HTML
+      _this.$tooltip = $(
+        '<div class="mdui-tooltip" id="' + $.guid() + '">' +
+          _this.options.content +
+        '</div>'
+      ).appendTo(document.body);
+
+      // 绑定事件。元素处于 disabled 状态时无法触发鼠标事件，为了统一，把 touch 事件也禁用
+      _this.$target
+        .on('touchstart mouseenter', function (e) {
+          if (this.disabled) {
+            return;
+          }
+
+          if (!TouchHandler.isAllow(e)) {
+            return;
+          }
+
+          TouchHandler.register(e);
+
+          _this.open();
+        })
+        .on('touchend mouseleave', function (e) {
+          if (this.disabled) {
+            return;
+          }
+
+          if (!TouchHandler.isAllow(e)) {
+            return;
+          }
+
+          _this.close();
+        })
+        .on(TouchHandler.unlock, function (e) {
+          if (this.disabled) {
+            return;
+          }
+
+          TouchHandler.register(e);
+        });
+    }
+
+    /**
+     * 动画结束回调
+     * @private
+     */
+    var transitionEnd = function (inst) {
+      if (inst.$tooltip.hasClass('mdui-tooltip-open')) {
+        inst.state = 'opened';
+        componentEvent('opened', 'tooltip', inst, inst.$target);
+      } else {
+        inst.state = 'closed';
+        componentEvent('closed', 'tooltip', inst, inst.$target);
+      }
+    };
+
+    /**
+     * 执行打开 Tooltip
+     * @private
+     */
+    Tooltip.prototype._doOpen = function () {
+      var _this = this;
+
+      _this.state = 'opening';
+      componentEvent('open', 'tooltip', _this, _this.$target);
+
+      _this.$tooltip
+        .addClass('mdui-tooltip-open')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    /**
+     * 打开 Tooltip
+     * @param opts 允许每次打开时设置不同的参数
+     */
+    Tooltip.prototype.open = function (opts) {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      var oldOpts = $.extend({}, _this.options);
+
+      // 合并 data 属性参数
+      $.extend(_this.options, parseOptions(_this.$target.attr('mdui-tooltip')));
+      if (opts) {
+        $.extend(_this.options, opts);
+      }
+
+      // tooltip 的内容有更新
+      if (oldOpts.content !== _this.options.content) {
+        _this.$tooltip.html(_this.options.content);
+      }
+
+      setPosition(_this);
+
+      if (_this.options.delay) {
+        _this.timeoutId = setTimeout(function () {
+          _this._doOpen();
+        }, _this.options.delay);
+      } else {
+        _this.timeoutId = false;
+        _this._doOpen();
+      }
+    };
+
+    /**
+     * 关闭 Tooltip
+     */
+    Tooltip.prototype.close = function () {
+      var _this = this;
+
+      if (_this.timeoutId) {
+        clearTimeout(_this.timeoutId);
+        _this.timeoutId = false;
+      }
+
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      _this.state = 'closing';
+      componentEvent('close', 'tooltip', _this, _this.$target);
+
+      _this.$tooltip
+        .removeClass('mdui-tooltip-open')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    /**
+     * 切换 Tooltip 状态
+     */
+    Tooltip.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    /**
+     * 获取 Tooltip 状态
+     * @returns {'opening'|'opened'|'closing'|'closed'}
+     */
+    Tooltip.prototype.getState = function () {
+      return this.state;
+    };
+
+    /**
+     * 销毁 Tooltip
+     */
+    /*Tooltip.prototype.destroy = function () {
+      var _this = this;
+      clearTimeout(_this.timeoutId);
+      $.data(_this.target, 'mdui.tooltip', null);
+      $.remove(_this.tooltip);
+    };*/
+
+    return Tooltip;
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Tooltip DATA API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    // mouseenter 不能冒泡，所以这里用 mouseover 代替
+    $document.on('touchstart mouseover', '[mdui-tooltip]', function () {
+      var $this = $(this);
+
+      var inst = $this.data('mdui.tooltip');
+      if (!inst) {
+        var options = parseOptions($this.attr('mdui-tooltip'));
+        inst = new mdui.Tooltip($this, options);
+        $this.data('mdui.tooltip', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Snackbar   ************
+   * =============================================================================
+   */
+
+  (function () {
+
+    /**
+     * 当前打开着的 Snackbar
+     */
+    var currentInst;
+
+    /**
+     * 对列名
+     * @type {string}
+     */
+    var queueName = '__md_snackbar';
+
+    var DEFAULT = {
+      timeout: 4000,                  // 在用户没有操作时多长时间自动隐藏
+      buttonText: '',                 // 按钮的文本
+      buttonColor: '',                // 按钮的颜色，支持 blue #90caf9 rgba(...)
+      position: 'bottom',             // 位置 bottom、top、left-top、left-bottom、right-top、right-bottom
+      closeOnButtonClick: true,       // 点击按钮时关闭
+      closeOnOutsideClick: true,      // 触摸或点击屏幕其他地方时关闭
+      onClick: function () {          // 在 Snackbar 上点击的回调
+      },
+
+      onButtonClick: function () {    // 点击按钮的回调
+      },
+
+      onOpen: function () {           // 打开动画开始时的回调
+      },
+
+      onOpened: function () {         // 打开动画结束时的回调
+      },
+
+      onClose: function () {          // 关闭动画开始时的回调
+      },
+
+      onClosed: function () {         // 打开动画结束时的回调
+      },
+    };
+
+    /**
+     * 点击 Snackbar 外面的区域关闭
+     * @param e
+     */
+    var closeOnOutsideClick = function (e) {
+      var $target = $(e.target);
+      if (!$target.hasClass('mdui-snackbar') && !$target.parents('.mdui-snackbar').length) {
+        currentInst.close();
+      }
+    };
+
+    /**
+     * Snackbar 实例
+     * @param message
+     * @param opts
+     * @constructor
+     */
+    function Snackbar(message, opts) {
+      var _this = this;
+
+      _this.message = message;
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+
+      // message 参数必须
+      if (!_this.message) {
+        return;
+      }
+
+      _this.state = 'closed';
+
+      _this.timeoutId = false;
+
+      // 按钮颜色
+      var buttonColorStyle = '';
+      var buttonColorClass = '';
+
+      if (
+        _this.options.buttonColor.indexOf('#') === 0 ||
+        _this.options.buttonColor.indexOf('rgb') === 0
+      ) {
+        buttonColorStyle = 'style="color:' + _this.options.buttonColor + '"';
+      } else if (_this.options.buttonColor !== '') {
+        buttonColorClass = 'mdui-text-color-' + _this.options.buttonColor;
+      }
+
+      // 添加 HTML
+      _this.$snackbar = $(
+        '<div class="mdui-snackbar">' +
+          '<div class="mdui-snackbar-text">' +
+            _this.message +
+          '</div>' +
+          (_this.options.buttonText ?
+            ('<a href="javascript:void(0)" ' +
+            'class="mdui-snackbar-action mdui-btn mdui-ripple mdui-ripple-white ' +
+              buttonColorClass + '" ' +
+              buttonColorStyle + '>' +
+              _this.options.buttonText +
+            '</a>') :
+            ''
+          ) +
+        '</div>')
+        .appendTo(document.body);
+
+      // 设置位置
+      _this._setPosition('close');
+
+      _this.$snackbar
+        .reflow()
+        .addClass('mdui-snackbar-' + _this.options.position);
+    }
+
+    /**
+     * 设置 Snackbar 的位置
+     * @param state
+     * @private
+     */
+    Snackbar.prototype._setPosition = function (state) {
+      var _this = this;
+
+      var snackbarHeight = _this.$snackbar[0].clientHeight;
+      var position = _this.options.position;
+
+      var translateX;
+      var translateY;
+
+      // translateX
+      if (position === 'bottom' || position === 'top') {
+        translateX = '-50%';
+      } else {
+        translateX = '0';
+      }
+
+      // translateY
+      if (state === 'open') {
+        translateY = '0';
+      } else {
+        if (position === 'bottom') {
+          translateY = snackbarHeight;
+        }
+
+        if (position === 'top') {
+          translateY = -snackbarHeight;
+        }
+
+        if (position === 'left-top' || position === 'right-top') {
+          translateY = -snackbarHeight - 24;
+        }
+
+        if (position === 'left-bottom' || position === 'right-bottom') {
+          translateY = snackbarHeight + 24;
+        }
+      }
+
+      _this.$snackbar.transform('translate(' + translateX + ',' + translateY + 'px)');
+    };
+
+    /**
+     * 打开 Snackbar
+     */
+    Snackbar.prototype.open = function () {
+      var _this = this;
+
+      if (!_this.message) {
+        return;
+      }
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      // 如果当前有正在显示的 Snackbar，则先加入队列，等旧 Snackbar 关闭后再打开
+      if (currentInst) {
+        queue.queue(queueName, function () {
+          _this.open();
+        });
+
+        return;
+      }
+
+      currentInst = _this;
+
+      // 开始打开
+      _this.state = 'opening';
+      _this.options.onOpen();
+
+      _this._setPosition('open');
+
+      _this.$snackbar
+        .transitionEnd(function () {
+          if (_this.state !== 'opening') {
+            return;
+          }
+
+          _this.state = 'opened';
+          _this.options.onOpened();
+
+          // 有按钮时绑定事件
+          if (_this.options.buttonText) {
+            _this.$snackbar
+              .find('.mdui-snackbar-action')
+              .on('click', function () {
+                _this.options.onButtonClick();
+                if (_this.options.closeOnButtonClick) {
+                  _this.close();
+                }
+              });
+          }
+
+          // 点击 snackbar 的事件
+          _this.$snackbar.on('click', function (e) {
+            if (!$(e.target).hasClass('mdui-snackbar-action')) {
+              _this.options.onClick();
+            }
+          });
+
+          // 点击 Snackbar 外面的区域关闭
+          if (_this.options.closeOnOutsideClick) {
+            $document.on(TouchHandler.start, closeOnOutsideClick);
+          }
+
+          // 超时后自动关闭
+          if (_this.options.timeout) {
+            _this.timeoutId = setTimeout(function () {
+              _this.close();
+            }, _this.options.timeout);
+          }
+        });
+    };
+
+    /**
+     * 关闭 Snackbar
+     */
+    Snackbar.prototype.close = function () {
+      var _this = this;
+
+      if (!_this.message) {
+        return;
+      }
+
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      if (_this.timeoutId) {
+        clearTimeout(_this.timeoutId);
+      }
+
+      if (_this.options.closeOnOutsideClick) {
+        $document.off(TouchHandler.start, closeOnOutsideClick);
+      }
+
+      _this.state = 'closing';
+      _this.options.onClose();
+
+      _this._setPosition('close');
+
+      _this.$snackbar
+        .transitionEnd(function () {
+          if (_this.state !== 'closing') {
+            return;
+          }
+
+          currentInst = null;
+          _this.state = 'closed';
+          _this.options.onClosed();
+          _this.$snackbar.remove();
+          queue.dequeue(queueName);
+        });
+    };
+
+    /**
+     * 打开 Snackbar
+     * @param message
+     * @param opts
+     */
+    mdui.snackbar = function (message, opts) {
+      if (typeof message !== 'string') {
+        opts = message;
+        message = opts.message;
+      }
+
+      var inst = new Snackbar(message, opts);
+
+      inst.open();
+      return inst;
+    };
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Bottom navigation 底部导航栏   ************
+   * =============================================================================
+   */
+
+  (function () {
+
+    // 切换导航项
+    $document.on('click', '.mdui-bottom-nav>a', function () {
+      var $this = $(this);
+      var $bottomNav = $this.parent();
+      var isThis;
+      $bottomNav.children('a').each(function (i, item) {
+        isThis = $this.is(item);
+        if (isThis) {
+          componentEvent('change', 'bottomNav', null, $bottomNav, {
+            index: i,
+          });
+        }
+
+        $(item)[isThis ? 'addClass' : 'removeClass']('mdui-bottom-nav-active');
+      });
+    });
+
+    // 滚动时隐藏 mdui-bottom-nav-scroll-hide
+    mdui.mutation('.mdui-bottom-nav-scroll-hide', function () {
+      var $this = $(this);
+      var inst = new mdui.Headroom($this, {
+        pinnedClass: 'mdui-headroom-pinned-down',
+        unpinnedClass: 'mdui-headroom-unpinned-down',
+      });
+      $this.data('mdui.headroom', inst);
+    });
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Spinner 圆形进度条   ************
+   * =============================================================================
+   */
+
+  (function () {
+    /**
+     * layer 的 HTML 结构
+     */
+    var layerHTML = function () {
+      var i = arguments.length ? arguments[0] : false;
+
+      return '<div class="mdui-spinner-layer ' + (i ? 'mdui-spinner-layer-' + i : '') + '">' +
+                 '<div class="mdui-spinner-circle-clipper mdui-spinner-left">' +
+               '<div class="mdui-spinner-circle"></div>' +
+               '</div>' +
+               '<div class="mdui-spinner-gap-patch">' +
+                 '<div class="mdui-spinner-circle"></div>' +
+               '</div>' +
+               '<div class="mdui-spinner-circle-clipper mdui-spinner-right">' +
+                 '<div class="mdui-spinner-circle"></div>' +
+               '</div>' +
+             '</div>';
+    };
+
+    /**
+     * 填充 HTML
+     * @param spinner
+     */
+    var fillHTML = function (spinner) {
+      var $spinner = $(spinner);
+      var layer;
+      if ($spinner.hasClass('mdui-spinner-colorful')) {
+        layer = layerHTML('1') + layerHTML('2') + layerHTML('3') + layerHTML('4');
+      } else {
+        layer = layerHTML();
+      }
+
+      $spinner.html(layer);
+    };
+
+    /**
+     * 页面加载完后自动填充 HTML 结构
+     */
+    mdui.mutation('.mdui-spinner', function () {
+      fillHTML(this);
+    });
+
+    /**
+     * 更新圆形进度条
+     */
+    mdui.updateSpinners = function () {
+      $(arguments.length ? arguments[0] : '.mdui-spinner').each(function () {
+        fillHTML(this);
+      });
+    };
+
+  })();
+
+
+
+  /**
+   * =============================================================================
+   * ************   Expansion panel 可扩展面板   ************
+   * =============================================================================
+   */
+
+  mdui.Panel = (function () {
+
+    function Panel(selector, opts) {
+      return new CollapsePrivate(selector, opts, 'panel');
+    }
+
+    return Panel;
+
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Expansion panel 自定义属性   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    mdui.mutation('[mdui-panel]', function () {
+      var $target = $(this);
+
+      var inst = $target.data('mdui.panel');
+      if (!inst) {
+        var options = parseOptions($target.attr('mdui-panel'));
+        inst = new mdui.Panel($target, options);
+        $target.data('mdui.panel', inst);
+      }
+    });
+  });
+
+
+  /**
+   * =============================================================================
+   * ************   Menu 菜单   ************
+   * =============================================================================
+   */
+
+  mdui.Menu = (function () {
+
+    /**
+     * 默认参数
+     */
+    var DEFAULT = {
+      position: 'auto',         // 菜单位置 top、bottom、center、auto
+      align: 'auto',            // 菜单和触发它的元素的对齐方式 left、right、center、auto
+      gutter: 16,               // 菜单距离窗口边缘的最小距离，单位 px
+      fixed: false,             // 是否使菜单固定在窗口，不随滚动条滚动
+      covered: 'auto',          // 菜单是否覆盖在触发它的元素上，true、false。auto 时简单菜单覆盖，级联菜单不覆盖
+      subMenuTrigger: 'hover',  // 子菜单的触发方式 hover、click
+      subMenuDelay: 200,        // 子菜单的触发延时，仅在 submenuTrigger 为 hover 有效
+    };
+
+    /**
+     * 调整主菜单位置
+     * @param _this 实例
+     */
+    var readjust = function (_this) {
+      var menuLeft;
+      var menuTop;
+
+      // 菜单位置和方向
+      var position;
+      var align;
+
+      // window 窗口的宽度和高度
+      var windowHeight = $window.height();
+      var windowWidth = $window.width();
+
+      // 配置参数
+      var gutter = _this.options.gutter;
+      var isCovered = _this.isCovered;
+      var isFixed = _this.options.fixed;
+
+      // 动画方向参数
+      var transformOriginX;
+      var transformOriginY;
+
+      // 菜单的原始宽度和高度
+      var menuWidth = _this.$menu.width();
+      var menuHeight = _this.$menu.height();
+
+      var $anchor = _this.$anchor;
+
+      // 触发菜单的元素在窗口中的位置
+      var anchorTmp = $anchor[0].getBoundingClientRect();
+      var anchorTop = anchorTmp.top;
+      var anchorLeft = anchorTmp.left;
+      var anchorHeight = anchorTmp.height;
+      var anchorWidth = anchorTmp.width;
+      var anchorBottom = windowHeight - anchorTop - anchorHeight;
+      var anchorRight = windowWidth - anchorLeft - anchorWidth;
+
+      // 触发元素相对其拥有定位属性的父元素的位置
+      var anchorOffsetTop = $anchor[0].offsetTop;
+      var anchorOffsetLeft = $anchor[0].offsetLeft;
+
+      // ===============================
+      // ================= 自动判断菜单位置
+      // ===============================
+      if (_this.options.position === 'auto') {
+
+        // 判断下方是否放得下菜单
+        if (anchorBottom + (isCovered ? anchorHeight : 0) > menuHeight + gutter) {
+          position = 'bottom';
+        }
+
+        // 判断上方是否放得下菜单
+        else if (anchorTop + (isCovered ? anchorHeight : 0) > menuHeight + gutter) {
+          position = 'top';
+        }
+
+        // 上下都放不下，居中显示
+        else {
+          position = 'center';
+        }
+      } else {
+        position = _this.options.position;
+      }
+
+      // ===============================
+      // ============== 自动判断菜单对齐方式
+      // ===============================
+      if (_this.options.align === 'auto') {
+
+        // 判断右侧是否放得下菜单
+        if (anchorRight + anchorWidth > menuWidth + gutter) {
+          align = 'left';
+        }
+
+        // 判断左侧是否放得下菜单
+        else if (anchorLeft + anchorWidth > menuWidth + gutter) {
+          align = 'right';
+        }
+
+        // 左右都放不下，居中显示
+        else {
+          align = 'center';
+        }
+      } else {
+        align = _this.options.align;
+      }
+
+      // ===============================
+      // ==================== 设置菜单位置
+      // ===============================
+      if (position === 'bottom') {
+        transformOriginY = '0';
+
+        menuTop =
+          (isCovered ? 0 : anchorHeight) +
+          (isFixed ? anchorTop : anchorOffsetTop);
+
+      } else if (position === 'top') {
+        transformOriginY = '100%';
+
+        menuTop =
+          (isCovered ? anchorHeight : 0) +
+          (isFixed ? (anchorTop - menuHeight) : (anchorOffsetTop - menuHeight));
+
+      } else {
+        transformOriginY = '50%';
+
+        // =====================在窗口中居中
+        // 显示的菜单的高度，简单菜单高度不超过窗口高度，若超过了则在菜单内部显示滚动条
+        // 级联菜单内部不允许出现滚动条
+        var menuHeightTemp = menuHeight;
+
+        // 简单菜单比窗口高时，限制菜单高度
+        if (!_this.isCascade) {
+          if (menuHeight + gutter * 2 > windowHeight) {
+            menuHeightTemp = windowHeight - gutter * 2;
+            _this.$menu.height(menuHeightTemp);
+          }
+        }
+
+        menuTop =
+          (windowHeight - menuHeightTemp) / 2 +
+          (isFixed ? 0 : (anchorOffsetTop - anchorTop));
+      }
+
+      _this.$menu.css('top', menuTop + 'px');
+
+      // ===============================
+      // ================= 设置菜单对齐方式
+      // ===============================
+      if (align === 'left') {
+        transformOriginX = '0';
+
+        menuLeft = isFixed ? anchorLeft : anchorOffsetLeft;
+
+      } else if (align === 'right') {
+        transformOriginX = '100%';
+
+        menuLeft = isFixed ?
+          (anchorLeft + anchorWidth - menuWidth) :
+          (anchorOffsetLeft + anchorWidth - menuWidth);
+      } else {
+        transformOriginX = '50%';
+
+        //=======================在窗口中居中
+        // 显示的菜单的宽度，菜单宽度不能超过窗口宽度
+        var menuWidthTemp = menuWidth;
+
+        // 菜单比窗口宽，限制菜单宽度
+        if (menuWidth + gutter * 2 > windowWidth) {
+          menuWidthTemp = windowWidth - gutter * 2;
+          _this.$menu.width(menuWidthTemp);
+        }
+
+        menuLeft =
+          (windowWidth - menuWidthTemp) / 2 +
+          (isFixed ? 0 : anchorOffsetLeft - anchorLeft);
+      }
+
+      _this.$menu.css('left', menuLeft + 'px');
+
+      // 设置菜单动画方向
+      _this.$menu.transformOrigin(transformOriginX + ' ' + transformOriginY);
+    };
+
+    /**
+     * 调整子菜单的位置
+     * @param $submenu
+     */
+    var readjustSubmenu = function ($submenu) {
+      var $item = $submenu.parent('.mdui-menu-item');
+
+      var submenuTop;
+      var submenuLeft;
+
+      // 子菜单位置和方向
+      var position; // top、bottom
+      var align; // left、right
+
+      // window 窗口的宽度和高度
+      var windowHeight = $window.height();
+      var windowWidth = $window.width();
+
+      // 动画方向参数
+      var transformOriginX;
+      var transformOriginY;
+
+      // 子菜单的原始宽度和高度
+      var submenuWidth = $submenu.width();
+      var submenuHeight = $submenu.height();
+
+      // 触发子菜单的菜单项的宽度高度
+      var itemTmp = $item[0].getBoundingClientRect();
+      var itemWidth = itemTmp.width;
+      var itemHeight = itemTmp.height;
+      var itemLeft = itemTmp.left;
+      var itemTop = itemTmp.top;
+
+      // ===================================
+      // ===================== 判断菜单上下位置
+      // ===================================
+
+      // 判断下方是否放得下菜单
+      if (windowHeight - itemTop > submenuHeight) {
+        position = 'bottom';
+      }
+
+      // 判断上方是否放得下菜单
+      else if (itemTop + itemHeight > submenuHeight) {
+        position = 'top';
+      }
+
+      // 默认放在下方
+      else {
+        position = 'bottom';
+      }
+
+      // ====================================
+      // ====================== 判断菜单左右位置
+      // ====================================
+
+      // 判断右侧是否放得下菜单
+      if (windowWidth - itemLeft - itemWidth > submenuWidth) {
+        align = 'left';
+      }
+
+      // 判断左侧是否放得下菜单
+      else if (itemLeft > submenuWidth) {
+        align = 'right';
+      }
+
+      // 默认放在右侧
+      else {
+        align = 'left';
+      }
+
+      // ===================================
+      // ======================== 设置菜单位置
+      // ===================================
+      if (position === 'bottom') {
+        transformOriginY = '0';
+        submenuTop = '0';
+      } else if (position === 'top') {
+        transformOriginY = '100%';
+        submenuTop = -submenuHeight + itemHeight;
+      }
+
+      $submenu.css('top', submenuTop + 'px');
+
+      // ===================================
+      // ===================== 设置菜单对齐方式
+      // ===================================
+      if (align === 'left') {
+        transformOriginX = '0';
+        submenuLeft = itemWidth;
+      } else if (align === 'right') {
+        transformOriginX = '100%';
+        submenuLeft = -submenuWidth;
+      }
+
+      $submenu.css('left', submenuLeft + 'px');
+
+      // 设置菜单动画方向
+      $submenu.transformOrigin(transformOriginX + ' ' + transformOriginY);
+    };
+
+    /**
+     * 打开子菜单
+     * @param $submenu
+     */
+    var openSubMenu = function ($submenu) {
+      readjustSubmenu($submenu);
+
+      $submenu
+        .addClass('mdui-menu-open')
+        .parent('.mdui-menu-item')
+        .addClass('mdui-menu-item-active');
+    };
+
+    /**
+     * 关闭子菜单，及其嵌套的子菜单
+     * @param $submenu
+     */
+    var closeSubMenu = function ($submenu) {
+      // 关闭子菜单
+      $submenu
+        .removeClass('mdui-menu-open')
+        .addClass('mdui-menu-closing')
+        .transitionEnd(function () {
+          $submenu.removeClass('mdui-menu-closing');
+        })
+
+        // 移除激活状态的样式
+        .parent('.mdui-menu-item')
+        .removeClass('mdui-menu-item-active');
+
+      // 循环关闭嵌套的子菜单
+      $submenu.find('.mdui-menu').each(function () {
+        var $subSubmenu = $(this);
+        $subSubmenu
+          .removeClass('mdui-menu-open')
+          .addClass('mdui-menu-closing')
+          .transitionEnd(function () {
+            $subSubmenu.removeClass('mdui-menu-closing');
+          })
+          .parent('.mdui-menu-item')
+          .removeClass('mdui-menu-item-active');
+      });
+    };
+
+    /**
+     * 切换子菜单状态
+     * @param $submenu
+     */
+    var toggleSubMenu = function ($submenu) {
+      if ($submenu.hasClass('mdui-menu-open')) {
+        closeSubMenu($submenu);
+      } else {
+        openSubMenu($submenu);
+      }
+    };
+
+    /**
+     * 绑定子菜单事件
+     * @param inst 实例
+     */
+    var bindSubMenuEvent = function (inst) {
+      // 点击打开子菜单
+      inst.$menu.on('click', '.mdui-menu-item', function (e) {
+        var $this = $(this);
+        var $target = $(e.target);
+
+        // 禁用状态菜单不操作
+        if ($this.attr('disabled') !== null) {
+          return;
+        }
+
+        // 没有点击在子菜单的菜单项上时，不操作（点在了子菜单的空白区域、或分隔线上）
+        if ($target.is('.mdui-menu') || $target.is('.mdui-divider')) {
+          return;
+        }
+
+        // 阻止冒泡，点击菜单项时只在最后一级的 mdui-menu-item 上生效，不向上冒泡
+        if (!$target.parents('.mdui-menu-item').eq(0).is($this)) {
+          return;
+        }
+
+        // 当前菜单的子菜单
+        var $submenu = $this.children('.mdui-menu');
+
+        // 先关闭除当前子菜单外的所有同级子菜单
+        $this.parent('.mdui-menu').children('.mdui-menu-item').each(function () {
+          var $tmpSubmenu = $(this).children('.mdui-menu');
+          if (
+            $tmpSubmenu.length &&
+            (!$submenu.length || !$tmpSubmenu.is($submenu))
+          ) {
+            closeSubMenu($tmpSubmenu);
+          }
+        });
+
+        // 切换当前子菜单
+        if ($submenu.length) {
+          toggleSubMenu($submenu);
+        }
+      });
+
+      if (inst.options.subMenuTrigger === 'hover') {
+        // 临时存储 setTimeout 对象
+        var timeout;
+
+        var timeoutOpen;
+        var timeoutClose;
+
+        inst.$menu.on('mouseover mouseout', '.mdui-menu-item', function (e) {
+          var $this = $(this);
+          var eventType = e.type;
+          var $relatedTarget = $(e.relatedTarget);
+
+          // 禁用状态的菜单不操作
+          if ($this.attr('disabled') !== null) {
+            return;
+          }
+
+          // 用 mouseover 模拟 mouseenter
+          if (eventType === 'mouseover') {
+            if (!$this.is($relatedTarget) && $.contains($this[0], $relatedTarget[0])) {
+              return;
+            }
+          }
+
+          // 用 mouseout 模拟 mouseleave
+          else if (eventType === 'mouseout') {
+            if ($this.is($relatedTarget) || $.contains($this[0], $relatedTarget[0])) {
+              return;
+            }
+          }
+
+          // 当前菜单项下的子菜单，未必存在
+          var $submenu = $this.children('.mdui-menu');
+
+          // 鼠标移入菜单项时，显示菜单项下的子菜单
+          if (eventType === 'mouseover') {
+            if ($submenu.length) {
+
+              // 当前子菜单准备打开时，如果当前子菜单正准备着关闭，不用再关闭了
+              var tmpClose = $submenu.data('timeoutClose.mdui.menu');
+              if (tmpClose) {
+                clearTimeout(tmpClose);
+              }
+
+              // 如果当前子菜单已经打开，不操作
+              if ($submenu.hasClass('mdui-menu-open')) {
+                return;
+              }
+
+              // 当前子菜单准备打开时，其他准备打开的子菜单不用再打开了
+              clearTimeout(timeoutOpen);
+
+              // 准备打开当前子菜单
+              timeout = timeoutOpen = setTimeout(function () {
+                openSubMenu($submenu);
+              }, inst.options.subMenuDelay);
+
+              $submenu.data('timeoutOpen.mdui.menu', timeout);
+            }
+          }
+
+          // 鼠标移出菜单项时，关闭菜单项下的子菜单
+          else if (eventType === 'mouseout') {
+            if ($submenu.length) {
+
+              // 鼠标移出菜单项时，如果当前菜单项下的子菜单正准备打开，不用再打开了
+              var tmpOpen = $submenu.data('timeoutOpen.mdui.menu');
+              if (tmpOpen) {
+                clearTimeout(tmpOpen);
+              }
+
+              // 准备关闭当前子菜单
+              timeout = timeoutClose = setTimeout(function () {
+                closeSubMenu($submenu);
+              }, inst.options.subMenuDelay);
+
+              $submenu.data('timeoutClose.mdui.menu', timeout);
+            }
+          }
+        });
+      }
+    };
+
+    /**
+     * 菜单
+     * @param anchorSelector 点击该元素触发菜单
+     * @param menuSelector 菜单
+     * @param opts 配置项
+     * @constructor
+     */
+    function Menu(anchorSelector, menuSelector, opts) {
+      var _this = this;
+
+      // 触发菜单的元素
+      _this.$anchor = $(anchorSelector).eq(0);
+      if (!_this.$anchor.length) {
+        return;
+      }
+
+      // 已通过自定义属性实例化过，不再重复实例化
+      var oldInst = _this.$anchor.data('mdui.menu');
+      if (oldInst) {
+        return oldInst;
+      }
+
+      _this.$menu = $(menuSelector).eq(0);
+
+      // 触发菜单的元素 和 菜单必须是同级的元素，否则菜单可能不能定位
+      if (!_this.$anchor.siblings(_this.$menu).length) {
+        return;
+      }
+
+      _this.options = $.extend({}, DEFAULT, (opts || {}));
+      _this.state = 'closed';
+
+      // 是否是级联菜单
+      _this.isCascade = _this.$menu.hasClass('mdui-menu-cascade');
+
+      // covered 参数处理
+      if (_this.options.covered === 'auto') {
+        _this.isCovered = !_this.isCascade;
+      } else {
+        _this.isCovered = _this.options.covered;
+      }
+
+      // 点击触发菜单切换
+      _this.$anchor.on('click', function () {
+        _this.toggle();
+      });
+
+      // 点击菜单外面区域关闭菜单
+      $document.on('click touchstart', function (e) {
+        var $target = $(e.target);
+        if (
+          (_this.state === 'opening' || _this.state === 'opened') &&
+            !$target.is(_this.$menu) &&
+            !$.contains(_this.$menu[0], $target[0]) &&
+            !$target.is(_this.$anchor) &&
+            !$.contains(_this.$anchor[0], $target[0])
+        ) {
+          _this.close();
+        }
+      });
+
+      // 点击不含子菜单的菜单条目关闭菜单
+      $document.on('click', '.mdui-menu-item', function (e) {
+        var $this = $(this);
+        if (!$this.find('.mdui-menu').length && $this.attr('disabled') === null) {
+          _this.close();
+        }
+      });
+
+      // 绑定点击或鼠标移入含子菜单的条目的事件
+      bindSubMenuEvent(_this);
+
+      // 窗口大小变化时，重新调整菜单位置
+      $window.on('resize', $.throttle(function () {
+        readjust(_this);
+      }, 100));
+    }
+
+    /**
+     * 切换菜单状态
+     */
+    Menu.prototype.toggle = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        _this.close();
+      } else if (_this.state === 'closing' || _this.state === 'closed') {
+        _this.open();
+      }
+    };
+
+    /**
+     * 动画结束回调
+     * @param inst
+     */
+    var transitionEnd = function (inst) {
+      inst.$menu.removeClass('mdui-menu-closing');
+
+      if (inst.state === 'opening') {
+        inst.state = 'opened';
+        componentEvent('opened', 'menu', inst, inst.$menu);
+      }
+
+      if (inst.state === 'closing') {
+        inst.state = 'closed';
+        componentEvent('closed', 'menu', inst, inst.$menu);
+
+        // 关闭后，恢复菜单样式到默认状态，并恢复 fixed 定位
+        inst.$menu.css({
+          top: '',
+          left: '',
+          width: '',
+          position: 'fixed',
+        });
+      }
+    };
+
+    /**
+     * 打开菜单
+     */
+    Menu.prototype.open = function () {
+      var _this = this;
+
+      if (_this.state === 'opening' || _this.state === 'opened') {
+        return;
+      }
+
+      _this.state = 'opening';
+      componentEvent('open', 'menu', _this, _this.$menu);
+
+      // 调整菜单位置
+      readjust(_this);
+
+      _this.$menu
+
+        // 菜单隐藏状态使用使用 fixed 定位。
+        .css('position', _this.options.fixed ? 'fixed' : 'absolute')
+
+        // 打开菜单
+        .addClass('mdui-menu-open')
+
+        // 打开动画完成后
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    /**
+     * 关闭菜单
+     */
+    Menu.prototype.close = function () {
+      var _this = this;
+      if (_this.state === 'closing' || _this.state === 'closed') {
+        return;
+      }
+
+      _this.state = 'closing';
+      componentEvent('close', 'menu', _this, _this.$menu);
+
+      // 菜单开始关闭时，关闭所有子菜单
+      _this.$menu.find('.mdui-menu').each(function () {
+        closeSubMenu($(this));
+      });
+
+      _this.$menu
+        .removeClass('mdui-menu-open')
+        .addClass('mdui-menu-closing')
+        .transitionEnd(function () {
+          transitionEnd(_this);
+        });
+    };
+
+    return Menu;
+  })();
+
+
+  /**
+   * =============================================================================
+   * ************   Menu 自定义属性 API   ************
+   * =============================================================================
+   */
+
+  $(function () {
+    $document.on('click', '[mdui-menu]', function () {
+      var $this = $(this);
+
+      var inst = $this.data('mdui.menu');
+      if (!inst) {
+        var options = parseOptions($this.attr('mdui-menu'));
+        var menuSelector = options.target;
+        delete options.target;
+
+        inst = new mdui.Menu($this, menuSelector, options);
+        $this.data('mdui.menu', inst);
+
+        inst.toggle();
+      }
+    });
+  });
+
+
+  /* jshint ignore:start */
+  mdui.JQ = $;
+  return mdui;
+})));
+/* jshint ignore:end */
