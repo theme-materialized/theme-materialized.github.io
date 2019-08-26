@@ -146,7 +146,7 @@
 <meta property="og:image" content="https://code004.ml/how-to-build-a-hexo-blog/fontawesome.png">
 <meta property="og:image" content="https://code004.ml/how-to-build-a-hexo-blog/sidebar.png">
 <meta property="og:image" content="https://code004.ml/how-to-build-a-hexo-blog/ssh-key.png">
-<meta property="og:updated_time" content="2019-08-26T13:22:56.915Z">
+<meta property="og:updated_time" content="2019-08-26T14:02:09.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客搭建—从入门到精通">
 <meta name="twitter:description" content="我一直以来认为，要弄一个自己的博客或者网站，必须到某些什么“建站工具”里购买建站套装，再自己买一个域名 这样算下来，一年至少得两三百RMB 而且，域名什么的配置繁杂，非常麻烦 所以，一直以来我都是用的CSDN/博客园建的博客，想想SEO也做的好（SEO好就意味着你写的东西可以在百度/谷歌等搜索引擎上被别人查到），也就没什么怨言 但是，众所周知，CSDN和博客园的广告一大堆，根本不是我能容忍的 而且">
@@ -559,7 +559,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-26 21:22:56" itemprop="dateModified" datetime="2019-08-26T21:22:56+08:00">2019-08-26</time>
+                <time title="修改时间：2019-08-26 22:02:09" itemprop="dateModified" datetime="2019-08-26T22:02:09+08:00">2019-08-26</time>
               
             
           </span>
@@ -697,19 +697,20 @@
 <p>其中，node_modules是用来存放您使用npm下载的插件的，scaffolds是文章模板，您稍后创建的文章会按照模板创建，可以对模板进行修改，但这些都到一切设置完毕了以后再说吧</p>
 <p>source用来存放您所有文章/页面的markdown代码或者HTML代码，themes用来存放您稍后下载的主题文件（默认主题landscape），_config.yml则是用来进行站点配置的，在后文中会被称为<strong><em>站点配置文件</em></strong></p>
 <p>package.json用来存放您下载插件的目录，平常不要修改为好</p>
-<p>接下来，请打开<strong><em>站点配置文件</em></strong>，做以下基本配置：</p>
+<p>请接着输入<code>npm install</code>来下载一些需要的包，等待下载完毕后，请打开<strong><em>站点配置文件</em></strong>，做以下基本配置：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hexo Configuration</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">博客标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述（可以填写</span> <span class="string">xxx的博客）</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">语言，稍后根据主题进行设置</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">时区，不建议设置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">域名，可以暂时按照默认的</span> <span class="attr">http://yoursite.com</span> <span class="string">进行设置，稍后更改</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">不用管</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">不用管，稍后SEO优化时会用到</span></span><br></pre></td></tr></table></figure>
 
-<p>如上进行部分设置后，请在<strong><em>站点目录</em></strong>中右键Git Bash Here，输入<code>hexo s</code>，打开浏览器，地址栏输入<code>localhost:4000</code>即可查看</p>
+<p>如上进行部分设置后，请在<strong><em>站点目录</em></strong>中右键Git Bash Here，输入<code>hexo s</code>，打开浏览器，地址栏输入<code>localhost:4000</code>即可查看（这里的<code>hexo s</code>是<code>hexo server</code>的缩写，请在“发布博客”一章末尾详细查看）</p>
 <p>如果4000端口冲突，请使用cmd进行<code>taskkill /f /im 4000</code>或者使用<code>hexo s -p 4001</code>修改到4001端口</p>
 <p>如果您看到以下界面，说明成功：</p>
 <p><img src="/how-to-build-a-hexo-blog/hexo-show.png" alt="hexo-show"></p>
+<p>请同时按下Ctrl+C来关闭窗口（若出现类似于<code>终止批处理操作吗(Y/N)?</code>的提示，输入<code>y</code>即可）</p>
 <p>如果没有，请按照上述步骤重试</p>
 <p>好的，接下来就是挑选主题的时候了qwq</p>
 <h1 id="主题选择与下载切换"><a href="#主题选择与下载切换" class="headerlink" title="主题选择与下载切换"></a>主题选择与下载切换</h1><p>好的，我们来看一下<a href="https://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">hexo官网</a>的<a href="https://hexo.io/themes" rel="external nofollow noopener noreferrer" target="_blank">主题列表</a></p>
 <p>天啊，这么多！</p>
 <p>没错，慢慢挑吧qwq</p>
-<p>当然了，也可以利用搜索功能，如果您喜欢material design的，不妨搜索标签material（顺便安利一波我的主题Materialized）</p>
+<p>当然了，也可以利用搜索功能，如果您喜欢material design，不妨搜索标签material（顺便安利一波我的主题Materialized）</p>
 <p>推荐几个：</p>
 <ol>
 <li>NexT，非常火爆，人气很高</li>
@@ -728,6 +729,7 @@
 <p>在每个主题下都有一个<code>_config.yml</code>文件，它被称为<strong><em>主题配置文件</em></strong>，用来对主题进行自定义设置（注意，主题的语言设置在站点配置文件里）</p>
 <p>好的，接下来，我以NexT主题为例，带领您领略一下主题中多样的功能</p>
 <p>（本文基于next 7.1.2，之所以我不更新是因为7.3.0改动太大，导致很多地方不美观，7.2.0取消了自定义设置）</p>
+<p>（Update:后来看了ouuan dalao博客的评论以后发现，7.2.0及以上版本的NexT主题在主题配置文件里有一个<code>custom_file_path</code>选项，把里面的<code>style</code>取消注释并在相应的目录添加一个相应的文件，放入自定义设置的代码即可）</p>
 <h1 id="NexT主题基础配置"><a href="#NexT主题基础配置" class="headerlink" title="NexT主题基础配置"></a>NexT主题基础配置</h1><p>请打开next主题的<strong><em>主题配置文件</em></strong>，Ctrl+F搜索<code>Scheme Settings</code>，找到下面选项：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Scheme Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
 
@@ -750,6 +752,9 @@
 <p>这会让博客生成后底部存在“由Hexo强力驱动 V3.9.0”和“主题：NexT V7.1.2”（文字我不太记得清楚了qwq）</p>
 <p>如果您想给hexo或者next主题打广告，请跳过此段</p>
 <p>如果您想博客底部干净整洁，请把上面片段中所有<code>true</code>改成<code>false</code></p>
+<p><strong>安全警告：根据NexT主题的LICENSE，您应该确保theme.enable选项打开，</strong><a href="https://github.com/theme-next/hexo-theme-next/blob/master/LICENSE.md" target="_blank" rel="noopener">NexT主题LICENSE</a>原文节选如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">c) A covered work must retain «NexT» official website link (https://theme-next.org) in footer section of every website created, modified or manipulated by using «NexT». «NexT» theme configuration must be:</span><br><span class="line"></span><br><span class="line">footer:</span><br><span class="line">  theme:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
+
 <p>接下来，请继续在<strong><em>主题配置文件</em></strong>中找到以下内容（请自行Ctrl+F搜索）</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Menu Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -&gt; archives).</span></span><br><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-senstive.</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target link.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.</span></span><br><span class="line"><span class="comment"># External url should start with http:// or https://</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line"><span class="attr">  categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></span><br><span class="line"><span class="attr">  tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">  archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line"><span class="attr">  links:</span> <span class="string">/links/</span> <span class="string">||</span> <span class="string">link</span></span><br><span class="line"><span class="attr">  message:</span> <span class="string">/message/</span> <span class="string">||</span> <span class="string">comments</span></span><br><span class="line"><span class="attr">  following:</span> <span class="string">/following/</span> <span class="string">||</span> <span class="string">group</span></span><br><span class="line"><span class="attr">  codes:</span> <span class="string">/codes/</span> <span class="string">||</span> <span class="string">file-code-o</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
 
@@ -849,6 +854,7 @@
 
 <ol start="3">
 <li>请注意，不要直接复制代码就开干，请把<code>{username}</code>替换过来！</li>
+<li>千万注意：<code>github:</code>后面要有一个空格，你继续写的也是一样，否则会出现错误</li>
 </ol>
 <p>Github那行的所有<code>{username}</code>换成你的Github用户名，Coding那行的所有<code>{username}</code>换成你的Coding用户名，Gitee的请自己百度或者直接在项目地址选择<code>克隆/下载</code>然后复制里面给的连接</p>
 <p>好的，请记得要保存站点配置文件，可以开始发布了</p>
@@ -856,7 +862,10 @@
 <p>发布指令（在Git Bash中执行）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
-<p>如果发布成功，您应该看到一些</p>
+<p>如果发布成功，您应该看到：<code>INFO  Deploy done: git</code></p>
+<p>恭喜！</p>
+<p>如果出现一大堆什么 at xxx.xxx 之类的，说明可能由于主题配置或者站点配置问题，导致某些设置无法被识别，从而出现错误，<strong>记住，所有在两个配置文件中的设置，形如<code>xxx: xxx</code>的必须在冒号后打一个空格！</strong>（当然了，如果<code>hexo s</code>无错误，但发布时出错，说明肯定是你发布的配置有问题，比如把github打成guthub之类的低级拼写错误）</p>
+<p>这时候，应该可以通过访问 <a href="http://xxx.github.io" rel="external nofollow noopener noreferrer" target="_blank">http://xxx.github.io</a> （请自行将xxx换成您的Github用户名）或者 <a href="http://xxx.coding.me" rel="external nofollow noopener noreferrer" target="_blank">http://xxx.coding.me</a> （请自行将xxx换成您的Coding用户名）等等来查看您的博客了qwq（如果提示<code>404 There isn&#39;t a GitHub Pages site here.</code>等，请进入相应的repo，选择Settings，在Github Pages中选择master分支即可）</p>
 <p>备注：</p>
 <ol>
 <li><code>hexo s</code>是<code>hexo server</code>的缩写，在本地预览站点</li>
@@ -865,6 +874,7 @@
 <li><code>hexo d</code>是<code>hexo deploy</code>的缩写，把生成的站点HTML文件发布到git仓库中（或者还有别的发布方式）</li>
 </ol>
 <p><strong>注意：<code>hexo clean</code>不能缩写为<code>hexo c</code>，因为存在命令<code>hexo config</code></strong></p>
+<h1 id="书写博客"><a href="#书写博客" class="headerlink" title="书写博客"></a>书写博客</h1><p>前面已经讲了博客的配置/</p>
 
       
     </div>
@@ -889,7 +899,7 @@
   <p><span>本文标题:</span>Hexo博客搭建—从入门到精通</p>
   <p><span>文章作者:</span>code004</p>
   <p><span>发布时间:</span>2019年08月25日 - 20:59:16</p>
-  <p><span>最后更新:</span>2019年08月26日 - 21:22:56</p>
+  <p><span>最后更新:</span>2019年08月26日 - 22:02:09</p>
   <p><span>原始链接:</span><a href="/how-to-build-a-hexo-blog/" title="Hexo博客搭建—从入门到精通">https://code004.ml/how-to-build-a-hexo-blog/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://code004.ml/how-to-build-a-hexo-blog/" aria-label="复制成功！"></i></span>
   </p>
@@ -1261,7 +1271,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github-Coding-Gitee设置"><span class="nav-number">2.</span> <span class="nav-text">Github/Coding/Gitee设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">2.1.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coding"><span class="nav-number">2.2.</span> <span class="nav-text">Coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitee"><span class="nav-number">2.3.</span> <span class="nav-text">Gitee</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">本地安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题选择与下载切换"><span class="nav-number">4.</span> <span class="nav-text">主题选择与下载切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NexT主题基础配置"><span class="nav-number">5.</span> <span class="nav-text">NexT主题基础配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布博客"><span class="nav-number">6.</span> <span class="nav-text">发布博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github-Coding-Gitee设置"><span class="nav-number">2.</span> <span class="nav-text">Github/Coding/Gitee设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">2.1.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coding"><span class="nav-number">2.2.</span> <span class="nav-text">Coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitee"><span class="nav-number">2.3.</span> <span class="nav-text">Gitee</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">本地安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题选择与下载切换"><span class="nav-number">4.</span> <span class="nav-text">主题选择与下载切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NexT主题基础配置"><span class="nav-number">5.</span> <span class="nav-text">NexT主题基础配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布博客"><span class="nav-number">6.</span> <span class="nav-text">发布博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#书写博客"><span class="nav-number">7.</span> <span class="nav-text">书写博客</span></a></li></ol></div>
             
 
           </div>
@@ -1304,6 +1314,8 @@
 
 
 
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Gemini</a></div>
 
 
 
