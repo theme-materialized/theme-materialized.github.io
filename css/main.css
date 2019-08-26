@@ -1883,7 +1883,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff87ff;
+  background: #42a4ff;
 }
 .feed-link,
 .chat {
@@ -3074,7 +3074,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://i.loli.net/2019/08/22/WkntKNeJd1yIaQp.jpg");
+  background: url("https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
