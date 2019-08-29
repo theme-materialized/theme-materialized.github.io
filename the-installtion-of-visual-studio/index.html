@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>Visual Studio 安装记 | code004&#39;s Blog</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="code004's Blog">
+  <meta name="description" content="我初次使用VS是在一年前（VS2017 Enterprise）。为了C++开发，当时选组件时直接下了所有跟Windows和C++有关的，然后15分钟下完，使用一切正常。百度搜了个激活码，就这样一直用了大半年。 最近在GC Server开发过程中，我意识到电脑太卡慢了，一看C盘装了一堆垃圾文件，又懒得手动删，电脑管家也扫不出来，于是找同学（余博文）借了个U深度的盘重装Win10，花了30分钟，现在开">
+<meta name="keywords" content="软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio 安装记">
+<meta property="og:url" content="http://code004.ml/the-installtion-of-visual-studio/index.html">
+<meta property="og:site_name" content="code004&#39;s Blog">
+<meta property="og:description" content="我初次使用VS是在一年前（VS2017 Enterprise）。为了C++开发，当时选组件时直接下了所有跟Windows和C++有关的，然后15分钟下完，使用一切正常。百度搜了个激活码，就这样一直用了大半年。 最近在GC Server开发过程中，我意识到电脑太卡慢了，一看C盘装了一堆垃圾文件，又懒得手动删，电脑管家也扫不出来，于是找同学（余博文）借了个U深度的盘重装Win10，花了30分钟，现在开">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-17T15:19:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visual Studio 安装记">
+<meta name="twitter:description" content="我初次使用VS是在一年前（VS2017 Enterprise）。为了C++开发，当时选组件时直接下了所有跟Windows和C++有关的，然后15分钟下完，使用一切正常。百度搜了个激活码，就这样一直用了大半年。 最近在GC Server开发过程中，我意识到电脑太卡慢了，一看C盘装了一堆垃圾文件，又懒得手动删，电脑管家也扫不出来，于是找同学（余博文）借了个U深度的盘重装Win10，花了30分钟，现在开">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="我初次使用VS是在一年前（VS2017 Enterprise）。为了C++开发，当时选组件时直接下了所有跟Windows和C++有关的，然后15分钟下完，使用一切正常。百度搜了个激活码，就这样一直用了大半年。
+最近在GC Server开发过程中，我意识到电脑太卡慢了，一看C盘装了一堆垃圾文件，又懒得手动删，电脑管家也扫不出来，于是找同学（余博文）借了个U深度的盘重装Win10，花了30分钟，现在开机只需10秒。">
+  <meta name="keywords" content=",软件">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="code004&#39;s Blog">
+  <meta name="msapplication-starturl" content="http://code004.ml/the-installtion-of-visual-studio/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="code004&#39;s Blog">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Fri May 17 2019 23:19:34 GMT+0800">
+    <meta property="article:modified_time" content="Fri May 17 2019 23:19:34 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://code004.ml/the-installtion-of-visual-studio/">
+  
+
+  
+  
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-orange">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">code004&#39;s Blog</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">code004</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>Think Twice Code Once</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:code004@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'code004@qq.com'}" rel="external nofollow noopener noreferrer" target="_blank"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="mdui-ripple sidebar_archives-count">9</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/临时公告/">临时公告<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/收藏/">收藏<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/随记/">随记<span class="mdui-ripple sidebar_archives-count">17</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/项目/">项目<span class="mdui-ripple sidebar_archives-count">10</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/GC-Server/">GC Server<span class="mdui-ripple sidebar_archives-count">11</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/博客/">博客<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/图论/">图论<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/娱乐/">娱乐<span class="mdui-ripple sidebar_archives-count">9</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/学校/">学校<span class="mdui-ripple sidebar_archives-count">7</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/搭建/">搭建<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数学/">数学<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/算法/">算法<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/纪念/">纪念<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/英语/">英语<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/软件/">软件<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/音乐/">音乐<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="https://code004accepted.github.io" class="mdui-list-item mdui-ripple" rel="external nofollow noopener noreferrer" target="_blank">切换主题</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://python.org" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;" rel="external nofollow noopener noreferrer">Python</a>
+        
+          <a href="https://cloudflare.com" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;" rel="external nofollow noopener noreferrer">Cloudflare</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-13.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Visual Studio 安装记</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-05-17 / <i class="iconfont">&#xe601;</i> code004 &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=http://code004.ml/the-installtion-of-visual-studio/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Visual Studio 安装记&url=http://code004.ml/the-installtion-of-visual-studio/&pic=http://code004.ml/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Visual Studio 安装记&url=http://code004.ml/the-installtion-of-visual-studio/&via=code004" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://code004.ml/the-installtion-of-visual-studio/" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://code004.ml/the-installtion-of-visual-studio/" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://code004.ml/the-installtion-of-visual-studio/&title=Visual Studio 安装记" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=code004&#39;s Blog&title=Visual Studio 安装记&summary=一个OIer的学校生活与OI竞赛记录&pics=http://code004.ml/images/favicon.png&url=http://code004.ml/the-installtion-of-visual-studio/" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://code004.ml/the-installtion-of-visual-studio/&text=Visual Studio 安装记" target="_blank" class="mdui-ripple" rel="external nofollow noopener noreferrer">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p>我初次使用VS是在一年前（VS2017 Enterprise）。为了C++开发，当时选组件时直接下了所有跟Windows和C++有关的，然后15分钟下完，使用一切正常。百度搜了个激活码，就这样一直用了大半年。</p>
+<p>最近在GC Server开发过程中，我意识到电脑太卡慢了，一看C盘装了一堆垃圾文件，又懒得手动删，电脑管家也扫不出来，于是找同学（余博文）借了个U深度的盘重装Win10，花了30分钟，现在开机只需10秒。</p>
+<a id="more"></a>
+
+<p>当然，重装后的第一要务就是把VS装好。不过，好像…在我之前快乐地使用VS2017时（时不时也安装一些更新），我一直不知道微软已经出了VS2019…然后我瞬间想法就是…换2019算了！</p>
+<p>但是下了安装程序选组件的时候，一看，一个C++的标准组件就十几个G，好像比2017大了一倍…</p>
+<p>百度一下哪个好，基本都说选2017，因为2019刚出，还没太完善。我想想也是，之前又和2017培养出了感情…于是还是决定装2017。</p>
+<p>我是坚决支持正版的，心想我只从微软官网下。左找右找硬是找不到官方的VS2017下载程序。后来无意点到了下载页面，发现底下有个叫“旧版本”的按钮，于是点了然后跳转到登录界面。登录了微软账户后告诉我要关注某个东西，我认为无所谓于是就关注了，出来了下载页面。我点了下载，就下了一个旧版的VS Installer，终于开始下VS2017了~</p>
+<p>然后，花了10分钟下好了，结果提示我无法安装Visual CPP.Redist.14…（我忘了…）我把错误代码一复制，然后贴VS开发者论坛，搜了，有几个显示解决的，但是我都不能…于是我百度继续搜，搜到一位大神的文章，让我百度下载微软官方的安装程序然后替换…</p>
+<p>好不容易找到了，趁Installer下完了，还没安装的时候，我偷偷地把两个包替换了，然后终于解决了这个问题！！！</p>
+<p>不过，又告诉我 .NET SDK 和 Win10 SDK 无法安装，我懒得在手动下载了…而且我认为八成会再出现其它类似错误…</p>
+<p>我想或许是2017是旧版导致的问题，于是又重下了2019，结果还是出了同样问题，于是想了，算了，不用VS了…</p>
+<p>（这里插一句，后期还发现官方的VS会占用C盘大量空间，而且卸都卸不掉，只能在C盘里搜索vs和visual studio然后选择几个看得不顺眼的删掉。幸亏Win 10的搜索不分大小写，也支持模糊搜索，不然我到现在还删不完…之前下的VS2017和2019卸完后还占了我C盘大概10个G，我删了后还比下VS之前多了半个G，懒得再找了~）</p>
+<p>在前面登录微软账号验证邮箱时，我还看到了百度给我发的提醒邮件，说某个贴吧（在此不透露）有人回复了我的帖子，所以放弃VS后点进去看了一下，处理完消息以后无聊点进网盘，在搜索栏里无聊地输入VS…我没指望有搜索结果，结果告诉我我去年暑假存了一个VS便携包合集，从VC++6.0 VS2008，到VS2017都有，眼睛一亮。作者温馨提示我，VS2017不建议使用，所以我决定下VS2015。点进去使用Proxyee-down，50秒下完1G左右的压缩包（打广告~），速度最高30多M每秒…</p>
+<p>终于下好了，我支持正版的心态又来了，又跑去微软官网下载2015…然后安装程序打不开，果断放弃…</p>
+<p>开始便携版安装，3分钟装完，所有组件都到位，非常好。除了最后几个无关紧要的注册表好像不知为何没有权限写入（目前对使用没有任何影响）外，安装一切顺利。装好后，和正版一样提示我登录，登录界面没有丝毫问题，都跟原版一模一样。好评！</p>
+<p>终于可以愉快地写代码了，但是我还不满足，VS2015的菜单太少了…我还是习惯用2017，于是卸掉2015便携版（居然把所有占用我C盘的5个G全还回来了，删的干干净净）</p>
+<p>然后下了2017的便携包，现在已经安装成功，可以正常使用了。打开后5秒就可以加载出来，也不会像之前一样经常无响应了~支持便携版！:)</p>
+<p>PS：想要便携包？去百度贴吧自己搜，好像在visualstudio吧里~ 祝好运！</p>
+
+      <!--
+      <blockquote class="mdui-m-t-5">
+        
+        <strong>本文链接：</strong><a href="http://code004.ml/the-installtion-of-visual-studio/">http://code004.ml/the-installtion-of-visual-studio/</a>
+      </blockquote>
+      -->
+      
+      <div class="my_post_copyright">        
+        <!-- JS库 sweetalert 可修改路径 -->
+        <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+        <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+        <p><span>本文标题:</span>Visual Studio 安装记</p>
+        <p><span>文章作者:</span>code004</p>
+        <p><span>发布时间:</span>2019年05月17日 - 23:19:34</p>
+        <p><span>最后更新:</span>2019年05月17日 - 23:19:34</p>
+        <p><span>原始链接:</span><a href="/the-installtion-of-visual-studio/" title="Visual Studio 安装记">http://code004.ml/the-installtion-of-visual-studio/</a></p>
+        <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+      </div>
+      
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/随记/">随记</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/软件/">软件</a>
+      
+    </footer>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/make-your-own-gc-server-with-cpp/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/about-spiderman-homecoming/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '15e003aafe1e9c62a8e1',
+    clientSecret: '13a3e3599f36a88990f3e42b9fe46cdb10d92cb8',
+    repo: 'blog-materialized-comment',
+    owner: 'code004Accepted',
+    admin: ['code004Accepted'],
+    id: location.pathname,
+    distractionFreeMode: false
+  });
+  gitalk.render('gitalk-container');
+</script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+      <a href="https://twitter.com/brianchen2006" target="_blank" rel="external nofollow noopener noreferrer"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe655;</i></a>
+    
+    
+      <a href="https://facebook.com/brianchen" target="_blank" rel="external nofollow noopener noreferrer"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe66e;</i></a>
+    
+    
+      <a href="https://plus.google.com/code004Accepted" target="_blank" rel="external nofollow noopener noreferrer"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6a8;</i></a>
+    
+    
+    
+      <a href="https://instagram.com/brianchen2019" target="_blank" rel="external nofollow noopener noreferrer"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe75f;</i></a>
+    
+    
+    
+      <a href="https://github.com/code004Accepted" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+    
+    
+      <a href="tencent://message/?uin=970088209&Menu=yes" target="_blank" rel="external nofollow noopener noreferrer"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2019 code004<br>
+    
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
